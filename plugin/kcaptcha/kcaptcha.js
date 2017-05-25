@@ -1,7 +1,7 @@
 $(function(){
     var mp3_url = "";
 
-    $(document).on( "click", "#captcha_reload", function(){
+    $("#captcha_reload").live("click", function(){
         $.ajax({
             type: 'POST',
             url: g5_captcha_url+'/kcaptcha_session.php',
@@ -24,9 +24,9 @@ $(function(){
                 }
             }
         });
-    });
+    }).trigger("click");
 
-    $(document).on( "click", "#captcha_mp3", function(){
+    $("#captcha_mp3").live("click", function(){
         $("body").css("cursor", "wait");
 
         $.ajax({
@@ -74,8 +74,6 @@ $(function(){
         return false;
 
     }).css('cursor', 'pointer');
-
-    $("#captcha_reload").trigger("click");
 });
 
 // 출력된 캡챠이미지의 키값과 입력한 키값이 같은지 비교한다.

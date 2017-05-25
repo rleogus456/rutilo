@@ -1,69 +1,54 @@
 $(document).ready(function(){
-	 $(window).scroll(function(event){
-		var scroll_top = $(this).scrollTop();
-		if(scroll_top>139){
-			$("#header .main_menu").addClass("scroll_up");
-		}else{
-			$("#header .main_menu").removeClass("scroll_up");
-		}
-	 });
-	 $("#mobile_header .menu > ul > li > h4").click(function(){
-		var li = $(this).parent();
+     $("#mobile_header ul li").click(function(){
+		var li = $(this).children();
 		li.toggleClass("active");
 		li.find("ul").slideToggle();
-	 });
-	 $("#mobile_header .menu_btn").click(function(){
-		$(".mobile_menu").fadeIn("fast",function() {
-			$(".mobile_menu > div").animate({"right":"0"});
-		});
-		$("html").css("overflow-y","hidden");
-	 });
-	 $(".mobile_menu span").click(function(){
-		$(".mobile_menu > div").animate({"right":"-100%"},function(){
-			$(".mobile_menu").fadeOut("fast");
-		});
-		$("html").css("overflow-y","auto");
+        
 	 });
 });
 
 $(function(){
-	$(".select01 select").change(function(){
-		var tval=$(this).val();
-		var label=$(this).find("option:first-child").html();
-		var data_label=$(this).find("option:selected").attr("data-label");
-		if(!data_label){
-			data_label="+"+tval;
+	$(".mobile_menu_btn").click(function(){
+		$(".mobile_menu").fadeIn(300,function(){
+			$(".mobile_menu").addClass("active");
+		});
+	});
+	$(".mobile_menu > span").click(function(){
+		$(".mobile_menu").fadeOut(300,function(){
+			$(".mobile_menu").removeClass("active");
+		});
+	});
+	$(window).scroll(function(){
+		$(".sub_call_pop").stop();
+		var scroll=$(document).scrollTop();
+		var w_width=$(window).width();
+		s_top=scroll-108;
+		if(scroll<138){
+			s_top=138;
 		}
-		if(tval==""){
-			$(this).parent().find("div").html(label+"<span></span>");
-			$(this).parent().css("color","#999");
+		if(w_width>1480){
+			$(".sub_call_pop").animate( { "top": s_top + "px" },1000);
 		}else{
-			$(this).parent().find("div").html(data_label+"<span></span>");
-			$(this).parent().css("color","#000");
+			if(scroll>128)
+				$(".sub_call_pop").css( { "top":"10px" });
+			else
+				$(".sub_call_pop").css( { "top":"138px" });
 		}
 	});
-	$(".section01_nav .slide").owlCarousel({
-		autoplay:false,
-		smartSpeed:2000,
-		loop:false,
-		items:3,
-		nav:false
+	$(".file01 input").change(function(){
+		var p=$(this).parent();
+		var t_val=$(this).val();
+		if(t_val){
+			p.find("span").html(t_val);
+		}else{
+			p.find("span").html("파일을 선택해주세요");
+		}
 	});
-	/*$("#skin").owlCarousel({
-		autoplay:false,
-		smartSpeed:2000,
-		loop:true,
-		dots:false,
-		nav:true,
-		touchDrag:false,
-		mouseDrag:false,
-		pullDrag:false,
-		freeDrag:false,
-		animateOut: 'fadeOut',
-		items:1,
-		navText: [ '', '' ]
-	});*/
 });
+function number_only(t){
+	t.value = t.value.replace(/[^0-9]/g, '');
+}
+
 var hash_back="";
 $(window).hashchange( function(){
 	console.log( location.hash + " / " +hash_back );
@@ -89,6 +74,20 @@ $(window).hashchange( function(){
 		small_modal_close();
 	}
 });
+function modal_active(){
+	document.location.hash="#modal";
+	hash_back="#modal";
+	$(".modal").addClass('active');
+	var div_height=$(".modal > div").height();
+	var d_height=$(window).height();
+	if(div_height>d_height){
+		$(".modal > div").css("height",d_height+"px");
+	}else{
+		var div_top=(d_height-div_height)/2;
+		$(".modal > div").animate({"top":div_top+"px"},500);
+	}
+	$("html").css("overflow","hidden");
+}
 function msg_active(){
 	document.location.hash="#msg";
 	hash_back="#msg";
@@ -103,6 +102,15 @@ function msg_active(){
 	}
 	$("html").css("overflow","hidden");
 }
+function modal_close(){
+	$(".modal").html("");
+	$('.modal').removeClass('active');
+	if(location.hash=="#modal" && hash_back=="#modal"){
+		hash_back="";
+		window.history.back();
+	}
+	$("html").css("overflow","auto");
+}
 function msg_close(){
 	$(".msg").html("");
 	$('.msg').removeClass('active');
@@ -112,12 +120,18 @@ function msg_close(){
 	}
 	$("html").css("overflow","auto");
 }
-function number_only(t){
-	t.value = t.value.replace(/[^0-9]/g, '');
+
+function all_close(){
+	msg_close();
+	small_modal_close();
+	modal_close();
+	if(location.hash=="#msg" || location.hash=="#small_modal" || location.hash=="#modal"){
+		hash_back="";
+		history.back();
+	}
+	$("html").css("overflow","auto");
 }
-function float_only(t){
-	t.value = t.value.replace(/[^0-9.]/g, '');
-}
+
 var fromHistoryBack = false;
 var myHistory;
 try {

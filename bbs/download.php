@@ -76,8 +76,7 @@ if (!get_session($ss_name))
 
 $g5['title'] = '다운로드 &gt; '.conv_subject($write['wr_subject'], 255);
 
-//$original = urlencode($file['bf_source']);
-$original = iconv('utf-8', 'euc-kr', $file['bf_source']); // SIR 잉끼님 제안코드
+$original = urlencode($file['bf_source']);
 
 @include_once($board_skin_path.'/download.tail.skin.php');
 

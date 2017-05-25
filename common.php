@@ -39,7 +39,6 @@ function g5_path()
     $host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : $_SERVER['SERVER_NAME'];
     if(isset($_SERVER['HTTP_HOST']) && preg_match('/:[0-9]+$/', $host))
         $host = preg_replace('/:[0-9]+$/', '', $host);
-    $host = preg_replace("/[\<\>\'\"\\\'\\\"\%\=\(\)\/\^\*]/", '', $host);
     $result['url'] = $http.$host.$port.$user.$root;
     return $result;
 }
@@ -136,7 +135,7 @@ if (file_exists($dbconfig_file)) {
     // mysql connect resource $g5 배열에 저장 - 명랑폐인님 제안
     $g5['connect_db'] = $connect_db;
 
-    sql_set_charset('utf8', $connect_db);
+    sql_query(" set names utf8 ");
     if(defined('G5_MYSQL_SET_MODE') && G5_MYSQL_SET_MODE) sql_query("SET SESSION sql_mode = ''");
     if (defined(G5_TIMEZONE)) sql_query(" set time_zone = '".G5_TIMEZONE."'");
 } else {
@@ -219,6 +218,58 @@ if ($config['cf_editor'])
 else
     define('G5_EDITOR_LIB', G5_LIB_PATH."/editor.lib.php");
 
+//==============================================================================
+// 사용기기 설정
+// config.php G5_SET_DEVICE 설정에 따라 사용자 화면 제한됨
+// pc 설정 시 모바일 기기에서도 PC화면 보여짐
+// mobile 설정 시 PC에서도 모바일화면 보여짐
+// both 설정 시 접속 기기에 따른 화면 보여짐
+//------------------------------------------------------------------------------
+$is_mobile = false;
+$set_device = true;
+if(defined('G5_SET_DEVICE')) {
+    switch(G5_SET_DEVICE) {
+        case 'pc':
+            $is_mobile  = false;
+            $set_device = false;
+            break;
+        case 'mobile':
+            $is_mobile  = true;
+            $set_device = false;
+            break;
+        default:
+            break;
+    }
+}
+//==============================================================================
+
+//==============================================================================
+// Mobile 모바일 설정
+// 쿠키에 저장된 값이 모바일이라면 브라우저 상관없이 모바일로 실행
+// 그렇지 않다면 브라우저의 HTTP_USER_AGENT 에 따라 모바일 결정
+// G5_MOBILE_AGENT : config.php 에서 선언
+//------------------------------------------------------------------------------
+if (G5_USE_MOBILE && $set_device) {
+    if ($_REQUEST['device']=='pc')
+        $is_mobile = false;
+    else if ($_REQUEST['device']=='mobile')
+        $is_mobile = true;
+    else if (isset($_SESSION['ss_is_mobile']))
+        $is_mobile = $_SESSION['ss_is_mobile'];
+    else if (is_mobile())
+        $is_mobile = true;
+} else {
+    $set_device = false;
+}
+
+$_SESSION['ss_is_mobile'] = $is_mobile;
+define('G5_IS_MOBILE', $is_mobile);
+define('G5_DEVICE_BUTTON_DISPLAY', $set_device);
+if (G5_IS_MOBILE) {
+    $g5['mobile_path'] = G5_PATH.'/'.$g5['mobile_dir'];
+}
+//==============================================================================
+
 // 4.00.03 : [보안관련] PHPSESSID 가 틀리면 로그아웃한다.
 if (isset($_REQUEST['PHPSESSID']) && $_REQUEST['PHPSESSID'] != session_id())
     goto_url(G5_BBS_URL.'/logout.php');
@@ -228,17 +279,15 @@ $qstr = '';
 
 if (isset($_REQUEST['sca']))  {
     $sca = clean_xss_tags(trim($_REQUEST['sca']));
-    if ($sca) {
-        $sca = preg_replace("/[\<\>\'\"\\\'\\\"\%\=\(\)\/\^\*]/", "", $sca);
+    if ($sca)
         $qstr .= '&amp;sca=' . urlencode($sca);
-    }
 } else {
     $sca = '';
 }
 
 if (isset($_REQUEST['sfl']))  {
     $sfl = trim($_REQUEST['sfl']);
-    $sfl = preg_replace("/[\<\>\'\"\\\'\\\"\%\=\(\)\/\^\*\s]/", "", $sfl);
+    $sfl = preg_replace("/[\<\>\'\"\\\'\\\"\%\=\(\)\s]/", "", $sfl);
     if ($sfl)
         $qstr .= '&amp;sfl=' . urlencode($sfl); // search field (검색 필드)
 } else {
@@ -256,7 +305,7 @@ if (isset($_REQUEST['stx']))  { // search text (검색어)
 
 if (isset($_REQUEST['sst']))  {
     $sst = trim($_REQUEST['sst']);
-    $sst = preg_replace("/[\<\>\'\"\\\'\\\"\%\=\(\)\/\^\*\s]/", "", $sst);
+    $sst = preg_replace("/[\<\>\'\"\\\'\\\"\%\=\(\)\s]/", "", $sst);
     if ($sst)
         $qstr .= '&amp;sst=' . urlencode($sst); // search sort (검색 정렬 필드)
 } else {
@@ -322,7 +371,7 @@ if (isset($_REQUEST['url'])) {
     $url = '';
     $urlencode = urlencode($_SERVER['REQUEST_URI']);
     if (G5_DOMAIN) {
-        $p = @parse_url(G5_DOMAIN);
+        $p = parse_url(G5_DOMAIN);
         $urlencode = G5_DOMAIN.urldecode(preg_replace("/^".urlencode($p['path'])."/", "", $urlencode));
     }
 }
@@ -335,12 +384,9 @@ if (isset($_REQUEST['gr_id'])) {
     $gr_id = '';
 }
 //===================================
-
-
 // 자동로그인 부분에서 첫로그인에 포인트 부여하던것을 로그인중일때로 변경하면서 코드도 대폭 수정하였습니다.
 if ($_SESSION['ss_mb_id']) { // 로그인중이라면
     $member = get_member($_SESSION['ss_mb_id']);
-
     // 차단된 회원이면 ss_mb_id 초기화
     if($member['mb_intercept_date'] && $member['mb_intercept_date'] <= date("Ymd", G5_SERVER_TIME)) {
         set_session('ss_mb_id', '');
@@ -361,13 +407,12 @@ if ($_SESSION['ss_mb_id']) { // 로그인중이라면
     // 자동로그인 ---------------------------------------
     // 회원아이디가 쿠키에 저장되어 있다면 (3.27)
     if ($tmp_mb_id = get_cookie('ck_mb_id')) {
-
-        $tmp_mb_id = substr(preg_replace("/[^a-zA-Z0-9_]*/", "", $tmp_mb_id), 0, 20);
+		$tmp_mb_id = substr(preg_replace("/[^a-zA-Z0-9_]*/", "", $tmp_mb_id), 0, 20);
         // 최고관리자는 자동로그인 금지
         if (strtolower($tmp_mb_id) != strtolower($config['cf_admin'])) {
             $sql = " select mb_password, mb_intercept_date, mb_leave_date, mb_email_certify from {$g5['member_table']} where mb_id = '{$tmp_mb_id}' ";
             $row = sql_fetch($sql);
-            $key = md5($_SERVER['SERVER_ADDR'] . $_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT'] . $row['mb_password']);
+            $key = md5($_SERVER['SERVER_ADDR'] . $_SERVER['HTTP_USER_AGENT'] . $row['mb_password']);
             // 쿠키에 저장된 키와 같다면
             $tmp_key = get_cookie('ck_auto');
             if ($tmp_key == $key && $tmp_key) {
@@ -464,128 +509,35 @@ if ($is_admin != 'super') {
 }
 
 
-// 테마경로
-if(defined('_THEME_PREVIEW_') && _THEME_PREVIEW_ === true)
-    $config['cf_theme'] = trim($_GET['theme']);
-
-if(isset($config['cf_theme']) && trim($config['cf_theme'])) {
-    $theme_path = G5_PATH.'/'.G5_THEME_DIR.'/'.$config['cf_theme'];
-    if(is_dir($theme_path)) {
-        define('G5_THEME_PATH',        $theme_path);
-        define('G5_THEME_URL',         G5_URL.'/'.G5_THEME_DIR.'/'.$config['cf_theme']);
-        define('G5_THEME_MOBILE_PATH', $theme_path.'/'.G5_MOBILE_DIR);
-        define('G5_THEME_LIB_PATH',    $theme_path.'/'.G5_LIB_DIR);
-        define('G5_THEME_CSS_URL',     G5_THEME_URL.'/'.G5_CSS_DIR);
-        define('G5_THEME_IMG_URL',     G5_THEME_URL.'/'.G5_IMG_DIR);
-        define('G5_THEME_JS_URL',      G5_THEME_URL.'/'.G5_JS_DIR);
-    }
-    unset($theme_path);
-}
-
-
-// 테마 설정 로드
-if(is_file(G5_THEME_PATH.'/theme.config.php'))
-    include_once(G5_THEME_PATH.'/theme.config.php');
-
-//=====================================================================================
-// 사용기기 설정
-// 테마의 G5_THEME_DEVICE 설정에 따라 사용자 화면 제한됨
-// 테마에 별도 설정이 없는 경우 config.php G5_SET_DEVICE 설정에 따라 사용자 화면 제한됨
-// pc 설정 시 모바일 기기에서도 PC화면 보여짐
-// mobile 설정 시 PC에서도 모바일화면 보여짐
-// both 설정 시 접속 기기에 따른 화면 보여짐
-//-------------------------------------------------------------------------------------
-$is_mobile = false;
-$set_device = true;
-
-if(defined('G5_THEME_DEVICE') && G5_THEME_DEVICE != '') {
-    switch(G5_THEME_DEVICE) {
-        case 'pc':
-            $is_mobile  = false;
-            $set_device = false;
-            break;
-        case 'mobile':
-            $is_mobile  = true;
-            $set_device = false;
-            break;
-        default:
-            break;
-    }
-}
-
-if(defined('G5_SET_DEVICE') && $set_device) {
-    switch(G5_SET_DEVICE) {
-        case 'pc':
-            $is_mobile  = false;
-            $set_device = false;
-            break;
-        case 'mobile':
-            $is_mobile  = true;
-            $set_device = false;
-            break;
-        default:
-            break;
-    }
-}
-//==============================================================================
-
-//==============================================================================
-// Mobile 모바일 설정
-// 쿠키에 저장된 값이 모바일이라면 브라우저 상관없이 모바일로 실행
-// 그렇지 않다면 브라우저의 HTTP_USER_AGENT 에 따라 모바일 결정
-// G5_MOBILE_AGENT : config.php 에서 선언
-//------------------------------------------------------------------------------
-if (G5_USE_MOBILE && $set_device) {
-    if ($_REQUEST['device']=='pc')
-        $is_mobile = false;
-    else if ($_REQUEST['device']=='mobile')
-        $is_mobile = true;
-    else if (isset($_SESSION['ss_is_mobile']))
-        $is_mobile = $_SESSION['ss_is_mobile'];
-    else if (is_mobile())
-        $is_mobile = true;
-} else {
-    $set_device = false;
-}
-
-$_SESSION['ss_is_mobile'] = $is_mobile;
-define('G5_IS_MOBILE', $is_mobile);
-define('G5_DEVICE_BUTTON_DISPLAY', $set_device);
-if (G5_IS_MOBILE) {
-    $g5['mobile_path'] = G5_PATH.'/'.$g5['mobile_dir'];
-}
-//==============================================================================
-
-
 //==============================================================================
 // 스킨경로
 //------------------------------------------------------------------------------
 if (G5_IS_MOBILE) {
-    $board_skin_path    = get_skin_path('board', $board['bo_mobile_skin']);
-    $board_skin_url     = get_skin_url('board', $board['bo_mobile_skin']);
-    $member_skin_path   = get_skin_path('member', $config['cf_mobile_member_skin']);
-    $member_skin_url    = get_skin_url('member', $config['cf_mobile_member_skin']);
-    $new_skin_path      = get_skin_path('new', $config['cf_mobile_new_skin']);
-    $new_skin_url       = get_skin_url('new', $config['cf_mobile_new_skin']);
-    $search_skin_path   = get_skin_path('search', $config['cf_mobile_search_skin']);
-    $search_skin_url    = get_skin_url('search', $config['cf_mobile_search_skin']);
-    $connect_skin_path  = get_skin_path('connect', $config['cf_mobile_connect_skin']);
-    $connect_skin_url   = get_skin_url('connect', $config['cf_mobile_connect_skin']);
-    $faq_skin_path      = get_skin_path('faq', $config['cf_mobile_faq_skin']);
-    $faq_skin_url       = get_skin_url('faq', $config['cf_mobile_faq_skin']);
+    $board_skin_path    = G5_MOBILE_PATH.'/'.G5_SKIN_DIR.'/board/'.$board['bo_mobile_skin'];
+    $board_skin_url     = G5_MOBILE_URL .'/'.G5_SKIN_DIR.'/board/'.$board['bo_mobile_skin'];
+    $member_skin_path   = G5_MOBILE_PATH.'/'.G5_SKIN_DIR.'/member/'.$config['cf_mobile_member_skin'];
+    $member_skin_url    = G5_MOBILE_URL .'/'.G5_SKIN_DIR.'/member/'.$config['cf_mobile_member_skin'];
+    $new_skin_path      = G5_MOBILE_PATH.'/'.G5_SKIN_DIR.'/new/'.$config['cf_mobile_new_skin'];
+    $new_skin_url       = G5_MOBILE_URL .'/'.G5_SKIN_DIR.'/new/'.$config['cf_mobile_new_skin'];
+    $search_skin_path   = G5_MOBILE_PATH.'/'.G5_SKIN_DIR.'/search/'.$config['cf_mobile_search_skin'];
+    $search_skin_url    = G5_MOBILE_URL .'/'.G5_SKIN_DIR.'/search/'.$config['cf_mobile_search_skin'];
+    $connect_skin_path  = G5_MOBILE_PATH.'/'.G5_SKIN_DIR.'/connect/'.$config['cf_mobile_connect_skin'];
+    $connect_skin_url   = G5_MOBILE_URL .'/'.G5_SKIN_DIR.'/connect/'.$config['cf_mobile_connect_skin'];
+    $faq_skin_path      = G5_MOBILE_PATH .'/'.G5_SKIN_DIR.'/faq/'.$config['cf_mobile_faq_skin'];
+    $faq_skin_url       = G5_MOBILE_URL .'/'.G5_SKIN_DIR.'/faq/'.$config['cf_mobile_faq_skin'];
 } else {
-    $board_skin_path    = get_skin_path('board', $board['bo_skin']);
-    $board_skin_url     = get_skin_url('board', $board['bo_skin']);
-    $member_skin_path   = get_skin_path('member', $config['cf_member_skin']);
-    $member_skin_url    = get_skin_url('member', $config['cf_member_skin']);
-    $new_skin_path      = get_skin_path('new', $config['cf_new_skin']);
-    $new_skin_url       = get_skin_url('new', $config['cf_new_skin']);
-    $search_skin_path   = get_skin_path('search', $config['cf_search_skin']);
-    $search_skin_url    = get_skin_url('search', $config['cf_search_skin']);
-    $connect_skin_path  = get_skin_path('connect', $config['cf_connect_skin']);
-    $connect_skin_url   = get_skin_url('connect', $config['cf_connect_skin']);
-    $faq_skin_path      = get_skin_path('faq', $config['cf_faq_skin']);
-    $faq_skin_url       = get_skin_url('faq', $config['cf_faq_skin']);
+    $board_skin_path    = G5_SKIN_PATH.'/board/'.$board['bo_skin'];
+    $board_skin_url     = G5_SKIN_URL .'/board/'.$board['bo_skin'];
+    $member_skin_path   = G5_SKIN_PATH.'/member/'.$config['cf_member_skin'];
+    $member_skin_url    = G5_SKIN_URL .'/member/'.$config['cf_member_skin'];
+    $new_skin_path      = G5_SKIN_PATH.'/new/'.$config['cf_new_skin'];
+    $new_skin_url       = G5_SKIN_URL .'/new/'.$config['cf_new_skin'];
+    $search_skin_path   = G5_SKIN_PATH.'/search/'.$config['cf_search_skin'];
+    $search_skin_url    = G5_SKIN_URL .'/search/'.$config['cf_search_skin'];
+    $connect_skin_path  = G5_SKIN_PATH.'/connect/'.$config['cf_connect_skin'];
+    $connect_skin_url   = G5_SKIN_URL .'/connect/'.$config['cf_connect_skin'];
+    $faq_skin_path      = G5_SKIN_PATH.'/faq/'.$config['cf_faq_skin'];
+    $faq_skin_url       = G5_SKIN_URL.'/faq/'.$config['cf_faq_skin'];
 }
 //==============================================================================
 

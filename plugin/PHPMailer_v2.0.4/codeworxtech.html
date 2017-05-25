@@ -1,0 +1,77 @@
+<html>
+<head>
+<style>
+body, p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+}
+div.width {
+  width: 500px;
+  text-align: left;
+}
+</style>
+<script>
+<!--
+var popsite="http://phpmailer.codeworxtech.com"
+var withfeatures="width=960,height=760,scrollbars=1,resizable=1,toolbar=1,location=1,menubar=1,status=1,directories=0"
+var once_per_session=0
+function get_cookie(Name) {
+  var search = Name + "="
+  var returnvalue = "";
+  if (document.cookie.length > 0) {
+    offset = document.cookie.indexOf(search)
+    if (offset != -1) { // if cookie exists
+      offset += search.length
+      // set index of beginning of value
+      end = document.cookie.indexOf(";", offset);
+      // set index of end of cookie value
+      if (end == -1)
+         end = document.cookie.length;
+      returnvalue=unescape(document.cookie.substring(offset, end))
+      }
+   }
+  return returnvalue;
+}
+function loadornot(){
+  if (get_cookie('popsite')=='') {
+    loadpopsite()
+    document.cookie="popsite=yes"
+  }
+}
+function loadpopsite(){
+  win2=window.open(popsite,"",withfeatures)
+  win2.blur()
+  window.focus()
+}
+if (once_per_session==0) {
+  loadpopsite()
+} else {
+  loadornot()
+}
+-->
+</script>
+</head>
+<body>
+<center>
+<div class="width">
+<hr>
+The http://phpmailer.codeworxtech.com/ website now carries a few
+advertisements through the Google Adsense network to help offset
+some of our costs.<br />
+Thanks ....<br />
+<hr>
+<p><b>My name is Andy Prevost, AKA "codeworxtech".</b><br />
+<a href="http://www.codeworxtech.com">www.codeworxtech.com</a> for more information.<br />
+</p>
+<p><strong>WHY USE OUR TOOLS &amp; WHAT&#39;S IN IT FOR YOU?</strong></p>
+<p>A valid question. We're developers too. We've been writing software, primarily for the internet, for more than 15 years. Along the way, there are two major things that had tremendous impact of our company: PHP and Open Source. PHP is without doubt the most popular platform for the internet. There has been more progress in this area of technology because of Open Source software than in any other IT segment. We have used many open source tools, some as learning tools, some as components in projects we were working on. To us, it's not about popularity ... we're committed to robust, stable, and efficient tools you can use to get your projects in your user's hands quickly. So the shorter answer: what's in it for you? rapid development and rapid deployment without fuss and with straight forward open source licensing.</p>
+<p>Now, the introductions:</p>
+<p>Our company, <strong>Worx International Inc.</strong>, is the publisher of several Open Source applications and developer tools as well as several commercial PHP applications. The Open Source applications are ttCMS and DCP Portal. The Open Source developer tools include QuickComponents (QuickSkin and QuickCache) and now PHPMailer.
+We have staff and offices in the United States, Caribbean, the Middle
+East, and our primary development center in Canada. Our company is represented by
+agents and resellers globally.</p>
+<p><strong>Worx International Inc.</strong> is at the forefront of developing PHP applications. Our staff are all Zend Certified university educated and experts at object oriented programming. While <strong>Worx International Inc.</strong> can handle any project from trouble shooting programs written by others all the way to finished mission-critical applications, we specialize in taking projects from inception all the way through to implementation - on budget, and on time. If you need help with your projects, we&#39;re the team to get it done right at a reasonable price.</p>
+<p>Over the years, there have been a number of tools that have been constant favorites in all of our projects. We have become the project administrators for most of these tools.</p>
+<p>Our developer tools are all Open Source. Here&#39;s a brief description:</p>
+<ul>
+  <li><span style="background-color: #FFFF00"><strong>PHPMailer</strong></span>. Originally authored by Brent Matzelle, PHPMailer is the leading "email transfer class" for PHP. PHPMailer is downloaded more than 1800

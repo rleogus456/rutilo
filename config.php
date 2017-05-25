@@ -5,7 +5,7 @@
 ********************/
 
 define('G5_VERSION', '그누보드5');
-define('G5_GNUBOARD_VER', '5.2.7');
+define('G5_GNUBOARD_VER', '5.0.42');
 
 // 이 상수가 정의되지 않으면 각각의 개별 페이지는 별도로 실행될 수 없음
 define('_GNUBOARD_', true);
@@ -30,7 +30,7 @@ define('G5_DOMAIN', '');
 define('G5_HTTPS_DOMAIN', '');
 
 /*
-www.sir.kr 과 sir.kr 도메인은 서로 다른 도메인으로 인식합니다. 쿠키를 공유하려면 .sir.kr 과 같이 입력하세요.
+www.sir.co.kr 과 sir.co.kr 도메인은 서로 다른 도메인으로 인식합니다. 쿠키를 공유하려면 .sir.co.kr 과 같이 입력하세요.
 이곳에 입력이 없다면 www 붙은 도메인과 그렇지 않은 도메인은 쿠키를 공유하지 않으므로 로그인이 풀릴 수 있습니다.
 */
 define('G5_COOKIE_DOMAIN',  '');
@@ -57,9 +57,8 @@ define('G5_LGXPAY_DIR',     'lgxpay');
 
 define('G5_SNS_DIR',        'sns');
 define('G5_SYNDI_DIR',      'syndi');
-define('G5_PHPMAILER_DIR',  'PHPMailer');
+define('G5_PHPMAILER_DIR',  'PHPMailer_v2.0.4');
 define('G5_SESSION_DIR',    'session');
-define('G5_THEME_DIR',      'theme');
 
 // URL 은 브라우저상에서의 경로 (도메인으로 부터의)
 if (G5_DOMAIN) {
@@ -123,7 +122,7 @@ define('G5_PHPMAILER_PATH', G5_PLUGIN_PATH.'/'.G5_PHPMAILER_DIR);
 // mobile 설정 시 PC에서도 모바일화면 보여짐
 // both 설정 시 접속 기기에 따른 화면 보여짐
 //------------------------------------------------------------------------------
-define('G5_SET_DEVICE', 'both');
+define('G5_SET_DEVICE', 'pc');
 
 define('G5_USE_MOBILE', true); // 모바일 홈페이지를 사용하지 않을 경우 false 로 설정
 define('G5_USE_CACHE',  true); // 최신글등에 cache 기능 사용 여부
@@ -159,8 +158,7 @@ define('G5_MOBILE_AGENT',   'phone|samsung|lgtel|mobile|[^A]skt|nokia|blackberry
 
 // SMTP
 // lib/mailer.lib.php 에서 사용
-define('G5_SMTP',      '127.0.0.1');
-define('G5_SMTP_PORT', '25');
+define('G5_SMTP', '127.0.0.1');
 
 
 /********************
@@ -192,18 +190,6 @@ define('G5_THUMB_JPG_QUALITY', 90);
 
 // 썸네일 png Compress 설정
 define('G5_THUMB_PNG_COMPRESS', 5);
-
-// 모바일 기기에서 DHTML 에디터 사용여부를 설정합니다.
-define('G5_IS_MOBILE_DHTML_USE', false);
-
-// MySQLi 사용여부를 설정합니다.
-define('G5_MYSQLI_USE', true);
-
-// Browscap 사용여부를 설정합니다.
-define('G5_BROWSCAP_USE', true);
-
-// 접속자 기록 때 Browscap 사용여부를 설정합니다.
-define('G5_VISIT_BROWSCAP_USE', false);
 
 // ip 숨김방법 설정
 /* 123.456.789.012 ip의 숨김 방법을 변경하는 방법은

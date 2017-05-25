@@ -1,4 +1,4 @@
-<?php
+<?
 $sub_menu = "200100";
 include_once("./_common.php");
 
@@ -17,7 +17,7 @@ else if (is_admin($mb['mb_id']) == "super")
 else if ($mb['mb_level'] >= $member['mb_level'])
     alert("자신보다 권한이 높거나 같은 회원은 삭제할 수 없습니다.");
 
-check_admin_token();
+check_token();
 
 // 회원자료 삭제
 member_delete($mb['mb_id']);

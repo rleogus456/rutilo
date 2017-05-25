@@ -3,12 +3,6 @@ define('G5_CAPTCHA', true);
 include_once('./_common.php');
 include_once(G5_CAPTCHA_PATH.'/captcha.lib.php');
 
-// 토큰체크
-$comment_token = trim(get_session('ss_comment_token'));
-set_session('ss_comment_token', '');
-if(!trim($_POST['token']) || !$comment_token || $comment_token != $_POST['token'])
-    alert('올바른 방법으로 이용해 주십시오.');
-
 // 090710
 if (substr_count($wr_content, "&#") > 50) {
     alert('내용에 올바르지 않은 코드가 다수 포함되어 있습니다.');
@@ -83,14 +77,11 @@ if ($w == 'c') // 댓글 입력
     // 댓글 답변
     if ($comment_id)
     {
-        $sql = " select wr_id, wr_parent, wr_comment, wr_comment_reply from $write_table
+        $sql = " select wr_id, wr_comment, wr_comment_reply from $write_table
                     where wr_id = '$comment_id' ";
         $reply_array = sql_fetch($sql);
         if (!$reply_array['wr_id'])
             alert('답변할 댓글이 없습니다.\\n\\n답변하는 동안 댓글이 삭제되었을 수 있습니다.');
-
-        if($wr['wr_parent'] != $reply_array['wr_parent'])
-            alert('댓글을 등록할 수 없습니다.');
 
         $tmp_comment = $reply_array['wr_comment'];
 
@@ -176,7 +167,7 @@ if ($w == 'c') // 댓글 입력
                      wr_10 = '$wr_10' ";
     sql_query($sql);
 
-    $comment_id = sql_insert_id();
+    $comment_id = mysql_insert_id();
 
     // 원글에 댓글수 증가 & 마지막 시간 반영
     sql_query(" update $write_table set wr_comment = wr_comment + 1, wr_last = '".G5_TIME_YMDHIS."' where wr_id = '$wr_id' ");

@@ -1,4 +1,4 @@
-<?php
+<?
 $sub_menu = "200100";
 include_once("./_common.php");
 
@@ -6,7 +6,7 @@ check_demo();
 
 auth_check($auth[$sub_menu], "d");
 
-check_admin_token();
+check_token();
 
 $msg = "";
 for ($i=0; $i<count($chk); $i++)

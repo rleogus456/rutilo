@@ -16,9 +16,9 @@ if ($w == 'u' && $is_admin == 'super') {
         alert('데모 화면에서는 하실(보실) 수 없는 작업입니다.');
 }
 
-if (!chk_captcha()) {
-    alert('자동등록방지 숫자가 틀렸습니다.');
-}
+//if (!chk_captcha()) {
+    //alert('자동등록방지 숫자가 틀렸습니다.');
+//}
 
 if($w == 'u')
     $mb_id = isset($_SESSION['ss_mb_id']) ? trim($_SESSION['ss_mb_id']) : '';
@@ -61,17 +61,7 @@ $mb_7           = isset($_POST['mb_7'])             ? trim($_POST['mb_7'])      
 $mb_8           = isset($_POST['mb_8'])             ? trim($_POST['mb_8'])           : "";
 $mb_9           = isset($_POST['mb_9'])             ? trim($_POST['mb_9'])           : "";
 $mb_10          = isset($_POST['mb_10'])            ? trim($_POST['mb_10'])          : "";
-
-$mb_name        = clean_xss_tags($mb_name);
-$mb_email       = get_email_address($mb_email);
-$mb_homepage    = clean_xss_tags($mb_homepage);
-$mb_tel         = clean_xss_tags($mb_tel);
-$mb_zip1        = preg_replace('/[^0-9]/', '', $mb_zip1);
-$mb_zip2        = preg_replace('/[^0-9]/', '', $mb_zip2);
-$mb_addr1       = clean_xss_tags($mb_addr1);
-$mb_addr2       = clean_xss_tags($mb_addr2);
-$mb_addr3       = clean_xss_tags($mb_addr3);
-$mb_addr_jibeon = preg_match("/^(N|R)$/", $mb_addr_jibeon) ? $mb_addr_jibeon : '';
+$regid          = isset($_POST['regid'])            ? trim($_POST['regid'])          : "";
 
 if ($w == '' || $w == 'u') {
 
@@ -79,30 +69,19 @@ if ($w == '' || $w == 'u') {
     if ($msg = valid_mb_id($mb_id))         alert($msg, "", true, true);
     if ($msg = count_mb_id($mb_id))         alert($msg, "", true, true);
 
-    // 이름, 닉네임에 utf-8 이외의 문자가 포함됐다면 오류
-    // 서버환경에 따라 정상적으로 체크되지 않을 수 있음.
-    $tmp_mb_name = iconv('UTF-8', 'UTF-8//IGNORE', $mb_name);
-    if($tmp_mb_name != $mb_name) {
-        alert('이름을 올바르게 입력해 주십시오.');
-    }
-    $tmp_mb_nick = iconv('UTF-8', 'UTF-8//IGNORE', $mb_nick);
-    if($tmp_mb_nick != $mb_nick) {
-        alert('닉네임을 올바르게 입력해 주십시오.');
-    }
-
     if ($w == '' && !$mb_password)
         alert('비밀번호가 넘어오지 않았습니다.');
     if($w == '' && $mb_password != $mb_password_re)
         alert('비밀번호가 일치하지 않습니다.');
 
-    if ($msg = empty_mb_name($mb_name))       alert($msg, "", true, true);
-    if ($msg = empty_mb_nick($mb_nick))     alert($msg, "", true, true);
+    //if ($msg = empty_mb_name($mb_name))       alert($msg, "", true, true);
+    //if ($msg = empty_mb_nick($mb_nick))     alert($msg, "", true, true);
     if ($msg = empty_mb_email($mb_email))   alert($msg, "", true, true);
     if ($msg = reserve_mb_id($mb_id))       alert($msg, "", true, true);
-    if ($msg = reserve_mb_nick($mb_nick))   alert($msg, "", true, true);
+    //if ($msg = reserve_mb_nick($mb_nick))   alert($msg, "", true, true);
     // 이름에 한글명 체크를 하지 않는다.
     //if ($msg = valid_mb_name($mb_name))     alert($msg, "", true, true);
-    if ($msg = valid_mb_nick($mb_nick))     alert($msg, "", true, true);
+    //if ($msg = valid_mb_nick($mb_nick))     alert($msg, "", true, true);
     if ($msg = valid_mb_email($mb_email))   alert($msg, "", true, true);
     if ($msg = prohibit_mb_email($mb_email))alert($msg, "", true, true);
 
@@ -113,14 +92,6 @@ if ($w == '' || $w == 'u') {
 
     if ($w=='') {
         if ($msg = exist_mb_id($mb_id))     alert($msg);
-
-        if (get_session('ss_check_mb_id') != $mb_id || get_session('ss_check_mb_nick') != $mb_nick || get_session('ss_check_mb_email') != $mb_email) {
-            set_session('ss_check_mb_id', '');
-            set_session('ss_check_mb_nick', '');
-            set_session('ss_check_mb_email', '');
-
-            alert('올바른 방법으로 이용해 주십시오.');
-        }
 
         // 본인확인 체크
         if($config['cf_cert_use'] && $config['cf_cert_req']) {
@@ -139,15 +110,26 @@ if ($w == '' || $w == 'u') {
     } else {
         // 자바스크립트로 정보변경이 가능한 버그 수정
         // 닉네임수정일이 지나지 않았다면
-        if ($member['mb_nick_date'] > date("Y-m-d", G5_SERVER_TIME - ($config['cf_nick_modify'] * 86400)))
-            $mb_nick = $member['mb_nick'];
+        //if ($member['mb_nick_date'] > date("Y-m-d", G5_SERVER_TIME - ($config['cf_nick_modify'] * 86400)))
+            //$mb_nick = $member['mb_nick'];
         // 회원정보의 메일을 이전 메일로 옮기고 아래에서 비교함
         $old_email = $member['mb_email'];
     }
 
-    if ($msg = exist_mb_nick($mb_nick, $mb_id))     alert($msg, "", true, true);
+    //if ($msg = exist_mb_nick($mb_nick, $mb_id))     alert($msg, "", true, true);
     if ($msg = exist_mb_email($mb_email, $mb_id))   alert($msg, "", true, true);
 }
+
+//$mb_name        = clean_xss_tags($mb_name);
+$mb_email       = get_email_address($mb_email);
+$mb_homepage    = clean_xss_tags($mb_homepage);
+$mb_tel         = clean_xss_tags($mb_tel);
+$mb_zip1        = preg_replace('/[^0-9]/', '', $mb_zip1);
+$mb_zip2        = preg_replace('/[^0-9]/', '', $mb_zip2);
+$mb_addr1       = clean_xss_tags($mb_addr1);
+$mb_addr2       = clean_xss_tags($mb_addr2);
+$mb_addr3       = clean_xss_tags($mb_addr3);
+$mb_addr_jibeon = preg_match("/^(N|R)$/", $mb_addr_jibeon) ? $mb_addr_jibeon : '';
 
 // 사용자 코드 실행
 @include_once($member_skin_path.'/register_form_update.head.skin.php');
@@ -234,7 +216,8 @@ if ($w == '') {
                      mb_7 = '{$mb_7}',
                      mb_8 = '{$mb_8}',
                      mb_9 = '{$mb_9}',
-                     mb_10 = '{$mb_10}'
+                     mb_10 = '{$mb_10}',
+                     regid = '{$regid}'
                      {$sql_certify} ";
 
     // 이메일 인증을 사용하지 않는다면 이메일 인증시간을 바로 넣는다
@@ -253,12 +236,8 @@ if ($w == '') {
     if ($config['cf_email_mb_member']) {
         $subject = '['.$config['cf_title'].'] 회원가입을 축하드립니다.';
 
-        // 어떠한 회원정보도 포함되지 않은 일회용 난수를 생성하여 인증에 사용
-        if ($config['cf_use_email_certify']) {
-            $mb_md5 = md5(pack('V*', rand(), rand(), rand(), rand()));
-            sql_query(" update {$g5['member_table']} set mb_email_certify2 = '$mb_md5' where mb_id = '$mb_id' ");
-            $certify_href = G5_BBS_URL.'/email_certify.php?mb_id='.$mb_id.'&amp;mb_md5='.$mb_md5;
-        }
+        $mb_md5 = md5($mb_id.$mb_email.G5_TIME_YMDHIS);
+        $certify_href = G5_BBS_URL.'/email_certify.php?mb_id='.$mb_id.'&amp;mb_md5='.$mb_md5;
 
         ob_start();
         include_once ('./register_form_update_mail1.php');
@@ -339,7 +318,8 @@ if ($w == '') {
                     mb_7 = '{$mb_7}',
                     mb_8 = '{$mb_8}',
                     mb_9 = '{$mb_9}',
-                    mb_10 = '{$mb_10}'
+                    mb_10 = '{$mb_10}',
+                     regid = '{$regid}'
                     {$sql_password}
                     {$sql_nick_date}
                     {$sql_open_date}
@@ -400,11 +380,8 @@ if (isset($_FILES['mb_icon']) && is_uploaded_file($_FILES['mb_icon']['tmp_name']
 if ($config['cf_use_email_certify'] && $old_email != $mb_email) {
     $subject = '['.$config['cf_title'].'] 인증확인 메일입니다.';
 
-    // 어떠한 회원정보도 포함되지 않은 일회용 난수를 생성하여 인증에 사용
-    $mb_md5 = md5(pack('V*', rand(), rand(), rand(), rand()));
-
-    sql_query(" update {$g5['member_table']} set mb_email_certify2 = '$mb_md5' where mb_id = '$mb_id' ");
-
+    $mb_datetime = $member['mb_datetime'] ? $member['mb_datetime'] : G5_TIME_YMDHIS;
+    $mb_md5 = md5($mb_id.$mb_email.$mb_datetime);
     $certify_href = G5_BBS_URL.'/email_certify.php?mb_id='.$mb_id.'&amp;mb_md5='.$mb_md5;
 
     ob_start();
@@ -412,7 +389,7 @@ if ($config['cf_use_email_certify'] && $old_email != $mb_email) {
     $content = ob_get_contents();
     ob_end_clean();
 
-    mailer($config['cf_admin_email_name'], $config['cf_admin_email'], $mb_email, $subject, $content, 1);
+    mailer($config['cf_title'], $config['cf_admin_email'], $mb_email, $subject, $content, 1);
 }
 
 

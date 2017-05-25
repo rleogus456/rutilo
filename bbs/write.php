@@ -214,7 +214,7 @@ else
     $write_max = (int)$board['bo_write_max'];
 }
 
-$g5['title'] = ((G5_IS_MOBILE && $board['bo_mobile_subject']) ? $board['bo_mobile_subject'] : $board['bo_subject']).' '.$title_msg;
+$g5['title'] = $board['bo_subject']." ".$title_msg;
 
 $is_notice = false;
 $notice_checked = '';
@@ -337,8 +337,6 @@ if ($w == '') {
     }
 
     $file = get_file($bo_table, $wr_id);
-    if($file_count < $file['count'])
-        $file_count = $file['count'];
 } else if ($w == 'r') {
     if (strstr($write['wr_option'], 'secret')) {
         $is_secret = true;
@@ -392,17 +390,9 @@ if ($is_guest) {
 }
 
 $is_dhtml_editor = false;
-$is_dhtml_editor_use = false;
-$editor_content_js = '';
-if(!is_mobile() || defined('G5_IS_MOBILE_DHTML_USE') && G5_IS_MOBILE_DHTML_USE)
-    $is_dhtml_editor_use = true;
-
-// 모바일에서는 G5_IS_MOBILE_DHTML_USE 설정에 따라 DHTML 에디터 적용
-if ($config['cf_editor'] && $is_dhtml_editor_use && $board['bo_use_dhtml_editor'] && $member['mb_level'] >= $board['bo_html_level']) {
+// 모바일에서는 DHTML 에디터 사용불가
+if ($config['cf_editor'] && !is_mobile() && $board['bo_use_dhtml_editor'] && $member['mb_level'] >= $board['bo_html_level']) {
     $is_dhtml_editor = true;
-
-    if(is_file(G5_EDITOR_PATH.'/'.$config['cf_editor'].'/autosave.editor.js'))
-        $editor_content_js = '<script src="'.G5_EDITOR_URL.'/'.$config['cf_editor'].'/autosave.editor.js"></script>'.PHP_EOL;
 }
 $editor_html = editor_html('wr_content', $content, $is_dhtml_editor);
 $editor_js = '';
@@ -411,7 +401,7 @@ $editor_js .= chk_editor_js('wr_content', $is_dhtml_editor);
 
 // 임시 저장된 글 수
 $autosave_count = autosave_count($member['mb_id']);
-
+$back_url=G5_BBS_URL."/board.php?bo_table=".$bo_table;
 include_once(G5_PATH.'/head.sub.php');
 @include_once ($board_skin_path.'/write.head.skin.php');
 include_once('./board_head.php');

@@ -13,7 +13,7 @@ $mb = get_member($cf_admin);
 if (!$mb['mb_id'])
     alert('최고관리자 회원아이디가 존재하지 않습니다.');
 
-check_admin_token();
+check_token();
 
 // 본인확인을 사용할 경우 아이핀, 휴대폰인증 중 하나는 선택되어야 함
 if($_POST['cf_cert_use'] && !$_POST['cf_cert_ipin'] && !$_POST['cf_cert_hp'])
@@ -29,6 +29,9 @@ $sql = " update {$g5['config_table']}
                 cf_admin = '{$_POST['cf_admin']}',
                 cf_admin_email = '{$_POST['cf_admin_email']}',
                 cf_admin_email_name = '{$_POST['cf_admin_email_name']}',
+                cf_include_index = '{$_POST['cf_include_index']}',
+                cf_include_head = '{$_POST['cf_include_head']}',
+                cf_include_tail = '{$_POST['cf_include_tail']}',
                 cf_add_script = '{$_POST['cf_add_script']}',
                 cf_use_point = '{$_POST['cf_use_point']}',
                 cf_point_term = '{$_POST['cf_point_term']}',
@@ -124,7 +127,6 @@ $sql = " update {$g5['config_table']}
                 cf_cert_limit = '{$_POST['cf_cert_limit']}',
                 cf_cert_req = '{$_POST['cf_cert_req']}',
                 cf_sms_use = '{$_POST['cf_sms_use']}',
-                cf_sms_type = '{$_POST['cf_sms_type']}',
                 cf_icode_id = '{$_POST['cf_icode_id']}',
                 cf_icode_pw = '{$_POST['cf_icode_pw']}',
                 cf_icode_server_ip = '{$_POST['cf_icode_server_ip']}',

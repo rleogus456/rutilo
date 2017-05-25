@@ -15,9 +15,7 @@ $sql = " select * from {$g5['visit_table']}
           where vi_date between '$fr_date' and '$to_date' ";
 $result = sql_query($sql);
 while ($row=sql_fetch_array($result)) {
-    $s = $row['vi_os'];
-    if(!$s)
-        $s = get_os($row['vi_agent']);
+    $s = get_os($row['vi_agent']);
 
     $arr[$s]++;
 
@@ -65,7 +63,7 @@ while ($row=sql_fetch_array($result)) {
             }
 
             if (!$key) {
-                $key = 'Unknown';
+                $key = '직접';
             }
 
             $rate = ($count / $sum_count * 100);

@@ -53,10 +53,8 @@ var char_max = parseInt(<?php echo $comment_max ?>); // 최대
             $query_string = clean_query_string($_SERVER['QUERY_STRING']);
 
             if($w == 'cu') {
-                $sql = " select wr_id, wr_content, mb_id from $write_table where wr_id = '$c_id' and wr_is_comment = '1' ";
+                $sql = " select wr_id, wr_content from $write_table where wr_id = '$c_id' and wr_is_comment = '1' ";
                 $cmt = sql_fetch($sql);
-                if (!($is_admin || ($member['mb_id'] == $cmt['mb_id'] && $cmt['mb_id'])))
-                    $cmt['wr_content'] = '';
                 $c_wr_content = $cmt['wr_content'];
             }
 
@@ -249,8 +247,6 @@ var char_max = parseInt(<?php echo $comment_max ?>); // 최대
         }
 
         <?php if($is_guest) echo chk_captcha_js(); ?>
-
-        set_comment_token(f);
 
         document.getElementById("btn_submit").disabled = "disabled";
 

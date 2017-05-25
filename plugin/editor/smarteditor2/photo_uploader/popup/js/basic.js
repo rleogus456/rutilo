@@ -8,16 +8,9 @@ jQuery.fn.bindAll = function(options) {
 
 jQuery(function ($) {
     'use strict';
-
-    var ed_nonce = '';
-
-    if( !!opener && !!opener.window && !!opener.window.nhn ){
-        ed_nonce = opener.window.nhn.husky.SE2M_Configuration.SE2M_Accessibility.ed_nonce;
-    }
-
     // Change this to the location of your server-side upload handler:
     var gnu = {
-        url : './php/?_nonce='+ed_nonce,
+        url : './php/',
         container_el : 'body',
         dreg_area : '#drag_area',
         dreg_area_list : '#drag_area > ul',
@@ -68,7 +61,7 @@ jQuery(function ($) {
                 delete_url = $button.attr("data-delete");
             if( delete_url ){
                 $.ajax({
-                    url: othis.url+"&del=1&file="+ delete_url
+                    url: othis.url+"?del=1&file="+ delete_url
                 }).done(function (result) {
                 });
             }
@@ -122,7 +115,7 @@ jQuery(function ($) {
                 // Uncomment the following to send cross-domain cookies:
                 //xhrFields: {withCredentials: true},
                 //url: $('#fileupload').fileupload('option', 'url'),
-                url: this.url+"&t="+ oDate.getTime(),
+                url: this.url+"?t="+ oDate.getTime(),
                 dataType: 'json',
                 context: $('#fileupload')[0]
             }).always(function () {

@@ -15,9 +15,7 @@ $sql = " select * from {$g5['visit_table']}
             where vi_date between '{$fr_date}' and '{$to_date}' ";
 $result = sql_query($sql);
 while ($row=sql_fetch_array($result)) {
-    $s = $row['vi_browser'];
-    if(!$s)
-        $s = get_brow($row['vi_agent']);
+    $s = get_brow($row['vi_agent']);
 
     $arr[$s]++;
 
@@ -72,7 +70,7 @@ while ($row=sql_fetch_array($result)) {
 
     <tr class="<?php echo $bg; ?>">
         <td class="td_num"><?php echo $no ?></td>
-        <td class="td_category td_category1"><?php echo $key ?></td>
+        <td class="td_category"><?php echo $key ?></td>
         <td>
             <div class="visit_bar">
                 <span style="width:<?php echo $s_rate ?>%"></span>

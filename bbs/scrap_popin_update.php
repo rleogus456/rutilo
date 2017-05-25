@@ -10,10 +10,6 @@ if (!$is_member)
     exit;
 }
 
-// 게시글 존재하는지
-if(!$write['wr_id'])
-    alert_close('스크랩하시려는 게시글이 존재하지 않습니다.');
-
 $sql = " select count(*) as cnt from {$g5['scrap_table']}
             where mb_id = '{$member['mb_id']}'
             and bo_table = '$bo_table'
@@ -74,7 +70,7 @@ if ($wr_content && ($member['mb_level'] >= $board['bo_comment_level']))
                          wr_ip = '{$_SERVER['REMOTE_ADDR']}' ";
         sql_query($sql);
 
-        $comment_id = sql_insert_id();
+        $comment_id = mysql_insert_id();
 
         // 원글에 코멘트수 증가
         sql_query(" update $write_table set wr_comment = wr_comment + 1 where wr_id = '$wr_id' ");

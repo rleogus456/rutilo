@@ -70,7 +70,7 @@ $result = sql_query($sql);
     </thead>
     <tbody>
     <?php
-    for ($i=0; $row=sql_fetch_array($result); $i++) {
+    for ($i=0; $row=mysql_fetch_array($result); $i++) {
         $bg = 'bg'.($i%2);
 
         switch($row['nw_device']) {
@@ -98,7 +98,7 @@ $result = sql_query($sql);
         <td class="td_num"><?php echo $row['nw_height']; ?>px</td>
         <td class="td_mngsmall">
             <a href="./newwinform.php?w=u&amp;nw_id=<?php echo $row['nw_id']; ?>"><span class="sound_only"><?php echo $row['nw_subject']; ?> </span>수정</a>
-            <a href="./newwinformupdate.php?w=d&amp;nw_id=<?php echo $row['nw_id']; ?>" onclick="return delete_confirm(this);"><span class="sound_only"><?php echo $row['nw_subject']; ?> </span>삭제</a>
+            <a href="./newwinformupdate.php?w=d&amp;nw_id=<?php echo $row['nw_id']; ?>" onclick="return delete_confirm();"><span class="sound_only"><?php echo $row['nw_subject']; ?> </span>삭제</a>
         </td>
     </tr>
     <?php

@@ -19,8 +19,6 @@ $url = clean_xss_tags($_GET['url']);
 // url 체크
 check_url_host($url);
 
-$url = get_text($url);
-
 include_once($member_skin_path.'/member_confirm.skin.php');
 
 include_once('./_tail.sub.php');

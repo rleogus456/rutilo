@@ -40,19 +40,11 @@
 						</tr>
 						<tr>
 							<th>휴대폰 번호</th>
-							<td>
-								<select name="mb_1" id="mb_1" class="adm-input01 grid_20 light_gray" required>
-									<option value="">국가코드</option>
-									<option value="86" data-label="+86" <?php echo $mb['mb_1']=="86"?"selected":""; ?>>+86</option>
-									<option value="852" data-label="+852" <?php echo $mb['mb_1']=="852"?"selected":""; ?>>+852</option>
-									<option value="82" data-label="+82" <?php echo $mb['mb_1']=="82"?"selected":""; ?>>+82</option>
-								</select>
-								<input type="text" name="mb_hp" id="reg_mb_hp" value="<?php echo $mb['mb_hp']; ?>" class="adm-input01 grid_80" onkeyup="return number_only(this);" placeholder="휴대폰 번호는 '-'를 생략하고 작성해주세요" />
-							</td>
+							<td><input type="text" name="mb_hp" id="reg_mb_hp" value="<?php echo $mb['mb_hp']; ?>" class="adm-input01 grid_100" onkeyup="return number_only(this);" placeholder="휴대폰 번호는 '-'를 생략하고 작성해주세요" /></td>
 						</tr>
 						<tr>
-							<th>코드</th>
-							<td><input type="text" name="mb_2" id="mb_2" value="<?php echo strtoupper($mb['mb_2']); ?>" class="adm-input01 grid_100"  /></td>
+							<th>포인트</th>
+							<td><input type="text" name="mb_point" id="mb_point" value="<?php echo $mb['mb_point']; ?>" class="adm-input01 grid_100" onkeyup="return number_only(this);" /></td>
 						</tr>
 						<tr>
 							<th>상태</th>
@@ -79,7 +71,7 @@
 						</tr>
 					</table>
 					<div class="grid_100 mt20 text-center">
-						<a href="<?php echo G5_URL."/admin/member_list.php?page=".$page."&sel=".$sel."&search=".$search."&mb_2=".$mb_2; ?>" class="btn adm-btn01" style="background:#aaa;">취소</a>
+						<a href="<?php echo G5_URL."/admin/member_list.php"; ?>" class="btn adm-btn01" style="background:#aaa;">취소</a>
 						<input type="submit" value="수정" id="btn_submit" class="btn adm-btn01" accesskey="s">
 					</div>
 				</form>

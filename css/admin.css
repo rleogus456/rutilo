@@ -28,9 +28,6 @@
 		background-repeat:no-repeat;
 		margin:0 auto 20px auto;
 	}
-	header > a.seller { 
-		background-image:url(../img/admin_seller_title.png);
-	}
 	header div a{ color:#d9d9d9; }
 	header div span{ margin:0 15px; }
 
@@ -93,8 +90,6 @@
 .adm-table01 table td{text-align:center;height:40px;border-bottom:1px solid #ccc;cursor:pointer;}
 .num_list01{width:100%;text-align:center;margin-top:30px;}
 .num_list01 li{display:inline-block;}
-.num_list01 li.active a{color:#fff;background:#666;}
-.num_list01 li:active a,.num_list01 li:hover a{color:#fff;background:#666;}
 .num_list01 li a{display:block;background:#ddd;padding:5px 7px;border:1px solid #aaa;}
 .bg_white{background:#fff;}
 .adm-table02{width:100%;}

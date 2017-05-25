@@ -59,10 +59,8 @@ var char_max = parseInt(<?php echo $comment_max ?>); // 최대
             $query_string = clean_query_string($_SERVER['QUERY_STRING']);
 
             if($w == 'cu') {
-                $sql = " select wr_id, wr_content, mb_id from $write_table where wr_id = '$c_id' and wr_is_comment = '1' ";
+                $sql = " select wr_id, wr_content from $write_table where wr_id = '$c_id' and wr_is_comment = '1' ";
                 $cmt = sql_fetch($sql);
-                if (!($is_admin || ($member['mb_id'] == $cmt['mb_id'] && $cmt['mb_id'])))
-                    $cmt['wr_content'] = '';
                 $c_wr_content = $cmt['wr_content'];
             }
 
@@ -144,7 +142,7 @@ var char_max = parseInt(<?php echo $comment_max ?>); // 최대
                 <?php if ($comment_min || $comment_max) { ?>onkeyup="check_byte('wr_content', 'char_count');"<?php } ?>><?php echo $c_wr_content;  ?></textarea>
                 <?php if ($comment_min || $comment_max) { ?><script> check_byte('wr_content', 'char_count'); </script><?php } ?>
                 <script>
-                $(document).on( "keyup change", "textarea#wr_content[maxlength]", function(){
+                $("textarea#wr_content[maxlength]").live("keyup change", function() {
                     var str = $(this).val()
                     var mx = parseInt($(this).attr("maxlength"))
                     if (str.length > mx) {
@@ -257,8 +255,6 @@ function fviewcomment_submit(f)
     }
 
     <?php if($is_guest) echo chk_captcha_js();  ?>
-
-    set_comment_token(f);
 
     document.getElementById("btn_submit").disabled = "disabled";
 

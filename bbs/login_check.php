@@ -6,6 +6,7 @@ $g5['title'] = "로그인 검사";
 $mb_id       = trim($_POST['mb_id']);
 $mb_password = trim($_POST['mb_password']);
 
+
 if (!$mb_id || !$mb_password)
     alert('회원아이디나 비밀번호가 공백이면 안됩니다.');
 
@@ -31,9 +32,9 @@ if ($mb['mb_leave_date'] && $mb['mb_leave_date'] <= date("Ymd", G5_SERVER_TIME))
 }
 
 if ($config['cf_use_email_certify'] && !preg_match("/[1-9]/", $mb['mb_email_certify'])) {
-    $ckey = md5($mb['mb_ip'].$mb['mb_datetime']);
-    confirm("{$mb['mb_email']} 메일로 메일인증을 받으셔야 로그인 가능합니다. 다른 메일주소로 변경하여 인증하시려면 취소를 클릭하시기 바랍니다.", G5_URL, G5_BBS_URL.'/register_email.php?mb_id='.$mb_id.'&ckey='.$ckey);
+    confirm("{$mb['mb_email']} 메일로 메일인증을 받으셔야 로그인 가능합니다. 다른 메일주소로 변경하여 인증하시려면 취소를 클릭하시기 바랍니다.", G5_URL, G5_BBS_URL.'/register_email.php?mb_id='.$mb_id);
 }
+
 
 @include_once($member_skin_path.'/login_check.skin.php');
 
@@ -43,10 +44,15 @@ set_session('ss_mb_id', $mb['mb_id']);
 set_session('ss_mb_key', md5($mb['mb_datetime'] . $_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT']));
 
 // 포인트 체크
-if($config['cf_use_point']) {
+/*if($config['cf_use_point']) {
     $sum_point = get_point_sum($mb['mb_id']);
 
     $sql= " update {$g5['member_table']} set mb_point = '$sum_point' where mb_id = '{$mb['mb_id']}' ";
+    sql_query($sql);
+}*/
+
+if($regid) {
+    $sql= " update {$g5['member_table']} set regid = '$regid' where mb_id = '{$mb['mb_id']}' ";
     sql_query($sql);
 }
 
@@ -56,7 +62,7 @@ if ($auto_login) {
     // 3.27
     // 자동로그인 ---------------------------
     // 쿠키 한달간 저장
-    $key = md5($_SERVER['SERVER_ADDR'] . $_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT'] . $mb['mb_password']);
+    $key = md5($_SERVER['SERVER_ADDR'] . $_SERVER['HTTP_USER_AGENT'] . $mb['mb_password']);
     set_cookie('ck_mb_id', $mb['mb_id'], 86400 * 31);
     set_cookie('ck_auto', $key, 86400 * 31);
     // 자동로그인 end ---------------------------
@@ -64,6 +70,18 @@ if ($auto_login) {
     set_cookie('ck_mb_id', '', 0);
     set_cookie('ck_auto', '', 0);
 }
+if ($id_save) {
+    // 아이디저장 ---------------------------
+    // 쿠키 한달간 저장
+    $key = md5($_SERVER['SERVER_ADDR'] . $_SERVER['HTTP_USER_AGENT']);
+    set_cookie('ck_save_id', $mb['mb_id'], 86400 * 31);
+    set_cookie('ck_save_auto', $key, 86400 * 31);
+    // 자동로그인 end ---------------------------
+} else {
+    set_cookie('ck_save_id', '', 0);
+    set_cookie('ck_save_auto', '', 0);
+}
+
 
 if ($url) {
     // url 체크
@@ -88,4 +106,5 @@ if ($url) {
 }
 
 goto_url($link);
+
 ?>

@@ -10,25 +10,11 @@ if ($w == 'd')
 else
     auth_check($auth[$sub_menu], "w");
 
-check_admin_token();
-
 @mkdir(G5_DATA_PATH."/content", G5_DIR_PERMISSION);
 @chmod(G5_DATA_PATH."/content", G5_DIR_PERMISSION);
 
 if ($co_himg_del)  @unlink(G5_DATA_PATH."/content/{$co_id}_h");
 if ($co_timg_del)  @unlink(G5_DATA_PATH."/content/{$co_id}_t");
-
-$error_msg = '';
-
-if( $co_include_head && ! is_include_path_check($co_include_head) ){
-    $co_include_head = '';
-    $error_msg = '/data/file/ 또는 /data/editor/ 포함된 문자를 상단 파일 경로에 포함시킬수 없습니다.';
-}
-
-if( $co_include_tail && ! is_include_path_check($co_include_tail) ){
-    $co_include_tail = '';
-    $error_msg = '/data/file/ 또는 /data/editor/ 포함된 문자를 하단 파일 경로에 포함시킬수 없습니다.';
-}
 
 $sql_common = " co_include_head     = '$co_include_head',
                 co_include_tail     = '$co_include_tail',
@@ -86,11 +72,7 @@ if ($w == "" || $w == "u")
         @chmod($dest_path, G5_FILE_PERMISSION);
     }
 
-    if( $error_msg ){
-        alert($error_msg, "./contentform.php?w=u&amp;co_id=$co_id");
-    } else {
-        goto_url("./contentform.php?w=u&amp;co_id=$co_id");
-    }
+    goto_url("./contentform.php?w=u&amp;co_id=$co_id");
 }
 else
 {

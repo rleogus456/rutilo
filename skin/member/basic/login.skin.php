@@ -3,47 +3,62 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 
 // add_stylesheet('css 구문', 출력순서); 숫자가 작을 수록 먼저 출력됨
 add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 0);
+$member_id = get_cookie('ck_save_id');
 ?>
-
-<!-- 로그인 시작 { -->
-<div id="mb_login" class="mbskin">
-    <h1><?php echo $g5['title'] ?></h1>
-
-    <form name="flogin" action="<?php echo $login_action_url ?>" onsubmit="return flogin_submit(this);" method="post">
-    <input type="hidden" name="url" value="<?php echo $login_url ?>">
-
-    <fieldset id="login_fs">
-        <legend>회원로그인</legend>
-        <label for="login_id" class="login_id">회원아이디<strong class="sound_only"> 필수</strong></label>
-        <input type="text" name="mb_id" id="login_id" required class="frm_input required" size="20" maxLength="20">
-        <label for="login_pw" class="login_pw">비밀번호<strong class="sound_only"> 필수</strong></label>
-        <input type="password" name="mb_password" id="login_pw" required class="frm_input required" size="20" maxLength="20">
-        <input type="submit" value="로그인" class="btn_submit">
-        <input type="checkbox" name="auto_login" id="login_auto_login">
-        <label for="login_auto_login">자동로그인</label>
-    </fieldset>
-
-    <aside id="login_info">
-        <h2>회원로그인 안내</h2>
-        <p>
-            회원아이디 및 비밀번호가 기억 안나실 때는 아이디/비밀번호 찾기를 이용하십시오.<br>
-            아직 회원이 아니시라면 회원으로 가입 후 이용해 주십시오.
-        </p>
-        <div>
-            <a href="<?php echo G5_BBS_URL ?>/password_lost.php" target="_blank" id="login_password_lost" class="btn02">아이디 비밀번호 찾기</a>
-            <a href="./register.php" class="btn01">회원 가입</a>
-        </div>
-    </aside>
-
-    <div class="btn_confirm">
-        <a href="<?php echo G5_URL ?>/">메인으로 돌아가기</a>
-    </div>
-
-    </form>
-
+<div class="width-fixed">
+	<section class="login_section">
+		<header class="login_header section01_header">
+			<h1>로그인</h1>
+			<h3 class="login_head"></h3>
+			<p>삼시세끼의 회원서비스를 이용하시려면 로그인해 주세요.</p>
+		</header>
+		<div class="section01_content wrap">
+			<div id="login_form">
+				<form name="flogin" action="<?php echo $login_action_url ?>" onsubmit="return flogin_submit(this);" method="post">
+					<input type="hidden" name="url" value="<?php echo $login_url ?>">
+					<input type="hidden" name="regid" id="regid" value="" />
+					<div class="login_id">
+						<i></i>
+						<input type="text" name="mb_id" id="login_id" required class="input02 grid_100" size="20" maxLength="20" placeholder="아이디를 입력하세요." value="<?php echo $member_id; ?>">
+					</div>
+					<div class="login_pw">
+						<i></i>
+						<input type="password" name="mb_password" id="login_pw" required class="input02 grid_100" size="20" maxLength="20" placeholder="비밀번호를 입력하세요.">
+					</div>
+					<div class="login_chk">
+						<div class="bdr">
+							<input type="checkbox" name="auto_login" id="login_auto_login" class="check01">
+							<label for="login_auto_login" class="check01_label"></label>
+							<label for="login_auto_login">자동로그인</label>
+						</div>
+						<div>
+							<input type="checkbox" name="id_save" id="id_save_login" class="check01" <?php echo $member_id?"checked":""; ?>>
+							<label for="id_save_login" class="check01_label"></label>
+							<label for="id_save_login">아이디저장</label>
+						</div>
+					</div>
+					<input type="submit" value="로그인" class="grid_100 btn">
+				</form>
+				<div class="login_link">
+					<ul>
+						<li>아이디/비밀번호를 잊어버리셨나요?<a href="<?php echo G5_BBS_URL ?>/password_lost.php" class="btn">아이디 / 비밀번호찾기</a></li>
+						<li class="last">아직 회원이 아니신가요?<a href="<?php echo G5_BBS_URL ?>/register_form.php" class="btn">회원가입</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
 </div>
-
 <script>
+$(function(){
+	//getRegid
+	try{
+		var regId = window.android.getRegid();
+		$("#regid").val(regId);
+	}catch(err){
+		var regId = undefined;
+	}
+});
 $(function(){
     $("#login_auto_login").click(function(){
         if (this.checked) {

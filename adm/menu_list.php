@@ -5,6 +5,8 @@ include_once('./_common.php');
 if ($is_admin != 'super')
     alert('최고관리자만 접근 가능합니다.');
 
+$token = get_token();
+
 // 메뉴테이블 생성
 if( !isset($g5['menu_table']) ){
     die('<meta charset="utf-8">dbconfig.php 파일에 <strong>$g5[\'menu_table\'] = G5_TABLE_PREFIX.\'menu\';</strong> 를 추가해 주세요.');
@@ -38,7 +40,7 @@ $colspan = 7;
 </div>
 
 <form name="fmenulist" id="fmenulist" method="post" action="./menu_list_update.php" onsubmit="return fmenulist_submit(this);">
-<input type="hidden" name="token" value="">
+<input type="hidden" name="token" value="<?php echo $token ?>">
 
 <div class="btn_add01 btn_add">
     <button type="button" onclick="return add_menu();">메뉴추가<span class="sound_only"> 새창</span></button>
@@ -71,7 +73,7 @@ $colspan = 7;
         }
 
         $search  = array('"', "'");
-        $replace = array('&#034;', '&#039;');
+        $replace = array('&#34;', '&#39;');
         $me_name = str_replace($search, $replace, $row['me_name']);
     ?>
     <tr class="<?php echo $bg; ?> menu_list menu_group_<?php echo substr($row['me_code'], 0, 2); ?>">
@@ -134,12 +136,12 @@ $colspan = 7;
 
 <script>
 $(function() {
-    $(document).on("click", ".btn_add_submenu", function() {
+    $(".btn_add_submenu").live("click", function() {
         var code = $(this).closest("tr").find("input[name='code[]']").val().substr(0, 2);
         add_submenu(code);
     });
 
-    $(document).on("click", ".btn_del_menu", function() {
+    $(".btn_del_menu").live("click", function() {
         if(!confirm("메뉴를 삭제하시겠습니까?"))
             return false;
 

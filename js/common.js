@@ -504,6 +504,14 @@ var win_zip = function(frm_name, frm_zip, frm_addr1, frm_addr2, frm_addr3, frm_j
 }
 
 /**
+ * sms5 창
+ **/
+var win_sms5 = function(href) {
+    var new_win = window.open(href, 'win_sms5', 'width=474, height=560, scrollbars=1');
+    new_win.focus();
+}
+
+/**
  * 새로운 비밀번호 분실 창 : 101123
  **/
 win_password_lost = function(href)
@@ -546,26 +554,6 @@ function font_resize(id, rmv_class, add_class)
     set_cookie("ck_font_resize_add_class", add_class, 1, g5_cookie_domain);
 }
 
-/**
- * 댓글 수정 토큰
-**/
-function set_comment_token(f)
-{
-    if(typeof f.token === "undefined")
-        $(f).prepend('<input type="hidden" name="token" value="">');
-
-    $.ajax({
-        url: g5_bbs_url+"/ajax.comment_token.php",
-        type: "GET",
-        dataType: "json",
-        async: false,
-        cache: false,
-        success: function(data, textStatus) {
-            f.token.value = data.token;
-        }
-    });
-}
-
 $(function(){
     $(".win_point").click(function() {
         win_point(this.href);
@@ -599,6 +587,11 @@ $(function(){
 
     $(".win_password_lost").click(function() {
         win_password_lost(this.href);
+        return false;
+    });
+
+    $(".win_sms5").click(function() {
+        win_sms5(this.href);
         return false;
     });
 
@@ -681,61 +674,12 @@ $(function(){
         }
     });
 
-    $(document).on( "keyup change", "textarea#wr_content[maxlength]", function(){
+    $(document).on("keyup change","textarea#wr_content[maxlength]", function() {
         var str = $(this).val();
         var mx = parseInt($(this).attr("maxlength"));
         if (str.length > mx) {
             $(this).val(str.substr(0, mx));
             return false;
         }
-    });
-});
-
-function get_write_token(bo_table)
-{
-    var token = "";
-
-    $.ajax({
-        type: "POST",
-        url: g5_bbs_url+"/write_token.php",
-        data: { bo_table: bo_table },
-        cache: false,
-        async: false,
-        dataType: "json",
-        success: function(data) {
-            if(data.error) {
-                alert(data.error);
-                if(data.url)
-                    document.location.href = data.url;
-
-                return false;
-            }
-
-            token = data.token;
-        }
-    });
-
-    return token;
-}
-
-$(function() {
-    $(document).on("click", "form[name=fwrite] input:submit", function() {
-        var f = this.form;
-        var bo_table = f.bo_table.value;
-        var token = get_write_token(bo_table);
-
-        if(!token) {
-            alert("토큰 정보가 올바르지 않습니다.");
-            return false;
-        }
-
-        var $f = $(f);
-
-        if(typeof f.token === "undefined")
-            $f.prepend('<input type="hidden" name="token" value="">');
-
-        $f.find("input[name=token]").val(token);
-
-        return true;
     });
 });

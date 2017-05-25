@@ -4,12 +4,17 @@ include_once('./_common.php');
 
 auth_check($auth[$sub_menu], 'r');
 
+$token = get_token();
+
 if ($is_admin != 'super')
     alert('최고관리자만 접근 가능합니다.');
 
-if (!isset($config['cf_add_script'])) {
+if (!isset($config['cf_include_index'])) {
     sql_query(" ALTER TABLE `{$g5['config_table']}`
-                    ADD `cf_add_script` TEXT NOT NULL AFTER `cf_admin_email_name` ", true);
+                    ADD `cf_include_index` VARCHAR(255) NOT NULL AFTER `cf_admin`,
+                    ADD `cf_include_head` VARCHAR(255) NOT NULL AFTER `cf_include_index`,
+                    ADD `cf_include_tail` VARCHAR(255) NOT NULL AFTER `cf_include_head`,
+                    ADD `cf_add_script` TEXT NOT NULL AFTER `cf_include_tail` ", true);
 }
 
 if (!isset($config['cf_mobile_new_skin'])) {
@@ -178,20 +183,6 @@ if(!isset($config['cf_kakao_js_apikey'])) {
                     ADD `cf_kakao_js_apikey` varchar(255) NOT NULL DEFAULT '' AFTER `cf_googl_shorturl_apikey` ", true);
 }
 
-// SMS 전송유형 필드 추가
-if(!isset($config['cf_sms_type'])) {
-    sql_query(" ALTER TABLE `{$g5['config_table']}`
-                    ADD `cf_sms_type` varchar(10) NOT NULL DEFAULT '' AFTER `cf_sms_use` ", true);
-}
-
-// 접속자 정보 필드 추가
-if(!sql_query(" select vi_browser from {$g5['visit_table']} limit 1 ")) {
-    sql_query(" ALTER TABLE `{$g5['visit_table']}`
-                    ADD `vi_browser` varchar(255) NOT NULL DEFAULT '' AFTER `vi_agent`,
-                    ADD `vi_os` varchar(255) NOT NULL DEFAULT '' AFTER `vi_browser`,
-                    ADD `vi_device` varchar(255) NOT NULL DEFAULT '' AFTER `vi_os` ", true);
-}
-
 if(!$config['cf_faq_skin']) $config['cf_faq_skin'] = "basic";
 if(!$config['cf_mobile_faq_skin']) $config['cf_mobile_faq_skin'] = "basic";
 
@@ -221,13 +212,13 @@ $frm_submit = '<div class="btn_confirm01 btn_confirm">
 if (!$config['cf_icode_server_ip'])   $config['cf_icode_server_ip'] = '211.172.232.124';
 if (!$config['cf_icode_server_port']) $config['cf_icode_server_port'] = '7295';
 
-if ($config['cf_sms_use'] && $config['cf_icode_id'] && $config['cf_icode_pw']) {
+if ($config['cf_icode_id'] && $config['cf_icode_pw']) {
     $userinfo = get_icode_userinfo($config['cf_icode_id'], $config['cf_icode_pw']);
 }
 ?>
 
 <form name="fconfigform" id="fconfigform" method="post" onsubmit="return fconfigform_submit(this);">
-<input type="hidden" name="token" value="" id="token">
+<input type="hidden" name="token" value="<?php echo $token ?>" id="token">
 
 <section id="anc_cf_basic">
     <h2 class="h2_frm">홈페이지 기본환경 설정</h2>
@@ -350,41 +341,105 @@ if ($config['cf_sms_use'] && $config['cf_icode_id'] && $config['cf_icode_pw']) {
         <tr>
             <th scope="row"><label for="cf_new_skin">최근게시물 스킨<strong class="sound_only">필수</strong></label></th>
             <td>
-                <?php echo get_skin_select('new', 'cf_new_skin', 'cf_new_skin', $config['cf_new_skin'], 'required'); ?>
+                <select name="cf_new_skin" id="cf_new_skin" required class="required">
+                <?php
+                $arr = get_skin_dir('new');
+                for ($i=0; $i<count($arr); $i++) {
+                    if ($i == 0) echo "<option value=\"\">선택</option>";
+                    echo "<option value=\"".$arr[$i]."\"".get_selected($config['cf_new_skin'], $arr[$i]).">".$arr[$i]."</option>\n";
+                }
+                ?>
+                </select>
             </td>
             <th scope="row"><label for="cf_mobile_new_skin">모바일<br>최근게시물 스킨<strong class="sound_only">필수</strong></label></th>
             <td>
-                <?php echo get_mobile_skin_select('new', 'cf_mobile_new_skin', 'cf_mobile_new_skin', $config['cf_mobile_new_skin'], 'required'); ?>
+                <select name="cf_mobile_new_skin" id="cf_mobile_new_skin" required class="required">
+                <?php
+                $arr = get_skin_dir('new', G5_MOBILE_PATH.'/'.G5_SKIN_DIR);
+                for ($i=0; $i<count($arr); $i++) {
+                    if ($i == 0) echo "<option value=\"\">선택</option>";
+                    echo "<option value=\"".$arr[$i]."\"".get_selected($config['cf_mobile_new_skin'], $arr[$i]).">".$arr[$i]."</option>\n";
+                }
+                ?>
+                </select>
             </td>
         </tr>
         <tr>
             <th scope="row"><label for="cf_search_skin">검색 스킨<strong class="sound_only">필수</strong></label></th>
             <td>
-                <?php echo get_skin_select('search', 'cf_search_skin', 'cf_search_skin', $config['cf_search_skin'], 'required'); ?>
+                <select name="cf_search_skin" id="cf_search_skin" required class="required">
+                <?php
+                $arr = get_skin_dir('search');
+                for ($i=0; $i<count($arr); $i++) {
+                    if ($i == 0) echo "<option value=\"\">선택</option>";
+                    echo "<option value=\"".$arr[$i]."\"".get_selected($config['cf_search_skin'], $arr[$i]).">".$arr[$i]."</option>\n";
+                }
+                ?>
+                </select>
             </td>
             <th scope="row"><label for="cf_mobile_search_skin">모바일 검색 스킨<strong class="sound_only">필수</strong></label></th>
             <td>
-                <?php echo get_mobile_skin_select('search', 'cf_mobile_search_skin', 'cf_mobile_search_skin', $config['cf_mobile_search_skin'], 'required'); ?>
+                <select name="cf_mobile_search_skin" id="cf_mobile_search_skin" required class="required">
+                <?php
+                $arr = get_skin_dir('search', G5_MOBILE_PATH.'/'.G5_SKIN_DIR);
+                for ($i=0; $i<count($arr); $i++) {
+                    if ($i == 0) echo "<option value=\"\">선택</option>";
+                    echo "<option value=\"".$arr[$i]."\"".get_selected($config['cf_mobile_search_skin'], $arr[$i]).">".$arr[$i]."</option>\n";
+                }
+                ?>
+                </select>
             </td>
         </tr>
         <tr>
             <th scope="row"><label for="cf_connect_skin">접속자 스킨<strong class="sound_only">필수</strong></label></th>
             <td>
-                <?php echo get_skin_select('connect', 'cf_connect_skin', 'cf_connect_skin', $config['cf_connect_skin'], 'required'); ?>
+                <select name="cf_connect_skin" id="cf_connect_skin" required class="required">
+                <?php
+                $arr = get_skin_dir('connect');
+                for ($i=0; $i<count($arr); $i++) {
+                    if ($i == 0) echo "<option value=\"\">선택</option>";
+                    echo "<option value=\"".$arr[$i]."\"".get_selected($config['cf_connect_skin'], $arr[$i]).">".$arr[$i]."</option>\n";
+                }
+                ?>
+                </select>
             </td>
             <th scope="row"><label for="cf_mobile_connect_skin">모바일 접속자 스킨<strong class="sound_only">필수</strong></label></th>
             <td>
-                <?php echo get_mobile_skin_select('connect', 'cf_mobile_connect_skin', 'cf_mobile_connect_skin', $config['cf_mobile_connect_skin'], 'required'); ?>
+                <select name="cf_mobile_connect_skin" id="cf_mobile_connect_skin" required class="required">
+                <?php
+                $arr = get_skin_dir('connect', G5_MOBILE_PATH.'/'.G5_SKIN_DIR);
+                for ($i=0; $i<count($arr); $i++) {
+                    if ($i == 0) echo "<option value=\"\">선택</option>";
+                    echo "<option value=\"".$arr[$i]."\"".get_selected($config['cf_mobile_connect_skin'], $arr[$i]).">".$arr[$i]."</option>\n";
+                }
+                ?>
+                </select>
             </td>
         </tr>
         <tr>
             <th scope="row"><label for="cf_faq_skin">FAQ 스킨<strong class="sound_only">필수</strong></label></th>
             <td>
-                <?php echo get_skin_select('faq', 'cf_faq_skin', 'cf_faq_skin', $config['cf_faq_skin'], 'required'); ?>
+                <select name="cf_faq_skin" id="cf_faq_skin" required class="required">
+                <?php
+                $arr = get_skin_dir('faq');
+                for ($i=0; $i<count($arr); $i++) {
+                    if ($i == 0) echo "<option value=\"\">선택</option>";
+                    echo "<option value=\"".$arr[$i]."\"".get_selected($config['cf_faq_skin'], $arr[$i]).">".$arr[$i]."</option>\n";
+                }
+                ?>
+                </select>
             </td>
             <th scope="row"><label for="cf_mobile_faq_skin">모바일 FAQ 스킨<strong class="sound_only">필수</strong></label></th>
             <td>
-                <?php echo get_mobile_skin_select('faq', 'cf_mobile_faq_skin', 'cf_mobile_faq_skin', $config['cf_mobile_faq_skin'], 'required'); ?>
+                <select name="cf_mobile_faq_skin" id="cf_mobile_faq_skin" required class="required">
+                <?php
+                $arr = get_skin_dir('faq', G5_MOBILE_PATH.'/'.G5_SKIN_DIR);
+                for ($i=0; $i<count($arr); $i++) {
+                    if ($i == 0) echo "<option value=\"\">선택</option>";
+                    echo "<option value=\"".$arr[$i]."\"".get_selected($config['cf_mobile_faq_skin'], $arr[$i]).">".$arr[$i]."</option>\n";
+                }
+                ?>
+                </select>
             </td>
         </tr>
         <tr>
@@ -477,7 +532,7 @@ if ($config['cf_sms_use'] && $config['cf_icode_id'] && $config['cf_icode_pw']) {
     </div>
 </section>
 
-<?php echo preg_replace('#</div>$#i', '<button type="button" class="get_theme_confc" data-type="conf_skin">테마 스킨설정 가져오기</button></div>', $frm_submit); ?>
+<?php echo $frm_submit; ?>
 
 <section id="anc_cf_board">
     <h2 class="h2_frm">게시판 기본 설정</h2>
@@ -581,11 +636,27 @@ if ($config['cf_sms_use'] && $config['cf_icode_id'] && $config['cf_icode_pw']) {
         <tr>
             <th scope="row"><label for="cf_member_skin">회원 스킨<strong class="sound_only">필수</strong></label></th>
             <td>
-                <?php echo get_skin_select('member', 'cf_member_skin', 'cf_member_skin', $config['cf_member_skin'], 'required'); ?>
+                <select name="cf_member_skin" id="cf_member_skin" required class="required">
+                <?php
+                $arr = get_skin_dir('member');
+                for ($i=0; $i<count($arr); $i++) {
+                    if ($i == 0) echo "<option value=\"\">선택</option>";
+                    echo '<option value="'.$arr[$i].'"'.get_selected($config['cf_member_skin'], $arr[$i]).'>'.$arr[$i].'</option>'."\n";
+                }
+                ?>
+                </select>
             </td>
             <th scope="row"><label for="cf_mobile_member_skin">모바일<br>회원 스킨<strong class="sound_only">필수</strong></label></th>
             <td>
-                <?php echo get_mobile_skin_select('member', 'cf_mobile_member_skin', 'cf_mobile_member_skin', $config['cf_mobile_member_skin'], 'required'); ?>
+                <select name="cf_mobile_member_skin" id="cf_mobile_member_skin" required class="required">
+                <?php
+                $arr = get_skin_dir('member', G5_MOBILE_PATH.'/'.G5_SKIN_DIR);
+                for ($i=0; $i<count($arr); $i++) {
+                    if ($i == 0) echo "<option value=\"\">선택</option>";
+                    echo '<option value="'.$arr[$i].'"'.get_selected($config['cf_mobile_member_skin'], $arr[$i]).'>'.$arr[$i].'</option>'."\n";
+                }
+                ?>
+                </select>
             </td>
         </tr>
         <tr>
@@ -690,7 +761,7 @@ if ($config['cf_sms_use'] && $config['cf_icode_id'] && $config['cf_icode_pw']) {
     </div>
 </section>
 
-<?php echo preg_replace('#</div>$#i', '<button type="button" class="get_theme_confc" data-type="conf_member">테마 회원스킨설정 가져오기</button></div>', $frm_submit); ?>
+<?php echo $frm_submit; ?>
 
 <section id="anc_cf_cert">
     <h2 class="h2_frm">본인확인 설정</h2>
@@ -736,7 +807,7 @@ if ($config['cf_sms_use'] && $config['cf_icode_id'] && $config['cf_icode_pw']) {
                 <select name="cf_cert_hp" id="cf_cert_hp">
                     <?php echo option_selected("",    $config['cf_cert_hp'], "사용안함"); ?>
                     <?php echo option_selected("kcb", $config['cf_cert_hp'], "코리아크레딧뷰로(KCB) 휴대폰 본인확인"); ?>
-                    <?php echo option_selected("kcp", $config['cf_cert_hp'], "NHN KCP 휴대폰 본인확인"); ?>
+                    <?php echo option_selected("kcp", $config['cf_cert_hp'], "한국사이버결제(KCP) 휴대폰 본인확인"); ?>
                     <?php echo option_selected("lg",  $config['cf_cert_hp'], "LG유플러스 휴대폰 본인확인"); ?>
                 </select>
             </td>
@@ -745,16 +816,16 @@ if ($config['cf_sms_use'] && $config['cf_icode_id'] && $config['cf_icode_pw']) {
             <th scope="row" class="cf_cert_service"><label for="cf_cert_kcb_cd">코리아크레딧뷰로<br>KCB 회원사ID</label></th>
             <td class="cf_cert_service">
                 <?php echo help('KCB 회원사ID를 입력해 주십시오.<br>서비스에 가입되어 있지 않다면, KCB와 계약체결 후 회원사ID를 발급 받으실 수 있습니다.<br>이용하시려는 서비스에 대한 계약을 아이핀, 휴대폰 본인확인 각각 체결해주셔야 합니다.<br>아이핀 본인확인 테스트의 경우에는 KCB 회원사ID가 필요 없으나,<br>휴대폰 본인확인 테스트의 경우 KCB 에서 따로 발급 받으셔야 합니다.') ?>
-                <input type="text" name="cf_cert_kcb_cd" value="<?php echo $config['cf_cert_kcb_cd'] ?>" id="cf_cert_kcb_cd" class="frm_input" size="20"> <a href="http://sir.kr/main/service/b_ipin.php" target="_blank" class="btn_frmline">KCB 아이핀 서비스 신청페이지</a>
-                <a href="http://sir.kr/main/service/b_cert.php" target="_blank" class="btn_frmline">KCB 휴대폰 본인확인 서비스 신청페이지</a>
+                <input type="text" name="cf_cert_kcb_cd" value="<?php echo $config['cf_cert_kcb_cd'] ?>" id="cf_cert_kcb_cd" class="frm_input" size="20"> <a href="http://sir.co.kr/main/service/b_ipin.php" target="_blank" class="btn_frmline">KCB 아이핀 서비스 신청페이지</a>
+                <a href="http://sir.co.kr/main/service/b_cert.php" target="_blank" class="btn_frmline">KCB 휴대폰 본인확인 서비스 신청페이지</a>
             </td>
         </tr>
         <tr>
-            <th scope="row" class="cf_cert_service"><label for="cf_cert_kcp_cd">NHN KCP 사이트코드</label></th>
+            <th scope="row" class="cf_cert_service"><label for="cf_cert_kcp_cd">한국사이버결제<br>KCP 사이트코드</label></th>
             <td class="cf_cert_service">
                 <?php echo help('SM으로 시작하는 5자리 사이트 코드중 뒤의 3자리만 입력해 주십시오.<br>서비스에 가입되어 있지 않다면, 본인확인 서비스 신청페이지에서 서비스 신청 후 사이트코드를 발급 받으실 수 있습니다.') ?>
                 <span class="sitecode">SM</span>
-                <input type="text" name="cf_cert_kcp_cd" value="<?php echo $config['cf_cert_kcp_cd'] ?>" id="cf_cert_kcp_cd" class="frm_input" size="3"> <a href="http://sir.kr/main/service/p_cert.php" target="_blank" class="btn_frmline">NHN KCP 휴대폰 본인확인 서비스 신청페이지</a>
+                <input type="text" name="cf_cert_kcp_cd" value="<?php echo $config['cf_cert_kcp_cd'] ?>" id="cf_cert_kcp_cd" class="frm_input" size="3"> <a href="http://sir.co.kr/main/service/p_cert.php" target="_blank" class="btn_frmline">KCP 휴대폰 본인확인 서비스 신청페이지</a>
             </td>
         </tr>
         <tr>
@@ -762,7 +833,7 @@ if ($config['cf_sms_use'] && $config['cf_icode_id'] && $config['cf_icode_pw']) {
             <td class="cf_cert_service">
                 <?php echo help('LG유플러스 상점아이디 중 si_를 제외한 나머지 아이디만 입력해 주십시오.<br>서비스에 가입되어 있지 않다면, 본인확인 서비스 신청페이지에서 서비스 신청 후 상점아이디를 발급 받으실 수 있습니다.<br><strong>LG유플러스 휴대폰본인확인은 ActiveX 설치가 필요하므로 Internet Explorer 에서만 사용할 수 있습니다.</strong>') ?>
                 <span class="sitecode">si_</span>
-                <input type="text" name="cf_lg_mid" value="<?php echo $config['cf_lg_mid'] ?>" id="cf_lg_mid" class="frm_input" size="20"> <a href="http://sir.kr/main/service/lg_cert.php" target="_blank" class="btn_frmline">LG유플러스 본인확인 서비스 신청페이지</a>
+                <input type="text" name="cf_lg_mid" value="<?php echo $config['cf_lg_mid'] ?>" id="cf_lg_mid" class="frm_input" size="20"> <a href="http://sir.co.kr/main/service/lg_cert.php" target="_blank" class="btn_frmline">LG유플러스 본인확인 서비스 신청페이지</a>
             </td>
         </tr>
         <tr>
@@ -1012,6 +1083,27 @@ if ($config['cf_sms_use'] && $config['cf_icode_id'] && $config['cf_icode_pw']) {
         </colgroup>
         <tbody>
         <tr>
+            <th scope="row"><label for="cf_include_index">초기화면 파일 경로</label></th>
+            <td>
+                <?php echo help('입력이 없으면 index.php가 초기화면 파일로 설정됩니다.<br>초기화면 파일은 index.php 파일과 동일한 위치에 존재해야 합니다.') ?>
+                <input type="text" name="cf_include_index" value="<?php echo $config['cf_include_index'] ?>" id="cf_include_index" class="frm_input" size="50">
+            </td>
+        </tr>
+        <tr>
+            <th scope="row"><label for="cf_include_head">상단 파일 경로</label></th>
+            <td>
+                <?php echo help('입력이 없으면 head.php가 상단 파일로 설정됩니다.<br>상단 파일은 head.php 파일과 동일한 위치에 존재해야 합니다.') ?>
+                <input type="text" name="cf_include_head" value="<?php echo $config['cf_include_head'] ?>" id="cf_include_head" class="frm_input" size="50">
+            </td>
+        </tr>
+        <tr>
+            <th scope="row"><label for="cf_include_tail">하단 파일 경로</label></th>
+            <td>
+                <?php echo help('입력이 없으면 tail.php가 하단 파일로 설정됩니다.<br>초기화면 파일은 tail.php 파일과 동일한 위치에 존재해야 합니다.') ?>
+                <input type="text" name="cf_include_tail" value="<?php echo $config['cf_include_tail'] ?>" id="cf_include_tail" class="frm_input" size="50">
+            </td>
+        </tr>
+        <tr>
             <th scope="row"><label for="cf_add_script">추가 script, css</label></th>
             <td>
                 <?php echo help('HTML의 &lt;/HEAD&gt; 태그위로 추가될 JavaScript와 css 코드를 설정합니다.<br>관리자 페이지에서는 이 코드를 사용하지 않습니다.') ?>
@@ -1043,16 +1135,6 @@ if ($config['cf_sms_use'] && $config['cf_icode_id'] && $config['cf_icode_pw']) {
                 <select id="cf_sms_use" name="cf_sms_use">
                     <option value="" <?php echo get_selected($config['cf_sms_use'], ''); ?>>사용안함</option>
                     <option value="icode" <?php echo get_selected($config['cf_sms_use'], 'icode'); ?>>아이코드</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <th scope="row"><label for="cf_sms_type">SMS 전송유형</label></th>
-            <td>
-                <?php echo help("전송유형을 SMS로 선택하시면 최대 80바이트까지 전송하실 수 있으며<br>LMS로 선택하시면 90바이트 이하는 SMS로, 그 이상은 1500바이트까지 LMS로 전송됩니다.<br>요금은 건당 SMS는 16원, LMS는 48원입니다."); ?>
-                <select id="cf_sms_type" name="cf_sms_type">
-                    <option value="" <?php echo get_selected($config['cf_sms_type'], ''); ?>>SMS</option>
-                    <option value="LMS" <?php echo get_selected($config['cf_sms_type'], 'LMS'); ?>>LMS</option>
                 </select>
             </td>
         </tr>
@@ -1091,6 +1173,7 @@ if ($config['cf_sms_use'] && $config['cf_icode_id'] && $config['cf_icode_pw']) {
         <tr>
             <th scope="row">아이코드 SMS 신청<br>회원가입</th>
             <td>
+                <?php echo help("아래 링크에서 회원가입 하시면 문자 건당 16원에 제공 받을 수 있습니다."); ?>
                 <a href="http://icodekorea.com/res/join_company_fix_a.php?sellid=sir2" target="_blank" class="btn_frmline">아이코드 회원가입</a>
             </td>
         </tr>
@@ -1100,6 +1183,12 @@ if ($config['cf_sms_use'] && $config['cf_icode_id'] && $config['cf_icode_pw']) {
             <td colspan="3">
                 <?php echo number_format($userinfo['coin']); ?> 원.
                 <a href="http://www.icodekorea.com/smsbiz/credit_card_amt.php?icode_id=<?php echo $config['cf_icode_id']; ?>&amp;icode_passwd=<?php echo $config['cf_icode_pw']; ?>" target="_blank" class="btn_frmline" onclick="window.open(this.href,'icode_payment', 'scrollbars=1,resizable=1'); return false;">충전하기</a>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">건수별 금액</th>
+            <td colspan="3">
+                <?php echo number_format($userinfo['gpay']); ?> 원.
             </td>
         </tr>
         <?php } ?>
@@ -1160,42 +1249,6 @@ $(function(){
                 $(".cf_cert_service").removeClass("cf_cert_hide");
                 break;
         }
-    });
-
-    $(".get_theme_confc").on("click", function() {
-        var type = $(this).data("type");
-        var msg = "기본환경 스킨 설정";
-        if(type == "conf_member")
-            msg = "기본환경 회원스킨 설정";
-
-        if(!confirm("현재 테마의 "+msg+"을 적용하시겠습니까?"))
-            return false;
-
-        $.ajax({
-            type: "POST",
-            url: "./theme_config_load.php",
-            cache: false,
-            async: false,
-            data: { type: type },
-            dataType: "json",
-            success: function(data) {
-                if(data.error) {
-                    alert(data.error);
-                    return false;
-                }
-
-                var field = Array('cf_member_skin', 'cf_mobile_member_skin', 'cf_new_skin', 'cf_mobile_new_skin', 'cf_search_skin', 'cf_mobile_search_skin', 'cf_connect_skin', 'cf_mobile_connect_skin', 'cf_faq_skin', 'cf_mobile_faq_skin');
-                var count = field.length;
-                var key;
-
-                for(i=0; i<count; i++) {
-                    key = field[i];
-
-                    if(data[key] != undefined && data[key] != "")
-                        $("select[name="+key+"]").val(data[key]);
-                }
-            }
-        });
     });
 });
 

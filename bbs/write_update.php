@@ -3,28 +3,9 @@ include_once('./_common.php');
 include_once(G5_LIB_PATH.'/naver_syndi.lib.php');
 include_once(G5_CAPTCHA_PATH.'/captcha.lib.php');
 
-// 토큰체크
-check_write_token($bo_table);
-
 $g5['title'] = '게시글 저장';
 
 $msg = array();
-
-if($board['bo_use_category']) {
-    $ca_name = trim($_POST['ca_name']);
-    if(!$ca_name) {
-        $msg[] = '<strong>분류</strong>를 선택하세요.';
-    } else {
-        $categories = array_map('trim', explode("|", $board['bo_category_list'].($is_admin ? '|공지' : '')));
-        if(!empty($categories) && !in_array($ca_name, $categories))
-            $msg[] = '분류를 올바르게 입력하세요.';
-
-        if(empty($categories))
-            $ca_name = '';
-    }
-} else {
-    $ca_name = '';
-}
 
 $wr_subject = '';
 if (isset($_POST['wr_subject'])) {
@@ -85,14 +66,8 @@ if ($w == 'u' || $w == 'r') {
 }
 
 // 외부에서 글을 등록할 수 있는 버그가 존재하므로 비밀글은 사용일 경우에만 가능해야 함
-if (!$is_admin && !$board['bo_use_secret'] && (stripos($_POST['html'], 'secret') !== false || stripos($_POST['secret'], 'secret') !== false || stripos($_POST['mail'], 'secret') !== false)) {
+if (!$is_admin && !$board['bo_use_secret'] && $secret) {
 	alert('비밀글 미사용 게시판 이므로 비밀글로 등록할 수 없습니다.');
-}
-
-$secret = '';
-if (isset($_POST['secret']) && $_POST['secret']) {
-    if(preg_match('#secret#', strtolower($_POST['secret']), $matches))
-        $secret = $matches[0];
 }
 
 // 외부에서 글을 등록할 수 있는 버그가 존재하므로 비밀글 무조건 사용일때는 관리자를 제외(공지)하고 무조건 비밀글로 등록
@@ -102,14 +77,12 @@ if (!$is_admin && $board['bo_use_secret'] == 2) {
 
 $html = '';
 if (isset($_POST['html']) && $_POST['html']) {
-    if(preg_match('#html(1|2)#', strtolower($_POST['html']), $matches))
-        $html = $matches[0];
+    $html = $_POST['html'];
 }
 
 $mail = '';
 if (isset($_POST['mail']) && $_POST['mail']) {
-    if(preg_match('#mail#', strtolower($_POST['mail']), $matches))
-        $mail = $matches[0];
+    $mail = $_POST['mail'];
 }
 
 $notice = '';
@@ -271,7 +244,7 @@ if ($w == '' || $w == 'r') {
                      wr_10 = '$wr_10' ";
     sql_query($sql);
 
-    $wr_id = sql_insert_id();
+    $wr_id = mysql_insert_id();
 
     // 부모 아이디에 UPDATE
     sql_query(" update $write_table set wr_parent = '$wr_id' where wr_id = '$wr_id' ");
@@ -418,24 +391,6 @@ if (!$group['gr_use_access'] && $board['bo_read_level'] < 2 && !$secret) {
     naver_syndi_ping($bo_table, $wr_id);
 }
 
-// 파일개수 체크
-$file_count   = 0;
-$upload_count = count($_FILES['bf_file']['name']);
-
-for ($i=0; $i<$upload_count; $i++) {
-    if($_FILES['bf_file']['name'][$i] && is_uploaded_file($_FILES['bf_file']['tmp_name'][$i]))
-        $file_count++;
-}
-
-if($w == 'u') {
-    $file = get_file($bo_table, $wr_id);
-    if($file_count && (int)$file['count'] > $board['bo_upload_count'])
-        alert('기존 파일을 삭제하신 후 첨부파일을 '.number_format($board['bo_upload_count']).'개 이하로 업로드 해주십시오.');
-} else {
-    if($file_count > $board['bo_upload_count'])
-        alert('첨부파일을 '.number_format($board['bo_upload_count']).'개 이하로 업로드 해주십시오.');
-}
-
 // 디렉토리가 없다면 생성합니다. (퍼미션도 변경하구요.)
 @mkdir(G5_DATA_PATH.'/file/'.$bo_table, G5_DIR_PERMISSION);
 @chmod(G5_DATA_PATH.'/file/'.$bo_table, G5_DIR_PERMISSION);
@@ -530,7 +485,7 @@ for ($i=0; $i<count($_FILES['bf_file']['name']); $i++) {
         $shuffle = implode('', $chars_array);
 
         // 첨부파일 첨부시 첨부파일명에 공백이 포함되어 있으면 일부 PC에서 보이지 않거나 다운로드 되지 않는 현상이 있습니다. (길상여의 님 090925)
-        $upload[$i]['file'] = abs(ip2long($_SERVER['REMOTE_ADDR'])).'_'.substr($shuffle,0,8).'_'.replace_filename($filename);
+        $upload[$i]['file'] = abs(ip2long($_SERVER['REMOTE_ADDR'])).'_'.substr($shuffle,0,8).'_'.str_replace('%', '', urlencode(str_replace(' ', '_', $filename)));
 
         $dest_file = G5_DATA_PATH.'/file/'.$bo_table.'/'.$upload[$i]['file'];
 
@@ -641,7 +596,7 @@ if (!($w == 'u' || $w == 'cu') && $config['cf_email_use'] && $board['bo_use_emai
     else if (strstr($html, 'html2'))
         $tmp_html = 2;
 
-    $wr_content = conv_content(conv_unescape_nl(stripslashes($wr_content)), $tmp_html);
+    $wr_content = conv_content(conv_unescape_nl($wr_content), $tmp_html);
 
     $warr = array( ''=>'입력', 'u'=>'수정', 'r'=>'답변', 'c'=>'코멘트', 'cu'=>'코멘트 수정' );
     $str = $warr[$w];
@@ -692,7 +647,7 @@ if (!($w == 'u' || $w == 'cu') && $config['cf_email_use'] && $board['bo_use_emai
 delete_cache_latest($bo_table);
 
 if ($file_upload_msg)
-    alert($file_upload_msg, G5_HTTP_BBS_URL.'/board.php?bo_table='.$bo_table.'&amp;wr_id='.$wr_id.$qstr);
+    alert($file_upload_msg, G5_HTTP_BBS_URL.'/board.php?bo_table='.$bo_table.'&amp;wr_id='.$wr_id.'&amp;page='.$page.$qstr);
 else
     goto_url(G5_HTTP_BBS_URL.'/board.php?bo_table='.$bo_table.'&amp;wr_id='.$wr_id.$qstr);
 ?>

@@ -10,7 +10,7 @@ set_time_limit ( 0 );
 ini_set('memory_limit', '50M');
 
 $g5['title'] = '그누보드4 DB 데이터 이전';
-include_once(G5_PATH.'/'.G5_THEME_DIR.'/basic/head.sub.php');
+include_once(G5_PATH.'/head.sub.php');
 
 echo '<link rel="stylesheet" href="'.G5_URL.'/g4_import.css">';
 
@@ -27,8 +27,6 @@ $g4_config_file = trim($_POST['file_path']);
 
 if(!$g4_config_file)
     alert('config.php 파일의 경로를 입력해 주십시오.');
-
-$g4_config_file = preg_replace('#/config.php$#i', '', $g4_config_file).'/config.php';
 
 if(!is_file($g4_config_file))
     alert('입력하신 경로에 config.php 파일이 존재하지 않습니다.');
@@ -171,7 +169,13 @@ document.onkeydown = noRefresh ;
             $is_euckr = true;
 
         // member table 복사
-        $columns = sql_field_names($g5['member_table']);
+        $columns = array();
+        $fields = mysql_list_fields(G5_MYSQL_DB, $g5['member_table']);
+        $count = mysql_num_fields($fields);
+        for ($i = 0; $i < $count; $i++) {
+            $fld = mysql_field_name($fields, $i);
+            $columns[] = $fld;
+        }
 
         $sql = " select * from {$g4['member_table']} ";
         $result = sql_query($sql);
@@ -321,7 +325,13 @@ document.onkeydown = noRefresh ;
         echo '<li>visit sum table 복사</li>'.PHP_EOL;
 
         // group table 복사
-        $columns = sql_field_names($g5['group_table']);
+        $columns = array();
+        $fields = mysql_list_fields(G5_MYSQL_DB, $g5['group_table']);
+        $count = mysql_num_fields($fields);
+        for ($i = 0; $i < $count; $i++) {
+            $fld = mysql_field_name($fields, $i);
+            $columns[] = $fld;
+        }
 
         $sql = " select * from {$g4['group_table']} ";
         $result = sql_query($sql);
@@ -355,7 +365,13 @@ document.onkeydown = noRefresh ;
         unset($fiels);
 
         // board 복사
-        $columns = sql_field_names($g5['board_table']);
+        $columns = array();
+        $fields = mysql_list_fields(G5_MYSQL_DB, $g5['board_table']);
+        $count = mysql_num_fields($fields);
+        for ($i = 0; $i < $count; $i++) {
+            $fld = mysql_field_name($fields, $i);
+            $columns[] = $fld;
+        }
 
         $sql = " select * from {$g4['board_table']} ";
         $result = sql_query($sql);
@@ -397,7 +413,13 @@ document.onkeydown = noRefresh ;
             // 게시글 복사
             if(sql_query($sql, FALSE)) {
                 $write_table = $g4['write_prefix'].$bo_table;
-                $columns2 = sql_field_names($create_table);
+                $columns2 = array();
+                $fields2 = mysql_list_fields(G5_MYSQL_DB, $create_table);
+                $count2 = mysql_num_fields($fields2);
+                for ($j = 0; $j < $count2; $j++) {
+                    $fld = mysql_field_name($fields2, $j);
+                    $columns2[] = $fld;
+                }
 
                 $sql3 = " select * from $write_table ";
                 $result3 = sql_query($sql3);
@@ -439,7 +461,13 @@ document.onkeydown = noRefresh ;
         $tables = array('board_file', 'board_new', 'board_good', 'mail', 'memo', 'group_member', 'auth', 'popular', 'poll', 'poll_etc', 'scrap');
 
         foreach($tables as $table) {
-            $columns = sql_field_names($g5[$table.'_table']);
+            $columns = array();
+            $fields = mysql_list_fields(G5_MYSQL_DB, $g5[$table.'_table']);
+            $count = mysql_num_fields($fields);
+            for ($i = 0; $i < $count; $i++) {
+                $fld = mysql_field_name($fields, $i);
+                $columns[] = $fld;
+            }
 
             $src_table = $g4[$table.'_table'];
             $dst_table = $g5[$table.'_table'];
@@ -508,5 +536,5 @@ $(function() {
 </script>
 
 <?php
-include_once(G5_PATH.'/'.G5_THEME_DIR.'/basic/tail.sub.php');
+include_once(G5_PATH.'/tail.sub.php');
 ?>

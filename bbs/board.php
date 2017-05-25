@@ -130,13 +130,13 @@ if (isset($wr_id) && $wr_id) {
             if ($config['cf_use_point'] && $board['bo_read_point'] && $member['mb_point'] + $board['bo_read_point'] < 0)
                 alert('보유하신 포인트('.number_format($member['mb_point']).')가 없거나 모자라서 글읽기('.number_format($board['bo_read_point']).')가 불가합니다.\\n\\n포인트를 모으신 후 다시 글읽기 해 주십시오.');
 
-            insert_point($member['mb_id'], $board['bo_read_point'], ((G5_IS_MOBILE && $board['bo_mobile_subject']) ? $board['bo_mobile_subject'] : $board['bo_subject']).' '.$wr_id.' 글읽기', $bo_table, $wr_id, '읽기');
+            insert_point($member['mb_id'], $board['bo_read_point'], "{$board['bo_subject']} {$wr_id} 글읽기", $bo_table, $wr_id, '읽기');
         }
 
         set_session($ss_name, TRUE);
     }
 
-    $g5['title'] = strip_tags(conv_subject($write['wr_subject'], 255))." > ".((G5_IS_MOBILE && $board['bo_mobile_subject']) ? $board['bo_mobile_subject'] : $board['bo_subject']);
+    $g5['title'] = strip_tags(conv_subject($write['wr_subject'], 255))." > ".$board['bo_subject'];
 } else {
     if ($member['mb_level'] < $board['bo_list_level']) {
         if ($member['mb_id'])
@@ -171,7 +171,7 @@ if (isset($wr_id) && $wr_id) {
 
     if (!isset($page) || (isset($page) && $page == 0)) $page = 1;
 
-    $g5['title'] = ((G5_IS_MOBILE && $board['bo_mobile_subject']) ? $board['bo_mobile_subject'] : $board['bo_subject']).' '.$page.' 페이지';
+    $g5['title'] = $board['bo_subject']." ".$page." 페이지";
 }
 
 include_once(G5_PATH.'/head.sub.php');
@@ -221,20 +221,22 @@ $admin_href = "";
 // 최고관리자 또는 그룹관리자라면
 if ($member['mb_id'] && ($is_admin == 'super' || $group['gr_admin'] == $member['mb_id']))
     $admin_href = G5_ADMIN_URL.'/board_form.php?w=u&amp;bo_table='.$bo_table;
-
-include_once(G5_BBS_PATH.'/board_head.php');
+if (isset($wr_id) && $wr_id) {
+    $back_url=G5_BBS_URL."/board.php?bo_table=".$bo_table;
+}
+include_once('./board_head.php');
 
 // 게시물 아이디가 있다면 게시물 보기를 INCLUDE
 if (isset($wr_id) && $wr_id) {
-    include_once(G5_BBS_PATH.'/view.php');
+    include_once('./view.php');
 }
 
 // 전체목록보이기 사용이 "예" 또는 wr_id 값이 없다면 목록을 보임
 //if ($board['bo_use_list_view'] || empty($wr_id))
 if ($member['mb_level'] >= $board['bo_list_level'] && $board['bo_use_list_view'] || empty($wr_id))
-    include_once (G5_BBS_PATH.'/list.php');
+    include_once ('./list.php');
 
-include_once(G5_BBS_PATH.'/board_tail.php');
+include_once('./board_tail.php');
 
 echo "\n<!-- 사용스킨 : ".(G5_IS_MOBILE ? $board['bo_mobile_skin'] : $board['bo_skin'])." -->\n";
 

@@ -21,7 +21,7 @@ if ($w == "") {
 
     // 리퍼러 체크
     referer_check();
-
+/*
     if (!isset($_POST['agree']) || !$_POST['agree']) {
         alert('회원가입약관의 내용에 동의하셔야 회원가입 하실 수 있습니다.', G5_BBS_URL.'/register.php');
     }
@@ -29,10 +29,7 @@ if ($w == "") {
     if (!isset($_POST['agree2']) || !$_POST['agree2']) {
         alert('개인정보처리방침안내의 내용에 동의하셔야 회원가입 하실 수 있습니다.', G5_BBS_URL.'/register.php');
     }
-
-    $agree  = preg_replace('#[^0-9]#', '', $_POST['agree']);
-    $agree2 = preg_replace('#[^0-9]#', '', $_POST['agree2']);
-
+*/
     $member['mb_birth'] = '';
     $member['mb_sex']   = '';
     $member['mb_name']  = '';
@@ -56,8 +53,9 @@ if ($w == "") {
     if (!$is_member)
         alert('로그인 후 이용하여 주십시오.', G5_URL);
 
-    if ($member['mb_id'] != $_POST['mb_id'])
+    /*if ($member['mb_id'] != $_POST['mb_id'])
         alert('로그인된 회원과 넘어온 정보가 서로 다릅니다.');
+	*/
 
     /*
     if (!($member[mb_password] == sql_password($_POST[mb_password]) && $_POST[mb_password]))
@@ -67,7 +65,7 @@ if ($w == "") {
     set_session("ss_tmp_password", $_POST[mb_password]);
     */
 
-    if ($_POST['mb_password']) {
+    /*if ($_POST['mb_password']) {
         // 수정된 정보를 업데이트후 되돌아 온것이라면 비밀번호가 암호화 된채로 넘어온것임
         if ($_POST['is_update'])
             $tmp_password = $_POST['mb_password'];
@@ -76,7 +74,7 @@ if ($w == "") {
 
         if ($member['mb_password'] != $tmp_password)
             alert('비밀번호가 틀립니다.');
-    }
+    }*/
 
     $g5['title'] = '회원 정보 수정';
 

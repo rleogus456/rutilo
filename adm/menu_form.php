@@ -52,14 +52,14 @@ $(function() {
         );
     });
 
-    $(document).on("click", "#add_manual", function() {
+    $("#add_manual").live("click", function() {
         var me_name = $.trim($("#me_name").val());
         var me_link = $.trim($("#me_link").val());
 
         add_menu_list(me_name, me_link, "<?php echo $code; ?>");
     });
 
-    $(document).on("click", ".add_select", function() {
+    $(".add_select").live("click", function() {
         var me_name = $.trim($(this).siblings("input[name='subject[]']").val());
         var me_link = $.trim($(this).siblings("input[name='link[]']").val());
 

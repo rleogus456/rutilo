@@ -38,7 +38,6 @@ include_once('./admin.head.php');
 <input type="hidden" name="sst" value="<?php echo $sst ?>">
 <input type="hidden" name="sod" value="<?php echo $sod ?>">
 <input type="hidden" name="page" value="<?php echo $page ?>">
-<input type="hidden" name="token" value="">
 
 <div class="tbl_frm01 tbl_wrap">
     <table>

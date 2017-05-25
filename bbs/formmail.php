@@ -28,19 +28,8 @@ if ($sendmail_count > 3)
 $g5['title'] = '메일 쓰기';
 include_once(G5_PATH.'/head.sub.php');
 
-$email_enc = new str_encrypt();
-$email_dec = $email_enc->decrypt($email);
-
-$email = get_email_address($email_dec);
-if(!$email)
-    alert_close('이메일이 올바르지 않습니다.');
-
-$email = $email_enc->encrypt($email);
-
 if (!$name)
-    $name = $email;
-else
-    $name = get_text(stripslashes($name), true);
+    $name = base64_decode($email);
 
 if (!isset($type))
     $type = 0;

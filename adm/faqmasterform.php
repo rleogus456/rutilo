@@ -7,8 +7,6 @@ auth_check($auth[$sub_menu], "w");
 
 $html_title = 'FAQ';
 
-$fm_id = preg_replace('/[^0-9]/', '', $fm_id);
-
 if ($w == "u")
 {
     $html_title .= ' 수정';
@@ -38,7 +36,6 @@ include_once (G5_ADMIN_PATH.'/admin.head.php');
 <form name="frmfaqmasterform" action="./faqmasterformupdate.php" onsubmit="return frmfaqmasterform_check(this);" method="post" enctype="MULTIPART/FORM-DATA">
 <input type="hidden" name="w" value="<?php echo $w; ?>">
 <input type="hidden" name="fm_id" value="<?php echo $fm_id; ?>">
-<input type="hidden" name="token" value="">
 
 <div class="tbl_frm01 tbl_wrap">
     <table>

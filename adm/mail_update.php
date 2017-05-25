@@ -7,7 +7,7 @@ if ($w == 'u' || $w == 'd')
 
 auth_check($auth[$sub_menu], 'w');
 
-check_admin_token();
+check_token();
 
 if ($w == '')
 {

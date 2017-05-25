@@ -1,12 +1,7 @@
 <?php
 if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 
-if(defined('G5_THEME_PATH')) {
-    require_once(G5_THEME_PATH.'/index.php');
-    return;
-}
-
-include_once(G5_MOBILE_PATH.'/head.php');
+include_once(G5_MOBILE_PATH.'/_head.php');
 ?>
 
 <!-- 메인화면 최신글 시작 -->
@@ -31,5 +26,5 @@ for ($i=0; $row=sql_fetch_array($result); $i++) {
 <!-- 메인화면 최신글 끝 -->
 
 <?php
-include_once(G5_MOBILE_PATH.'/tail.php');
+include_once(G5_MOBILE_PATH.'/_tail.php');
 ?>

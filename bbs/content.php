@@ -19,7 +19,7 @@ if (!$co['co_id'])
 
 $g5['title'] = $co['co_subject'];
 
-if (is_include_path_check($co['co_include_head']))
+if ($co['co_include_head'])
     @include_once($co['co_include_head']);
 else
     include_once('./_head.php');
@@ -62,8 +62,8 @@ $str = preg_replace($src, $dst, $str);
 if(trim($co['co_skin']) == '')
     $co['co_skin'] = 'basic';
 
-$content_skin_path = get_skin_path('content', $co['co_skin']);
-$content_skin_url  = get_skin_url('content', $co['co_skin']);
+$content_skin_path = G5_SKIN_PATH.'/content/'.$co['co_skin'];
+$content_skin_url  = G5_SKIN_URL.'/content/'.$co['co_skin'];
 $skin_file = $content_skin_path.'/content.skin.php';
 
 if ($is_admin)
@@ -85,7 +85,7 @@ if(is_file($skin_file)) {
     echo '<p>'.str_replace(G5_PATH.'/', '', $skin_file).'이 존재하지 않습니다.</p>';
 }
 
-if (is_include_path_check($co['co_include_tail']))
+if ($co['co_include_tail'])
     @include_once($co['co_include_tail']);
 else
     include_once('./_tail.php');

@@ -6,28 +6,16 @@ if (!defined('_GNUBOARD_')) exit;
 function latest($skin_dir='', $bo_table, $rows=10, $subject_len=40, $cache_time=1, $options='')
 {
     global $g5;
+    //static $css = array();
 
     if (!$skin_dir) $skin_dir = 'basic';
 
-    if(preg_match('#^theme/(.+)$#', $skin_dir, $match)) {
-        if (G5_IS_MOBILE) {
-            $latest_skin_path = G5_THEME_MOBILE_PATH.'/'.G5_SKIN_DIR.'/latest/'.$match[1];
-            if(!is_dir($latest_skin_path))
-                $latest_skin_path = G5_THEME_PATH.'/'.G5_SKIN_DIR.'/latest/'.$match[1];
-            $latest_skin_url = str_replace(G5_PATH, G5_URL, $latest_skin_path);
-        } else {
-            $latest_skin_path = G5_THEME_PATH.'/'.G5_SKIN_DIR.'/latest/'.$match[1];
-            $latest_skin_url = str_replace(G5_PATH, G5_URL, $latest_skin_path);
-        }
-        $skin_dir = $match[1];
+    if(G5_IS_MOBILE) {
+        $latest_skin_path = G5_MOBILE_PATH.'/'.G5_SKIN_DIR.'/latest/'.$skin_dir;
+        $latest_skin_url  = G5_MOBILE_URL.'/'.G5_SKIN_DIR.'/latest/'.$skin_dir;
     } else {
-        if(G5_IS_MOBILE) {
-            $latest_skin_path = G5_MOBILE_PATH.'/'.G5_SKIN_DIR.'/latest/'.$skin_dir;
-            $latest_skin_url  = G5_MOBILE_URL.'/'.G5_SKIN_DIR.'/latest/'.$skin_dir;
-        } else {
-            $latest_skin_path = G5_SKIN_PATH.'/latest/'.$skin_dir;
-            $latest_skin_url  = G5_SKIN_URL.'/latest/'.$skin_dir;
-        }
+        $latest_skin_path = G5_SKIN_PATH.'/latest/'.$skin_dir;
+        $latest_skin_url  = G5_SKIN_URL.'/latest/'.$skin_dir;
     }
 
     $cache_fwrite = false;
@@ -71,6 +59,14 @@ function latest($skin_dir='', $bo_table, $rows=10, $subject_len=40, $cache_time=
             fclose($handle);
         }
     }
+
+    /*
+    // 같은 스킨은 .css 를 한번만 호출한다.
+    if (!in_array($skin_dir, $css) && is_file($latest_skin_path.'/style.css')) {
+        echo '<link rel="stylesheet" href="'.$latest_skin_url.'/style.css">';
+        $css[] = $skin_dir;
+    }
+    */
 
     ob_start();
     include $latest_skin_path.'/latest.skin.php';

@@ -9,13 +9,11 @@ switch ($w) {
         $return_url = './board.php?bo_table='.$bo_table.'&amp;wr_id='.$wr_id;
         break;
     case 'd' :
-        set_session('ss_delete_token', $token = uniqid(time()));
-        $action = './delete.php?token='.$token;
+        $action = './delete.php';
         $return_url = './board.php?bo_table='.$bo_table.'&amp;wr_id='.$wr_id;
         break;
     case 'x' :
-        set_session('ss_delete_comment_'.$comment_id.'_token', $token = uniqid(time()));
-        $action = './delete_comment.php?token='.$token;
+        $action = './delete_comment.php';
         $row = sql_fetch(" select wr_parent from $write_table where wr_id = '$comment_id' ");
         $return_url = './board.php?bo_table='.$bo_table.'&amp;wr_id='.$row['wr_parent'];
         break;

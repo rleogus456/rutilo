@@ -10,8 +10,6 @@ if ($w == 'd')
 else
     auth_check($auth[$sub_menu], "w");
 
-check_admin_token();
-
 $sql_common = " nw_device = '{$_POST['nw_device']}',
                 nw_begin_time = '{$_POST['nw_begin_time']}',
                 nw_end_time = '{$_POST['nw_end_time']}',
@@ -29,7 +27,7 @@ if($w == "")
     $sql = " insert {$g5['new_win_table']} set $sql_common ";
     sql_query($sql);
 
-    $nw_id = sql_insert_id();
+    $nw_id = mysql_insert_id();
 }
 else if ($w == "u")
 {
