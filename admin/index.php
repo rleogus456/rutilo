@@ -25,7 +25,7 @@
 <div id="wrap">
 	<section>
 		<header id="admin-title">
-			<h1>관리자페이지</h1>
+			<h1>관리자페이지(테스트중)</h1>
 			<hr />
 		</header>
 		<article>
