@@ -48,7 +48,7 @@ $best_tel=sql_fetch("select * from `best_tel`");
                     <a href="">루틸로 협력점</a>
                     <ul>
                         <li><a href="">가맹문의</a></li>
-                        <li><a href="">가맹현환</a></li>
+                        <li><a href="">가맹현황</a></li>
                     </ul>
                 </li>
                 <li class="last">

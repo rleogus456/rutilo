@@ -30,9 +30,9 @@ $branch=sql_fetch("select * from `best_branch` where mb_id='".$member['mb_id']."
 		<div class="width-fixed">
 			<?php if($is_member){ ?>
 				<p><span></span><?php echo $member['mb_name']; ?> 님 (<?php echo number_format($member['mb_point']); ?>p)</p>
-				<ul>
+				<ul>                   
                     <?php if(!$is_admin){ ?>
-                    <li><a href="<?php echo G5_URL."/page/mypage/cart.php"; ?>"><img src="img/cart_btn.png" alt="cart"></a></li>   
+                    <li><a href="<?php echo G5_URL."/page/mypage/cart.php"; ?>"><img src="img/cart_btn.png" alt="cart"></a></li>       
                     <li><a href="<?php echo G5_BBS_URL."/register_form.php?w=u"; ?>">정보수정</a></li>
                     <?php }?>
                     <?php if($is_admin || $partner['id'] || $branch['id']){ ?>
@@ -42,8 +42,10 @@ $branch=sql_fetch("select * from `best_branch` where mb_id='".$member['mb_id']."
 				</ul>
 			<?php }else{ ?>
 				<ul>
-                    <li><a href="<?php echo G5_BBS_URL."/login.php"; ?>">로그인</a> </li>                        
+                    
+                    <li><a href="<?php echo G5_BBS_URL."/login.php"; ?>">로그인</a> </li>                                        
                     <li><a href="<?php echo G5_BBS_URL."/register_form.php"; ?>">회원가입</a></li>
+                    <li><a href="<?php echo G5_URL."/page/mypage/cart.php"; ?>"><img src="img/cart_btn.png" alt="cart"></a></li>
                     <li class="last">
                        <select name="laguage" id="laguage">
                            <option value="kor">한국어</option>
@@ -67,10 +69,10 @@ $branch=sql_fetch("select * from `best_branch` where mb_id='".$member['mb_id']."
 				<li>
 				   <a href="<?php echo G5_URL."/page/rent/list.php"; ?>">제품 소개</a>
 				     <ul class="subMenu1">
-                        <li><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=cat02">습식</a></li>
-                        <li><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=cat03">건식</a></li>
-                        <li><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=cat01">간식</a></li>
-                        <li><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=cat04">영양제</a></li>
+                        <li><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=cat02">차량</a></li>
+                        <li><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=cat03">선박</a></li>
+                        <li><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=cat01">집</a></li>
+                        <li><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=cat04">의류</a></li>
                     </ul>
 				</li>
 				<li>
@@ -84,16 +86,16 @@ $branch=sql_fetch("select * from `best_branch` where mb_id='".$member['mb_id']."
 				<li>
 				    <a href="<?php echo G5_URL."/page/rent/list.php"; ?>">트레이닝 센터</a>
                     <ul class="subMenu2">
-                        <li><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=etc04">가축사료</a></li>
-                        <li><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=etc05">관상어사료</a></li>
-                        <li><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=etc05">관상어사료</a></li>
+                        <li><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=etc04">위치지도</a></li>
+                        <li><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=etc05">트레이너</a></li>
+                        <li><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=etc05">트레이너 과정</a></li>
                     </ul>
                 </li>
 				<li>
 				    <a href="<?php echo G5_URL."/page/rent/list.php"; ?>">루틸로 협력점</a>
 				    <ul class="subMenu3">
-						<li><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=etc04">가축사료</a></li>
-				        <li><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=etc05">관상어사료</a></li>
+						<li><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=etc04">가맹문의</a></li>
+				        <li><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=etc05">가맹현황</a></li>
 				    </ul>
                 </li>
 				<li>

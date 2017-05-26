@@ -59,7 +59,7 @@ $best_short=sql_fetch("select * from `best_short`");
 		<div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/main_slide.jpg"; ?>" alt="" /></a></div>
 		<div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/main_slide2.jpg"; ?>" alt="" /></a></div>
 		<div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/main_slide3.jpg"; ?>" alt="" /></a></div>
-		<div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/main_slide4.jpg"; ?>" alt="" /></a></div>
+		<div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/main_slide4.jpg"; ?>" alt="" /></a></div>		
 	<?php
 		}
 	?>
@@ -182,8 +182,7 @@ $best_short=sql_fetch("select * from `best_short`");
 		});
 	});
 	$(function(){
-		var owl1=$("#main_event");
-		var owl2=$("#main_partner");
+		var owl1=$("#main_event");		
 		owl1.owlCarousel({
 			animateOut: 'fadeOut',
 			autoplay:true,
@@ -192,19 +191,10 @@ $best_short=sql_fetch("select * from `best_short`");
 			smartSpeed:2000,
 			loop:true,
 			dots:true,
+            nav:true,
+            navText: [ '', '' ],
 			items:1
-		});
-		owl2.owlCarousel({
-			autoplay:true,
-			navText: [ '', '' ],
-			autoplayTimeout:5000,
-			autoplaySpeed:2000,
-			smartSpeed:2000,
-			loop:true,
-			dots:false,
-			nav:true,
-			items:1
-		});
+		});	
 		setTimeout(function(){main_notice_slide()},5000);
 		var n=0;
 		var main_notice_len=$("#main_notice li").length;
