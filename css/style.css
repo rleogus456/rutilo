@@ -29,7 +29,7 @@ span.bold{font-weight: bold; font-size: 15px;}
 .width-fixed{width:1100px;margin:0 auto;position:relative;}
 .width-small-fixed{width:1100px;margin:0 auto;position:relative;}
 .bg_yellow{background:#ffe34f !important;}
-.bg_darkred{background:#febf0f !important;}
+.bg_darkred{background:#fe1e1e !important;}
 .bg_gray{background:#757575 !important;}
 .btn{vertical-align:middle;display:inline-block;text-align:center;}
 .text-center{text-align:center !important;}
@@ -57,7 +57,7 @@ span.bold{font-weight: bold; font-size: 15px;}
 #header{width:100%;height:128px;z-index:1000;position:absolute;top: 0px}
 #top_header{width:100%;height:33px;text-align:right;font-size:14px; margin-top: 35px}
 #top_header select{width: 100px;background: #fe6262; color: #fff;font-size: 14px;margin-right: 15px}
-#top_header p,#top_header ul,#top_header li{display:inline-block;padding-top: 10px}
+#top_header p,#top_header ul,#top_header li{display:inline-block;padding-top: 13px;padding-right: 10px}
 #top_header p,#top_header li{padding:9px 0;}
 #top_header p{position:relative;padding-left:23px;padding-right:13px;color:#222;}
 #top_header p span{width:16px;height:16px;display:inline-block;background-image:url("../img/top_head_icon.png");background-repeat:no-repeat;background-position:top left;position:absolute;left:0;top:50%;margin-top:-8px;}
@@ -74,12 +74,22 @@ span.bold{font-weight: bold; font-size: 15px;}
 #main_header div > ul > li.last a{padding-right:0;}
 #main_header div > ul > li > a:hover{color:#fe1e1e; background: #fff}
 #main_header div > ul > li:hover > ul{display:block;}
-#main_header div > ul > li:hover > div.menuLine{display: block;}
-#main_header div > ul > li > div.menuLine{display:none;height:3px;background-color: #fff;width:1100px;display:none;position:absolute;top:82px;left:0;}
+#main_header div > ul:hover > div.menuLine{display: block;}
+#main_header div > ul > div.menuLine{display:none;height:3px;background-color: #fff;width:1100px;display:none;position:absolute;top:82px;left:-265px;}
 #main_header div > ul > li > ul{display:none;position:absolute;width:1100px;background-color:#fff;top:82px;left:0;padding:28px 10px 23px 10px;text-align:center;}
 #main_header div > ul > li > ul li a{display:block;padding:9px 0;font-size:14px;color:#696969;}f
 #main_header div > ul > li > ul li a:hover{color:#000;}
-#main_header div > ul > li > ul:before{content:""; width:13px; height:12px; display:block; background-image:url("../img/sub_menu_pop.png"); background-repeat:no-repeat; background-position:top left; position:absolute; top:-12px; left:50%; margin-left:-6px;}
+/*#main_header div > ul > li > ul:before{content:""; width:13px; height:12px; display:block; background-image:url("../img/sub_menu_pop.png"); background-repeat:no-repeat; background-position:top left; position:absolute; top:-12px; left:50%; margin-left:-6px;}*/
+
+#main_header div > ul > li:hover > ul.subMenu1{display:block;}
+#main_header div > ul > li:hover > ul.subMenu2{display:block;}
+#main_header div > ul > li:hover > ul.subMenu3{display:block;}
+
+/*#main_header div > ul > li > ul.subMenu1:before{content:""; width:13px; height:12px; display:block; background-image:url("../img/sub_menu_pop.png"); background-repeat:no-repeat; background-position:top left; position:absolute; top:-12px; left:37%; margin-left:-6px;}*/
+#main_header div > ul > li > ul.subMenu1{display:none;position:absolute;width:1080px;background-color:#fff;top:82px;left:-363px;padding:28px 10px 23px 10px;text-align:center;}
+#main_header div > ul > li > ul.subMenu2{display:none;position:absolute;width:1080px;background-color:#fff;top:82px;left:-717px;padding:28px 10px 23px 10px;text-align:center;}
+#main_header div > ul > li > ul.subMenu3{display:none;position:absolute;width:1080px;background-color:#fff;top:82px;left:-851px;padding:28px 10px 23px 10px;text-align:center;}
+
 .sub_header #top_header{background:#febf0f;}
 .sub_header #top_header p{color:#fff;}
 .sub_header #top_header li a{color:#1e1e1e;}
@@ -194,7 +204,7 @@ span.bold{font-weight: bold; font-size: 15px;}
 #main_partner .owl-next{right:93px;background-image:url("../img/main_partner_next.png");}
 #main_product{padding:0 0 50px 0;/*background-image:url("../img/main_product_bg.jpg");background-position:bottom right;background-attachment:fixed;*/}
 #main_product > div > div{margin-top:80px;}
-#main_product h2{padding:0 0 0px 0;position:relative;margin-bottom:14px;font-size:40px;font-family:'Noto Sans KR';font-weight:normal;text-align:center;}
+#main_product h2{padding:0 0 0px 0;position:relative;margin-bottom:14px;font-size:48px;font-family:'Noto Sans KR';font-weight:normal;text-align:center;}
 #main_product h2:after{content:"";width:68px;height:3px;display:block;position:absolute;left:50%;margin-left:-34px;bottom:60px;background:#fe1e1e;}
 #main_product p{font-size:16px;text-align:center;}
 #main_product p span{color:#87001f;}
@@ -739,8 +749,8 @@ span.bold{font-weight: bold; font-size: 15px;}
     .lg_btn01{width: 100% ; height: auto}
     .width-small-fixed{width:100%}
 	.width-fixed{width:100%;}
-    .wrap{padding:0 20px 20px 20px;}
-	#header{width:100%;height:107px;box-sizing:border-box;border-bottom:4px solid #febf0f;background-repeat:no-repeat;background-position:bottom right;background-size:100% 100%;}
+    .wrap{padding:0;}
+	#header{width:100%;height:107px;box-sizing:border-box;border-bottom:4px solid #fe1e1e;background-repeat:no-repeat;background-position:bottom right;background-size:100% 100%;}
 	#top_header{display:none;}
     #footer{display:none;}
 	#main_header{display:none;}
@@ -908,6 +918,8 @@ span.bold{font-weight: bold; font-size: 15px;}
 	#main_way a{padding:30px 41px 28px 41px;}	
 	#main_way h1{font-size:43px;}
 	#main_way i{width:160px;height:175px;top:-10px;}
+    #main_product .list > div ul li{width: 48%;}
+    
 	.section01_header{padding:16px 0 15px 0;}
 	.section01_header h1{font-size:24px;}
 	.sub_call_banner{height:140px;padding:30px 20px;}
@@ -1171,13 +1183,16 @@ span.bold{font-weight: bold; font-size: 15px;}
 }
 
 @media all and (max-width: 690px){
+    .wrap{padding: 0}
+    #main_banner .menu > div > div {width: 100%}
+    #main_product .list > div ul li{width: 98%;}
     #main_way span.large{font-size: 35px; }
     #main_way span.bgblack{font-size: 25px;}
     #main_way h3{font-size:20px;}
     #mall_buy .price_info table tr td .title h3{margin-left: 0px}
 }
 @media all and (max-width: 480px){
-	.wrap{padding:0 10px 20px 10px;}
+	.wrap{padding:0;}
 	#main_event{margin-bottom:10px;}
 	#main_notice{margin-bottom:10px;}
 	#main_banner .menu > div{margin:-5px;}

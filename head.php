@@ -55,18 +55,18 @@ $branch=sql_fetch("select * from `best_branch` where mb_id='".$member['mb_id']."
 	</div>
 	</div>
 	
-	<div id="main_header">
-		
+	<div id="main_header">		
 		<div class="width-fixed">			
 		<h1><a href="<?php echo G5_URL; ?>"></a></h1>	
 			<ul>
+			<div class="menuLine"></div>
 				<li>
 				    <a href="<?php echo G5_URL."/page/rent/list.php"; ?>">회사소개</a>
-                    <div class="menuLine"></div>
+                    
 				</li>
 				<li>
 				   <a href="<?php echo G5_URL."/page/rent/list.php"; ?>">제품 소개</a>
-				     <ul>
+				     <ul class="subMenu1">
                         <li><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=cat02">습식</a></li>
                         <li><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=cat03">건식</a></li>
                         <li><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=cat01">간식</a></li>
@@ -75,15 +75,15 @@ $branch=sql_fetch("select * from `best_branch` where mb_id='".$member['mb_id']."
 				</li>
 				<li>
                     <a href="<?php echo G5_URL."/page/rent/list.php"; ?>">시공 방법</a>
-                    <div class="menuLine"></div>
+                    
                 </li>
 				<li>
                     <a href="<?php echo G5_URL."/page/rent/list.php"; ?>">디테일링 서비스</a>
-                    <div class="menuLine"></div>
+                    
                 </li>
 				<li>
 				    <a href="<?php echo G5_URL."/page/rent/list.php"; ?>">트레이닝 센터</a>
-                    <ul>
+                    <ul class="subMenu2">
                         <li><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=etc04">가축사료</a></li>
                         <li><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=etc05">관상어사료</a></li>
                         <li><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=etc05">관상어사료</a></li>
@@ -91,14 +91,14 @@ $branch=sql_fetch("select * from `best_branch` where mb_id='".$member['mb_id']."
                 </li>
 				<li>
 				    <a href="<?php echo G5_URL."/page/rent/list.php"; ?>">루틸로 협력점</a>
-				    <ul>
+				    <ul class="subMenu3">
 						<li><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=etc04">가축사료</a></li>
 				        <li><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=etc05">관상어사료</a></li>
 				    </ul>
                 </li>
 				<li>
 					<a href="<?php echo G5_BBS_URL."/board.php?bo_table=notice"; ?>">문의 게시판</a>
-                    <div class="menuLine"></div>
+                    
 				</li>
 			</ul>
 		</div>
