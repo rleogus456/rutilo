@@ -20,7 +20,6 @@ $event_query=sql_query($event_sql);
 while($event_data=sql_fetch_array($event_query)){
 	$event_list[]=$event_data;
 }
-
 $notice_sql="SELECT * FROM `g5_write_notice` order by wr_id desc limit 0,5";
 $notice_query=sql_query($notice_sql);
 while($notice_data=sql_fetch_array($notice_query)){
@@ -70,7 +69,7 @@ $best_short=sql_fetch("select * from `best_short`");
 <!--
 			<div class="menu">
 				<div >
-					<div class="menu1"><div class="bgorange"><a href="<?php echo G5_URL."/page/rent/list.php"; ?>"><?php if($menu1_event['wr_id']){ ?><i class="event"></i><?php } ?><span class="icon"></span><span class="txt"></span></a></div></div>
+				<div class="menu1"><div class="bgorange"><a href="<?php echo G5_URL."/page/rent/list.php"; ?>"><?php if($menu1_event['wr_id']){ ?><i class="event"></i><?php } ?><span class="icon"></span><span class="txt"></span></a></div></div>
 				</div>
 				<div >
 				<div class="menu2"><div class="bgyellow"><a href="<?php echo G5_URL."/page/rent/long.php"; ?>"><?php if($menu2_event['wr_id']){ ?><i class="event"></i><?php } ?><span class="icon"></span><span class="txt"></span></a></div></div>
