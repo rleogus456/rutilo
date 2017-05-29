@@ -745,7 +745,7 @@ span.bold{font-weight: bold; font-size: 15px;}
     .width-small-fixed{width:100%}
 	.width-fixed{width:100%;}
     .wrap{padding:0;}
-	#header{width:100%;height:107px;box-sizing:border-box;border-bottom:4px solid #fe1e1e;background-repeat:no-repeat;background-position:bottom right;background-size:100% 100%;}
+	#header{width:100%;height:107px;box-sizing:border-box;/*border-bottom:4px solid #fe1e1e;*/background-repeat:no-repeat;background-position:bottom right;background-size:100% 100%;}
 	#top_header{display:none;}
     #footer{display:none;}
 	#main_header{display:none;}
