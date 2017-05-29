@@ -20,7 +20,8 @@ $event_query=sql_query($event_sql);
 while($event_data=sql_fetch_array($event_query)){
 	$event_list[]=$event_data;
 }
-$notice_sql="SELECT * FROM  `g5_write_notice` order by wr_id desc limit 0,5";
+
+$notice_sql="SELECT * FROM `g5_write_notice` order by wr_id desc limit 0,5";
 $notice_query=sql_query($notice_sql);
 while($notice_data=sql_fetch_array($notice_query)){
 	$notice_list[]=$notice_data;
