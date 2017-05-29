@@ -79,16 +79,32 @@ span.bold{font-weight: bold; font-size: 15px;}
 #main_header div > ul > li > ul{display:none;position:absolute;width:1100px;background-color:#fff;top:82px;left:0;padding:28px 10px 23px 10px;text-align:center;}
 #main_header div > ul > li > ul li a{display:block;padding:9px 0;font-size:14px;color:#696969;}f
 #main_header div > ul > li > ul li a:hover{color:#000;}
-/*#main_header div > ul > li > ul:before{content:""; width:13px; height:12px; display:block; background-image:url("../img/sub_menu_pop.png"); background-repeat:no-repeat; background-position:top left; position:absolute; top:-12px; left:50%; margin-left:-6px;}*/
 
+#main_header div > ul > li:hover > ul.subMenu1> div.list > li.first{margin-left: 220px}
+#main_header div > ul > li:hover > ul.subMenu1> div.list > li a {width: 80%}
+#main_header div > ul > li:hover > ul.subMenu1> div.list > li{float: left;padding: 0px;}
+#main_header div > ul > li:hover > ul.subMenu1> div.list > li h2{background: #d6d6d6;color:#676767;text-align: left;font-size: 13px;padding: 10px}
+#main_header div > ul > li:hover > ul.subMenu1> div.list > li a:hover > h2{background: #fe1e1e;color:#fff;}
+#main_header div > ul > li:hover > ul.subMenu1> div.list > li a{padding: 0}
+#main_header div > ul > li:hover > ul.subMenu2> div.list > li.first{margin-left: 430px}
+#main_header div > ul > li:hover > ul.subMenu2> div.list > li a {width: 80%}
+#main_header div > ul > li:hover > ul.subMenu2> div.list > li{float: left;padding: 0px;}
+#main_header div > ul > li:hover > ul.subMenu2> div.list > li h2{background: #d6d6d6;color:#676767;text-align: left;font-size: 13px;padding: 10px}
+#main_header div > ul > li:hover > ul.subMenu2> div.list > li a:hover > h2{background: #fe1e1e;color:#fff;}
+#main_header div > ul > li:hover > ul.subMenu2> div.list > li a{padding: 0}
+#main_header div > ul > li:hover > ul.subMenu3> div.list > li.first{margin-left: 650px}
+#main_header div > ul > li:hover > ul.subMenu3> div.list > li a {width: 80%}
+#main_header div > ul > li:hover > ul.subMenu3> div.list > li{float: left;padding: 0px;}
+#main_header div > ul > li:hover > ul.subMenu3> div.list > li h2{background: #d6d6d6;color:#676767;text-align: left;font-size: 13px;padding: 10px}
+#main_header div > ul > li:hover > ul.subMenu3> div.list > li a:hover > h2{background: #fe1e1e;color:#fff;}
+#main_header div > ul > li:hover > ul.subMenu3> div.list > li a{padding: 0}
 #main_header div > ul > li:hover > ul.subMenu1{display:block;}
 #main_header div > ul > li:hover > ul.subMenu2{display:block;}
 #main_header div > ul > li:hover > ul.subMenu3{display:block;}
 
-/*#main_header div > ul > li > ul.subMenu1:before{content:""; width:13px; height:12px; display:block; background-image:url("../img/sub_menu_pop.png"); background-repeat:no-repeat; background-position:top left; position:absolute; top:-12px; left:37%; margin-left:-6px;}*/
-#main_header div > ul > li > ul.subMenu1{display:none;position:absolute;width:1080px;background-color:#fff;top:82px;left:-363px;padding:28px 10px 23px 10px;text-align:center;}
-#main_header div > ul > li > ul.subMenu2{display:none;position:absolute;width:1080px;background-color:#fff;top:82px;left:-717px;padding:28px 10px 23px 10px;text-align:center;}
-#main_header div > ul > li > ul.subMenu3{display:none;position:absolute;width:1080px;background-color:#fff;top:82px;left:-851px;padding:28px 10px 23px 10px;text-align:center;}
+#main_header div > ul > li > ul.subMenu1{display:none;position:absolute;width:1080px;background-color:#fff;top:82px;left:-363px;padding:28px 10px 23px 10px;text-align:center;border-bottom: 2px solid #fe1e1e}
+#main_header div > ul > li > ul.subMenu2{display:none;position:absolute;width:1080px;background-color:#fff;top:82px;left:-717px;padding:28px 10px 23px 10px;text-align:center;border-bottom: 2px solid #fe1e1e}
+#main_header div > ul > li > ul.subMenu3{display:none;position:absolute;width:1080px;background-color:#fff;top:82px;left:-851px;padding:28px 10px 23px 10px;text-align:center;border-bottom: 2px solid #fe1e1e}
 
 .sub_header #top_header{background:#febf0f;}
 .sub_header #top_header p{color:#fff;}
@@ -133,9 +149,9 @@ span.bold{font-weight: bold; font-size: 15px;}
 #footer ul.footerMenu > li > ul li a{font-weight: normal;}
 #footer ul.footerMenu > li > ul li:after{content: none;}
 #footer ul.footerMenu > li  a {color: #fff}
-#footer ul.footerMenu > li  a:hover{color: #000}
+#footer ul.footerMenu > li  a:hover{color: #980101}
 #footer ul.footerMenu > li > ul li a {color: #fff}
-#footer ul.footerMenu > li > ul li a:hover {color: #000}
+#footer ul.footerMenu > li > ul li a:hover {color: #980101}
 #footer{height:134px;padding-top:23px;box-sizing:border-box;}
 #footer ul{margin-bottom:10px;text-align: right;    margin-bottom: 10px;text-align: right; position: absolute;right: 0px;  top: 105px}
 #footer ul li{display:inline-block;font-size:14px;letter-spacing:-0.05em;}

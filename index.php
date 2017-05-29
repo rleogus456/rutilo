@@ -7,7 +7,6 @@ if ($config['cf_include_index'] && is_file(G5_PATH.'/'.$config['cf_include_index
     include_once(G5_PATH.'/'.$config['cf_include_index']);
     return; // 이 코드의 아래는 실행을 하지 않습니다.
 }
-
 if (G5_IS_MOBILE) {
     include_once(G5_MOBILE_PATH.'/index.php');
     return;
@@ -116,7 +115,7 @@ $best_short=sql_fetch("select * from `best_short`");
                     <?php for($i=0;$i<5;$i++){ ?>
                     <li>
                        <a href="#">
-                        <div class="img"><div><div><img src="img/intro_logo.png" alt=""></div></div></div>
+                        <div class="img"><div><div><img src="img/mobile_logo.png" alt=""></div></div></div>
                         <div class="txt">									
                         <h4>루틸로 101</h4>									
                         <h3>프리미엄 자동차표면 코팅제 all in one(일반용)</h3>	                    							
@@ -193,7 +192,7 @@ $best_short=sql_fetch("select * from `best_short`");
 			dots:true,
             nav:true,
             navText: [ '', '' ],
-			items:1
+            items:1
 		});	
 		setTimeout(function(){main_notice_slide()},5000);
 		var n=0;
