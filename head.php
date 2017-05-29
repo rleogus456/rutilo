@@ -41,8 +41,7 @@ $branch=sql_fetch("select * from `best_branch` where mb_id='".$member['mb_id']."
                     <li class="last"><a href="<?php echo G5_BBS_URL."/logout.php"; ?>">로그아웃</a></li>
 				</ul>
 			<?php }else{ ?>
-				<ul>
-                    
+				<ul>                    
                     <li><a href="<?php echo G5_BBS_URL."/login.php"; ?>">로그인</a> </li>                                        
                     <li><a href="<?php echo G5_BBS_URL."/register_form.php"; ?>">회원가입</a></li>
                     <li><a href="<?php echo G5_URL."/page/mypage/cart.php"; ?>"><img src="img/cart_btn.png" alt="cart"></a></li>
@@ -63,8 +62,7 @@ $branch=sql_fetch("select * from `best_branch` where mb_id='".$member['mb_id']."
 			<ul>
 			<div class="menuLine"></div>
 				<li>
-				    <a href="<?php echo G5_URL."/page/rent/list.php"; ?>">회사소개</a>
-                    
+				    <a href="<?php echo G5_URL."/page/rent/list.php"; ?>">회사소개</a>                    
 				</li>
 				<li>
 				   <a href="<?php echo G5_URL."/page/rent/list.php"; ?>">제품 소개</a>                     
@@ -75,16 +73,13 @@ $branch=sql_fetch("select * from `best_branch` where mb_id='".$member['mb_id']."
                         <li><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=cat01"><img src="img/menuImg3.jpg" alt=""><h2>집</h2></a></li>
                         <li><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=cat04"><img src="img/menuImg4.jpg" alt=""><h2>의류</h2></a></li>
                         </div>
-                    </ul>
-                    
+                    </ul>                    
 				</li>
 				<li>
-                    <a href="<?php echo G5_URL."/page/rent/list.php"; ?>">시공 방법</a>
-                    
+                    <a href="<?php echo G5_URL."/page/rent/list.php"; ?>">시공 방법</a>                    
                 </li>
 				<li>
-                    <a href="<?php echo G5_URL."/page/rent/list.php"; ?>">디테일링 서비스</a>
-                    
+                    <a href="<?php echo G5_URL."/page/rent/list.php"; ?>">디테일링 서비스</a>                    
                 </li>
 				<li>
 				    <a href="<?php echo G5_URL."/page/rent/list.php"; ?>">트레이닝 센터</a>
@@ -106,8 +101,7 @@ $branch=sql_fetch("select * from `best_branch` where mb_id='".$member['mb_id']."
 				    </ul>
                 </li>
 				<li>
-					<a href="<?php echo G5_BBS_URL."/board.php?bo_table=notice"; ?>">문의 게시판</a>
-                    
+					<a href="<?php echo G5_BBS_URL."/board.php?bo_table=notice"; ?>">문의 게시판</a>                    
 				</li>
 			</ul>
 		</div>
