@@ -149,7 +149,7 @@ span.bold{font-weight: bold; font-size: 15px;}
 #footer ul.footerMenu > li > ul li a{font-weight: normal;}
 #footer ul.footerMenu > li > ul li:after{content: none;}
 #footer ul.footerMenu > li  a {color: #fff}
-#footer ul.footerMenu > li  a:hover{color: #980101}
+#footer ul.footerMenu > li  a:hover{color: #980101;font-weight:bold}
 #footer ul.footerMenu > li > ul li a {color: #fff}
 #footer ul.footerMenu > li > ul li a:hover {color: #980101}
 #footer{height:134px;padding-top:23px;box-sizing:border-box;}
