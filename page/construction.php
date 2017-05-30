@@ -73,10 +73,9 @@ $(function(){
 			autoplayTimeout:5000,
 			autoplaySpeed:2000,
 			smartSpeed:2000,
-			loop:true,
-			dots:true,
+			loop:false,
+			dots:false,
             nav:true,
-            navText: [ '', '' ],
             items:1
 		});	
 		setTimeout(function(){main_notice_slide()},5000);
