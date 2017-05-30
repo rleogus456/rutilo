@@ -52,30 +52,31 @@ span.bold{font-weight: bold; font-size: 15px;}
 /* 준비중 페이지 */
 
 /* 헤더 */
-.backRed{background: #fe1e1e;width: 1100px;margin: 0 auto;height: 115px;}
-.backRed2{background: #fe1e1e;margin: 0 auto;height: 312px;}
+.backRed{background: #f2f2f2;width: 1100px;margin: 0 auto;height: 115px;}
+.imgBack{background: #fe1e1e;width: 255px;height: 115px;position: absolute;top:-33px}
+.backRed2{background: #f2f2f2;margin: 0 auto;height: 312px;}
 #header{width:100%;height:128px;z-index:1000;position:absolute;top: 0px}
-#top_header{width:100%;height:33px;text-align:right;font-size:14px; margin-top: 35px}
-#top_header select{width: 100px;background: #fe6262; color: #fff;font-size: 14px;margin-right: 15px}
+#top_header{width:100%;height:33px;text-align:right;font-size:14px;margin-top: 33px}
+#top_header select{width: 100px;background: #f2f2f2; color: #fe1e1e;font-size: 14px;margin-right: 15px}
 #top_header p,#top_header ul,#top_header li{display:inline-block;padding-top: 13px;padding-right: 10px}
-#top_header p,#top_header li{padding:9px 0;}
+
 #top_header p{position:relative;padding-left:23px;padding-right:13px;color:#222;}
 #top_header p span{width:16px;height:16px;display:inline-block;background-image:url("../img/top_head_icon.png");background-repeat:no-repeat;background-position:top left;position:absolute;left:0;top:50%;margin-top:-8px;}
-#top_header li a{color:#fff;padding-right:3px;}
+#top_header li a{color:#fe1e1e;padding-right:3px;}
 #top_header li a:after{margin-left:6px;}
 #top_header li.last a{padding-right:0;}
 #top_header li.last a:after{content:"";margin-left:0;}
 #main_header{position:relative;}
-#main_header h1{position:absolute;left:34px;top:0px;width:197px;height:69px;background-image:url("../img/mobile_logo.png");background-size: cover;background-repeat:no-repeat;background-position:top left;}
+#main_header h1{position:absolute;left:34px;top:23px;width:197px;height:69px;background-image:url("../img/mobile_logo.png");background-size: cover;background-repeat:no-repeat;background-position:top left;}
 #main_header h1 a{display:block;width:100%;height:100%;}
 #main_header div > ul{position:absolute;right:0;}
 #main_header div > ul > li{display:inline-block;position:relative;}
-#main_header div > ul > li > a{display:block;padding:15px;margin-top: 32px; font-weight:600;font-size:17px;color:#fff;}
+#main_header div > ul > li > a{display:block;padding:15px;margin-top: 32px; font-weight:600;font-size:17px;color:#fe1e1e;}
 #main_header div > ul > li.last a{padding-right:0;}
-#main_header div > ul > li > a:hover{color:#fe1e1e; background: #fff}
+#main_header div > ul > li > a:hover{color:#fe1e1e; background: #d4d4d4}
 #main_header div > ul > li:hover > ul{display:block;}
 #main_header div > ul:hover > div.menuLine{display: block;}
-#main_header div > ul > div.menuLine{display:none;height:3px;background-color: #fff;width:1100px;display:none;position:absolute;top:82px;left:-265px;}
+#main_header div > ul > div.menuLine{display:none;height:3px;background-color: #d4d4d4;width:1100px;display:none;position:absolute;top:82px;left:-265px;}
 #main_header div > ul > li > ul{display:none;position:absolute;width:1100px;background-color:#fff;top:82px;left:0;padding:28px 10px 23px 10px;text-align:center;}
 #main_header div > ul > li > ul li a{display:block;padding:9px 0;font-size:14px;color:#696969;}f
 #main_header div > ul > li > ul li a:hover{color:#000;}
@@ -106,13 +107,12 @@ span.bold{font-weight: bold; font-size: 15px;}
 #main_header div > ul > li > ul.subMenu2{display:none;position:absolute;width:1080px;background-color:#fff;top:82px;left:-717px;padding:28px 10px 23px 10px;text-align:center;border-bottom: 2px solid #fe1e1e}
 #main_header div > ul > li > ul.subMenu3{display:none;position:absolute;width:1080px;background-color:#fff;top:82px;left:-851px;padding:28px 10px 23px 10px;text-align:center;border-bottom: 2px solid #fe1e1e}
 
-.sub_header #top_header{background:#febf0f;}
 .sub_header #top_header p{color:#fff;}
 .sub_header #top_header li a{color:#1e1e1e;}
 .sub_header #main_header{background-repeat:no-repeat;background-position:bottom left;}
 .sub_header #main_header h1{background-image:url("../img/mobile_logo.png");background-size: cover;}
 .sub_header #main_header div > ul > li > a{color:black;}
-.sub_header #main_header div > ul > li > a:hover{color:#febf0f;}
+.sub_header #main_header div > ul > li > a:hover{color:#fe1e1e;}
 #mobile_header{display:none;}
 #mobile_header h1 a{display:inline-block;width:100%;height:100%;box-sizing:border-box;}
 #mobile_header h1 span{display:block;width:100%;height:100%;background-image:url("../img/mobile_logo.png");background-repeat:no-repeat;background-position:center;background-size:100% 100%;}
@@ -142,31 +142,94 @@ span.bold{font-weight: bold; font-size: 15px;}
 /*.footerarea{background-color: #fe1e1e;}*/
 #footer  .footerMenu{position: absolute;top: 42px;}
 #footer ul.footerMenu li{font-weight:bold}
-#footer ul.footerMenu li.first:before{content:"|";color:#fff;margin-left:12px;margin-right:12px;}
-#footer ul.footerMenu li:after{content:"|";color:#fff;margin-left:12px;margin-right:12px;}
+#footer ul.footerMenu li.first:before{content:"|";color:#595959;margin-left:12px;margin-right:12px;}
+#footer ul.footerMenu li:after{content:"|";color:#595959;margin-left:12px;margin-right:12px;}
 #footer ul.footerMenu > li > ul {    position: absolute;    display: block;    top: 26px;    right: initial;}
 #footer ul.footerMenu > li > ul li{display: block;line-height: 22px;text-align: left;}
 #footer ul.footerMenu > li > ul li a{font-weight: normal;}
 #footer ul.footerMenu > li > ul li:after{content: none;}
-#footer ul.footerMenu > li  a {color: #fff}
-#footer ul.footerMenu > li  a:hover{color: #980101;font-weight:bold}
-#footer ul.footerMenu > li > ul li a {color: #fff}
-#footer ul.footerMenu > li > ul li a:hover {color: #980101}
+#footer ul.footerMenu > li  a {color: #595959;font-weight: bold}
+#footer ul.footerMenu > li  a:hover{color: #898989;font-weight:bold}
+#footer ul.footerMenu > li > ul li a {color: #898989}
+
 #footer{height:134px;padding-top:23px;box-sizing:border-box;}
 #footer ul{margin-bottom:10px;text-align: right;    margin-bottom: 10px;text-align: right; position: absolute;right: 0px;  top: 105px}
 #footer ul li{display:inline-block;font-size:14px;letter-spacing:-0.05em;}
 #footer ul li.first:before{content:"|";color:#e0e0e0;margin-left:12px;margin-right:12px;}
-#footer ul li:after{content:"|";color:#e0e0e0;margin-left:12px;margin-right:12px;}
-#footer ul li a{color:#980101;font-weight: bold}
-#footer ul li.last a{color:#fff}
+#footer ul li:after{content:"|";color:#595959;margin-left:12px;margin-right:12px;}
+#footer ul li a{color:#fe1e1e;font-weight: bold}
+#footer ul li.last a{color:#595959}
 /*#footer ul li.last:after{content:"";}*/
-#footer ul li a:hover{color:#fff;}
-#footer p{font-size:14px;color:#fff;position: absolute;line-height: 20px;left: 170px;top: 16px;border-top: 1px solid #fff;padding-top: 10px;letter-spacing: -1px}
-#footer.sub_footer{background:#fff;border-top:1px solid #ddd;margin-top:45px;}
+#footer ul li a:hover{color:#898989;}
+#footer p{font-size:14px;color:#595959;position: absolute;line-height: 20px;left: 170px;top: 16px;border-top: 1px solid #fe1e1e;padding-top: 10px;letter-spacing: -1px}
+#footer.sub_footer{background:#f2f2f2;border-top:1px solid #ddd;margin-top:45px;}
 #footer h1{position: absolute;left: 34px;top: 24px;width: 197px;height: 69px;background-image: url(../img/tailLogo.png); background-repeat: no-repeat;  background-position: top left;}
 /* 푸터 */
 
 /* 메인 */
+
+.section03 > header h4{padding:0 0 0px 0;position:relative;margin-bottom:14px;font-size:45px;font-family:'Noto Sans KR';font-weight:normal;text-align:center;}
+.section03 > header h4:after{content:"";width:30px;height:3px;display:block;position:absolute;left:50%;margin-left:-15px;margin-bottom: 20px;bottom:60px;background:#fe1e1e;}
+.section03 > header{padding:40px 0;}
+.section03 > header p {color: #8d8d8d;font-size: 18px;margin-bottom: 20px;text-align: center}
+.section03{color:#444;letter-spacing:-0.05em;margin-bottom:100px;}
+
+.section03 > header h3{font-size:20px;text-align:center;color:#666;font-weight:400;margin-top:20px}
+.section03 > article h3{font-size:24px;font-family:"Nanum Gothic",'NanumGothic';font-weight:normal;margin-bottom:30px;text-align: center}
+.section03 > article h4{font-size:36px;font-family:"Nanum Gothic", "NanumGothic";font-weight:normal;text-align: center;margin-top:30px;color:#373737}
+.section03 > article h4.intro{font-size:30px;font-family:"Nanum Gothic",'NanumGothic';font-weight:bold;text-align: left;margin-top:30px;color:#fe1e1e}
+.section03 > article h5{font-size:16px;font-family:"Nanum Gothic",'NanumGothic';font-weight:bold;margin-top:30px;text-align:left;color:#7580a5 }
+.section03 > article h6{font-size:30px;font-family:"Nanum Gothic", "NanumGothic";font-weight:bold;margin-top:30px;text-align:left;color:#444d6c }
+.section03 > article p{margin:10px 0;color:#373737;font-size:16px;line-height:22px;font-family:"Nanum Gothic","NanumGothic";text-align:left;}
+.section03 > article p.conP{margin:10px 0;color:#373737;font-size:20px;line-height:22px;font-family:"Nanum Gothic","NanumGothic";text-align:left; margin-bottom: 35px}
+.section03 > article .large{font-size:22px;font-weight:bold;color:#1e1e1e; margin: 10px 15px 10px 0}
+.section03 > article > .introImg{border-top: 2px solid #fe1e1e; padding-top: 10px}
+.section03 > article > .introDiv2{position: absolute;right: 35px;top: 40%;}
+
+.section03 article.trainer{border-top: 2px solid #fe1e1e; padding-top: 50px;}
+.section03 article.trainer > div ul{width:100%;text-align:center;font-size:0;}
+.section03 article.trainer > div ul li{width:19%;box-sizing:border-box;display:inline-block;transition: all .2s ease-in-out;margin: 0 5px 10px 5px;border: 2px solid #cdcdcd;padding: 10px}
+.section03 article.trainer > div ul li a{display:block;width:100%;height:100%;position:relative;}
+.section03 article.trainer > div ul li a > span{position:absolute;top:0;left:0;width:55px;height:55px;display:block;background:#87001f;color:#fff;font-size:20px;text-align:center;padding:15px 0;box-sizing:border-box;z-index:2;}
+.section03 article.trainer > div ul li a .img{width:100%;height:207px;overflow:hidden;}
+.section03 article.trainer > div ul li a .img > div{width:100%;height:100%;z-index:1;display:table;table-layout:fixed;}
+.section03 article.trainer > div ul li a .img > div > div{display:table-cell;width:100%;text-align:center;vertical-align:middle;}
+.section03 article.trainer > div ul li a .img > div > div img{width:auto;max-width:100%;max-height:120%;transition: all .2s ease-in-out;margin:0 auto;}
+.section03 article.trainer > div ul li a:hover .img img{ transform: scale(1.12); }
+.section03 article.trainer > div ul li a .txt{padding:0px 0 15px 0;text-align: left;letter-spacing:-0.05em;box-sizing:border-box;}
+.section03 article.trainer > div ul li a .txt h2{font-family:"Malgun Gothic","MalgunGothic","맑은고딕","Nanum Gothic";font-weight:normal;font-size:22px;padding-bottom: 5px;color: #595959;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;}
+.section03 article.trainer > div ul li a .txt h4{font-family:"Malgun Gothic","MalgunGothic","맑은고딕","Nanum Gothic";font-weight:normal;font-size:19px;background:#fe1e1e;color: #fff;;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;}
+.section03 article.trainer > div ul li a .txt h4:hover{background: #d81a1a}
+.section03 article.trainer > div ul li a .txt h3{text-align: left;margin: 0;padding-bottom: 5px;font-family:"Malgun Gothic","MalgunGothic","맑은고딕","Nanum Gothic";font-weight:normal;font-size:17px;color:#8d8d8d;letter-spacing:-0.5px;}
+
+.section03 article.product{display:block;width:100%;margin-top:43px;}
+.section03 article.product p{color: #8d8d8d;font-size: 18px;margin-bottom: 20px}
+.section03 article.product > div ul{width:100%;text-align:center;font-size:0;}
+.section03 article.product > div ul li{width:19%;box-sizing:border-box;display:inline-block;transition: all .2s ease-in-out;margin: 0 5px 10px 5px}
+.section03 article.product > div ul li a{display:block;width:100%;height:100%;position:relative;}
+.section03 article.product > div ul li a > span{position:absolute;top:0;left:0;width:55px;height:55px;display:block;background:#87001f;color:#fff;font-size:20px;text-align:center;padding:15px 0;box-sizing:border-box;z-index:2;}
+.section03 article.product > div ul li a .img{width:100%;height:207px;overflow:hidden;}
+.section03 article.product > div ul li a .img > div{width:100%;height:100%;z-index:1;display:table;table-layout:fixed;}
+.section03 article.product > div ul li a .img > div > div{display:table-cell;width:100%;text-align:center;vertical-align:middle;}
+.section03 article.product > div ul li a .img > div > div img{width:auto;max-width:100%;max-height:120%;transition: all .2s ease-in-out;margin:0 auto;}
+.section03 article.product > div ul li a:hover .img img{ transform: scale(1.12); }
+.section03 article.product > div ul li a .txt{padding:0px 0 15px 0;text-align:center;letter-spacing:-0.05em;box-sizing:border-box;}
+.section03 article.product > div ul li a .txt h2{font-family:"Malgun Gothic","MalgunGothic","맑은고딕","Nanum Gothic";font-weight:normal;border-bottom: 1px solid #fe1e1e;font-size:30px;color: #595959;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;}
+.section03 article.product > div ul li a .txt h4{font-family:"Malgun Gothic","MalgunGothic","맑은고딕","Nanum Gothic";font-weight:normal;font-size:20px;background:#fe1e1e;color: #fff;;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;}
+.section03 article.product > div ul li a .txt h4:hover{background: #d81a1a}
+.section03 article.product > div ul li a .txt h3{font-family:"Malgun Gothic","MalgunGothic","맑은고딕","Nanum Gothic";font-weight:normal;font-size:19px;color:#8d8d8d;letter-spacing:-0.5px;padding-bottom: 5px}
+.section03 article.product > div ul li a .txt h5{font-family:"Malgun Gothic","MalgunGothic","맑은고딕","Nanum Gothic";font-weight:normal;font-size:16px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;letter-spacing:-0.05em;color:#888;text-decoration:line-through;margin-top:5px;}
+.section03 article.product > div ul li a .txt h6{font-family:"Malgun Gothic","MalgunGothic","맑은고딕","Nanum Gothic";font-weight:normal;font-size:16px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;letter-spacing:-0.05em;color:#888;margin-top:5px;}
+
+.section03 article.construction{display:table;width:100%;}
+.section03 article.construction h1{margin-top: 10px;font-weight: 500}
+.section03 article.construction{width:100%;float:left;display:inline-block;padding: 30px 0;}
+.section03 article.construction > div{margin:-8px;}
+.section03 article.construction > div > div{width:33.3%;padding:8px;box-sizing:border-box;display:inline-block;float:left;}
+.section03 article.construction > div > div > div{width:100%;height:157px;background:#fff;border-radius:10px;position:relative;}
+.section03 article.construction > div > div > div > a{display:block;width:100%;height:100%;}
+.section03 article.construction > div > div > div span{display:block;position:absolute;}
+.section03 article.construction > div > div > p.videoText{color: #bbb;font-size: 13px;margin-top: 3px}
 .container{width:100%;min-height:100%;box-sizing:border-box;padding-top:128px;margin-top:-128px;position:relative;margin-bottom:-135px;padding-bottom:135px;}
 .container.sub{margin-bottom:-180px;padding-bottom:180px;}
 #main_event{position:relative;margin-bottom:20px;}
@@ -193,14 +256,13 @@ span.bold{font-weight: bold; font-size: 15px;}
 #main_banner .menu > div > div > div.bgyellow{background-color: #ffe34f}
 #main_banner .menu > div > div > div > a{display:block;width:100%;height:100%;}
 #main_banner .menu > div > div > div span{display:block;position:absolute;}
-
 #main_banner .menu > div > div > p.videoText{color: #bbb;font-size: 13px;margin-top: 3px}
 #main_banner .call{width:375px;height:330px;background:#fff;border-radius:10px;float:left;display:inline-block;margin-left:9px;letter-spacing:-0.05em;font-family:nbgr;text-align:center;position:relative;}
 #main_partner{margin-top:7px;position:relative;}
 #main_product{padding:0 0 50px 0;}
 #main_product > div > div{margin-top:80px;}
 #main_product h2{padding:0 0 0px 0;position:relative;margin-bottom:14px;font-size:48px;font-family:'Noto Sans KR';font-weight:normal;text-align:center;}
-#main_product h2:after{content:"";width:68px;height:3px;display:block;position:absolute;left:50%;margin-left:-34px;bottom:60px;background:#fe1e1e;}
+#main_product h2:after{content:"";width:30px;height:3px;display:block;position:absolute;left:50%;margin-left:-15px;margin-bottom: 20px;bottom:60px;background:#fe1e1e;}
 #main_product p{font-size:16px;text-align:center;}
 #main_product p span{color:#87001f;}
 #main_product .list{display:block;width:100%;margin-top:43px;}
@@ -215,9 +277,10 @@ span.bold{font-weight: bold; font-size: 15px;}
 #main_product .list > div ul li a .img > div > div img{width:auto;max-width:100%;max-height:120%;transition: all .2s ease-in-out;margin:0 auto;}
 #main_product .list > div ul li a:hover .img img{ transform: scale(1.12); }
 #main_product .list > div ul li a .txt{padding:0px 0 15px 0;text-align:center;letter-spacing:-0.05em;box-sizing:border-box;}
-#main_product .list > div ul li a .txt h4{font-family:"Malgun Gothic","MalgunGothic","맑은고딕","Nanum Gothic";font-weight:normal;font-size:30px;background:#fe1e1e;color: #fff;;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;}
+#main_product .list > div ul li a .txt h2{font-family:"Malgun Gothic","MalgunGothic","맑은고딕","Nanum Gothic";font-weight:normal;border-bottom: 1px solid #fe1e1e;font-size:30px;color: #595959;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;}
+#main_product .list > div ul li a .txt h4{font-family:"Malgun Gothic","MalgunGothic","맑은고딕","Nanum Gothic";font-weight:normal;font-size:20px;background:#fe1e1e;color: #fff;;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;}
 #main_product .list > div ul li a .txt h4:hover{background: #d81a1a}
-#main_product .list > div ul li a .txt h3{font-family:"Malgun Gothic","MalgunGothic","맑은고딕","Nanum Gothic";font-weight:normal;font-size:19px;color:#8d8d8d;letter-spacing:-0.5px;}
+#main_product .list > div ul li a .txt h3{font-family:"Malgun Gothic","MalgunGothic","맑은고딕","Nanum Gothic";font-weight:normal;font-size:19px;color:#8d8d8d;letter-spacing:-0.5px;padding-bottom: 5px}
 #main_product .list > div ul li a .txt h5{font-family:"Malgun Gothic","MalgunGothic","맑은고딕","Nanum Gothic";font-weight:normal;font-size:16px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;letter-spacing:-0.05em;color:#888;text-decoration:line-through;margin-top:5px;}
 #main_product .list > div ul li a .txt h6{font-family:"Malgun Gothic","MalgunGothic","맑은고딕","Nanum Gothic";font-weight:normal;font-size:16px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;letter-spacing:-0.05em;color:#888;margin-top:5px;}
 /* 메인 */

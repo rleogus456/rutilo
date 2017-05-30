@@ -32,7 +32,7 @@ $branch=sql_fetch("select * from `best_branch` where mb_id='".$member['mb_id']."
 				<p><span></span><?php echo $member['mb_name']; ?> 님 (<?php echo number_format($member['mb_point']); ?>p)</p>
 				<ul>                   
                     <?php if(!$is_admin){ ?>
-                    <li><a href="<?php echo G5_URL."/page/mypage/cart.php"; ?>"><img src="img/cart_btn.png" alt="cart"></a></li>       
+                    <li><a href="<?php echo G5_URL."/page/mypage/cart.php"; ?>"><img src="./img/cart_btn.png" alt="cart"></a></li>       
                     <li><a href="<?php echo G5_BBS_URL."/register_form.php?w=u"; ?>">정보수정</a></li>
                     <?php }?>
                     <?php if($is_admin || $partner['id'] || $branch['id']){ ?>
@@ -44,7 +44,7 @@ $branch=sql_fetch("select * from `best_branch` where mb_id='".$member['mb_id']."
 				<ul>                    
                     <li><a href="<?php echo G5_BBS_URL."/login.php"; ?>">로그인</a> </li>                                        
                     <li><a href="<?php echo G5_BBS_URL."/register_form.php"; ?>">회원가입</a></li>
-                    <li><a href="<?php echo G5_URL."/page/mypage/cart.php"; ?>"><img src="img/cart_btn.png" alt="cart"></a></li>
+                    <li><a href="<?php echo G5_URL."/page/mypage/cart.php"; ?>"><img src="<?php echo G5_IMG_URL."/cart_btn.png";?>" alt="cart"></a></li>
                     <li class="last">
                        <select name="laguage" id="laguage">
                            <option value="kor">한국어</option>
@@ -58,36 +58,36 @@ $branch=sql_fetch("select * from `best_branch` where mb_id='".$member['mb_id']."
 	
 	<div id="main_header">		
 		<div class="width-fixed">			
-		<h1><a href="<?php echo G5_URL; ?>"></a></h1>	
+		<div class="imgBack"><h1><a href="<?php echo G5_URL; ?>"></a></h1></div>
 			<ul>
 			<div class="menuLine"></div>
 				<li>
-				    <a href="<?php echo G5_URL."/page/rent/list.php"; ?>">회사소개</a>                    
+				    <a href="<?php echo G5_URL."/page/intro.php"; ?>">회사소개</a>                    
 				</li>
 				<li>
-				   <a href="<?php echo G5_URL."/page/rent/list.php"; ?>">제품 소개</a>                     
+				   <a href="<?php echo G5_URL."/page/product.php"; ?>">제품 소개</a>                     
 				     <ul class="subMenu1">
                        <div class="list">
-                        <li class="first"><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=cat02"><img src="img/menuImg1.jpg" alt=""><h2>차량</h2></a></li>
-                        <li><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=cat03"><img src="img/menuImg2.jpg" alt=""><h2>선박</h2></a></li>
-                        <li><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=cat01"><img src="img/menuImg3.jpg" alt=""><h2>집</h2></a></li>
-                        <li><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=cat04"><img src="img/menuImg4.jpg" alt=""><h2>의류</h2></a></li>
+                        <li class="first"><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=cat02"><img src="<?php echo G5_IMG_URL."/menuImg1.jpg"?>" alt=""><h2>차량</h2></a></li>
+                        <li><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=cat03"><img src="<?php echo G5_IMG_URL."/menuImg2.jpg"?>" alt=""><h2>선박</h2></a></li>
+                        <li><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=cat01"><img src="<?php echo G5_IMG_URL."/menuImg3.jpg"?>" alt=""><h2>집</h2></a></li>
+                        <li><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=cat04"><img src="<?php echo G5_IMG_URL."/menuImg4.jpg"?>" alt=""><h2>의류</h2></a></li>
                         </div>
                     </ul>                    
 				</li>
 				<li>
-                    <a href="<?php echo G5_URL."/page/rent/list.php"; ?>">시공 방법</a>                    
+                    <a href="<?php echo G5_URL."/page/construction.php"; ?>">시공 방법</a>                    
                 </li>
 				<li>
                     <a href="<?php echo G5_URL."/page/rent/list.php"; ?>">디테일링 서비스</a>                    
                 </li>
 				<li>
-				    <a href="<?php echo G5_URL."/page/rent/list.php"; ?>">트레이닝 센터</a>
+				    <a href="<?php echo G5_URL."/page/trainer.php"; ?>">트레이닝 센터</a>
                     <ul class="subMenu2">
                         <div class="list">
-                        <li class="first"><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=etc04"><img src="img/menuImg1.jpg" alt=""><h2>위치지도</h2></a></li>
-                        <li><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=etc05"><img src="img/menuImg1.jpg" alt=""><h2>트레이너</h2></a></li>
-                        <li><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=etc05"><img src="img/menuImg1.jpg" alt=""><h2>트레이너 과정</h2></a></li>
+                        <li class="first"><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=etc04"><img src=<?php echo G5_IMG_URL."/menuImg1.jpg"?> alt=""><h2>위치지도</h2></a></li>
+                        <li><a href="<?=G5_URL?>/page/trainer.php"><img src="<?php echo G5_IMG_URL."/menuImg1.jpg"?>" alt=""><h2>트레이너</h2></a></li>
+                        <li><a href="<?=G5_URL?>/page/trainingCourse.php"><img src="<?php echo G5_IMG_URL."/menuImg1.jpg"?>" alt=""><h2>트레이너 과정</h2></a></li>
                         </div>
                     </ul>
                 </li>
@@ -95,8 +95,8 @@ $branch=sql_fetch("select * from `best_branch` where mb_id='".$member['mb_id']."
 				    <a href="<?php echo G5_URL."/page/rent/list.php"; ?>">루틸로 협력점</a>
 				    <ul class="subMenu3">
 				        <div class="list">
-						<li class="first"><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=etc04"><img src="img/menuImg1.jpg" alt=""><h2>가맹문의</h2></a></li>
-				        <li><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=etc05"><img src="img/menuImg1.jpg" alt=""><h2>가맹현황</h2></a></li>
+						<li class="first"><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=etc04"><img src="<?php echo G5_IMG_URL."/menuImg1.jpg"?>" alt=""><h2>가맹문의</h2></a></li>
+				        <li><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=etc05"><img src="<?php echo G5_IMG_URL."/menuImg1.jpg"?>" alt=""><h2>가맹현황</h2></a></li>
                         </div>
 				    </ul>
                 </li>

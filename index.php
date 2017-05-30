@@ -117,8 +117,9 @@ $best_short=sql_fetch("select * from `best_short`");
                        <a href="#">
                         <div class="img"><div><div><img src="img/mobile_logo.png" alt=""></div></div></div>
                         <div class="txt">									
-                        <h4>루틸로 101</h4>									
-                        <h3>프리미엄 자동차표면 코팅제 all in one(일반용)</h3>	                    							
+                        <h2>루틸로 101</h2>									
+                        <h3>프리미엄 자동차표면 코팅제 all in one(일반용)</h3>	      
+                        <h4>250ml ￦32000원</h4>              							
                         </div>
                         </a>	
                     </li>    
