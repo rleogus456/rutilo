@@ -53,11 +53,12 @@ if($config['cf_add_meta'])
 ?>
 <meta name="naver-site-verification" content="cf92d99a9b4dc68aa76b0995b671c16be5e84ff7"/>
 <meta property="og:url" content="<?php echo G5_URL; ?>">
-<meta property="og:title" content="삼시세끼">  
+<meta property="og:title" content="루틸로">  
 <meta property="og:type" content="website">
 <meta property="og:image" content="<?php echo G5_IMG_URL."/mobile_logo.png"; ?>">
 <meta property="og:description" content="강아지, 고양이 사료 및 간식 삼시세끼">
 <meta name="description" content="강아지, 고양이 사료 및 간식 삼시세끼">
+
 <title><?php echo $g5_head_title; ?></title>
 <?php
 if (defined('G5_IS_ADMIN')) {
@@ -102,6 +103,7 @@ if ($is_admin) {
 <script src="<?php echo G5_JS_URL ?>/common.js"></script>
 <script src="<?php echo G5_JS_URL ?>/wrest.js"></script>
 <script src="<?php echo G5_JS_URL ?>/script.js"></script>
+<script src="<?php echo G5_JS_URL ?>/player_api.js"></script>
 <?php
 if(G5_IS_MOBILE) {
     echo '<script src="'.G5_JS_URL.'/modernizr.custom.70111.js"></script>'.PHP_EOL; // overflow scroll 감지

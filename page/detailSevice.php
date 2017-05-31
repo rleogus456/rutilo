@@ -17,7 +17,7 @@ include_once(G5_PATH.'/head.php');
 		}
 		if(count($event_list)<=0){
 	?>
-		<div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/slide02.jpg"; ?>" alt="" /></a></div>
+		<div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/slide05.jpg"; ?>" alt="" /></a></div>
 		
 	<?php
 		}
@@ -27,7 +27,7 @@ include_once(G5_PATH.'/head.php');
 <div class="width-fixed">
 	<section class="section03">	
 		<header>		
-			<h1><span class="bgRed">트레이닝센터 찾기</span> 찾으시는 지역의 트레이닝 센터를 입력해주세요.</h1>
+			<h1><span class="bgRed">디테일링서비스 찾기</span> 찾으시는 국가의 디테일링서비스를 입력해주세요.</h1>
             <div>
 <!--
                 <select name="" id="">
@@ -43,8 +43,8 @@ include_once(G5_PATH.'/head.php');
         </header>		
 		<article class="intro">
          <div id="floating-panel">
-              <input id="address" class="input01" type="textbox" value="청주">
-              <input id="submit" class="input01 btn" type="button" value="검색">
+                <input id="address" class="input01" type="textbox" value="청주">
+                <input id="submit" class="input01 btn" type="button" value="검색">
          </div>
         <div id="map"></div>
 <!--

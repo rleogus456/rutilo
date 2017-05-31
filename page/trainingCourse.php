@@ -35,7 +35,7 @@ include_once(G5_PATH.'/head.php');
 		
 		<article class="intro">
           <div class="introImg">
-           <img src="<?php echo G5_IMG_URL."/intro.jpg"; ?>" alt="ceo">
+           <img src="<?php echo G5_IMG_URL."/intro.jpg"; ?>">
            </div>
 <!--
         <h4 class="intro">루틸로를 방문해주셔서 감사합니다.</h4>

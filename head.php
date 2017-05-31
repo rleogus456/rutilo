@@ -24,8 +24,7 @@ $branch=sql_fetch("select * from `best_branch` where mb_id='".$member['mb_id']."
 ?>
 <!-- 헤더 시작 -->
 <header id="header" class="<?php echo $main?"":"sub_header"; ?>">
-	<div id="top_header">
-	
+	<div id="top_header">	
 	<div class="backRed">
 		<div class="width-fixed">
 			<?php if($is_member){ ?>
@@ -79,13 +78,13 @@ $branch=sql_fetch("select * from `best_branch` where mb_id='".$member['mb_id']."
                     <a href="<?php echo G5_URL."/page/construction.php"; ?>">시공 방법</a>                    
                 </li>
 				<li>
-                    <a href="<?php echo G5_URL."/page/rent/list.php"; ?>">디테일링 서비스</a>                    
+                    <a href="<?php echo G5_URL."/page/detailSevice.php"; ?>">디테일링 서비스</a>                    
                 </li>
 				<li>
-				    <a href="<?php echo G5_URL."/page/trainer.php"; ?>">트레이닝 센터</a>
+				    <a href="<?php echo G5_URL."/page/trainingCenter.php"; ?>">트레이닝 센터</a>
                     <ul class="subMenu2">
                         <div class="list">
-                        <li class="first"><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=etc04"><img src=<?php echo G5_IMG_URL."/menuImg1.jpg"?> alt=""><h2>위치지도</h2></a></li>
+                        <li class="first"><a href="<?php echo G5_URL."/page/trainingCenter.php"; ?>"><img src=<?php echo G5_IMG_URL."/menuImg1.jpg"?> alt=""><h2>위치지도</h2></a></li>
                         <li><a href="<?=G5_URL?>/page/trainer.php"><img src="<?php echo G5_IMG_URL."/menuImg1.jpg"?>" alt=""><h2>트레이너</h2></a></li>
                         <li><a href="<?=G5_URL?>/page/trainingCourse.php"><img src="<?php echo G5_IMG_URL."/menuImg1.jpg"?>" alt=""><h2>트레이너 과정</h2></a></li>
                         </div>
