@@ -94,13 +94,13 @@ $branch=sql_fetch("select * from `best_branch` where mb_id='".$member['mb_id']."
 				    <a href="<?php echo G5_URL."/page/rent/list.php"; ?>">루틸로 협력점</a>
 				    <ul class="subMenu3">
 				        <div class="list">
-						<li class="first"><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=etc04"><img src="<?php echo G5_IMG_URL."/menuImg1.jpg"?>" alt=""><h2>가맹문의</h2></a></li>
+						<li class="first"><a href="<?=G5_BBS_URL?>/board.php?bo_table=questions"><img src="<?php echo G5_IMG_URL."/menuImg1.jpg"?>" alt=""><h2>가맹문의</h2></a></li>
 				        <li><a href="<?=G5_URL?>/page/rent/list.php?type=short&mtype=etc05"><img src="<?php echo G5_IMG_URL."/menuImg1.jpg"?>" alt=""><h2>가맹현황</h2></a></li>
                         </div>
 				    </ul>
                 </li>
 				<li>
-					<a href="<?php echo G5_BBS_URL."/board.php?bo_table=notice"; ?>">문의 게시판</a>                    
+					<a href="<?=G5_BBS_URL?>/board.php?bo_table=questions">문의 게시판</a>                    
 				</li>
 			</ul>
 		</div>

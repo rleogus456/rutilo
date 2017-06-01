@@ -134,10 +134,10 @@ a:hover, a:focus, a:active {color:#000;text-decoration:underline}
 .cke_sc_def dd {width:30%}
 
 /* 버튼 */
-a.btn01 {display:inline-block;padding:7px;border:1px solid #ccc;background:#fafafa;color:#000;text-decoration:none;vertical-align:middle}
+a.btn01 {display:inline-block;padding:7px;border:2px solid #fe1e1e;background:#fafafa;color:#fe1e1e;text-decoration:none;vertical-align:middle}
 a.btn01:focus, a.btn01:hover {text-decoration:none}
 button.btn01 {display:inline-block;margin:0;padding:7px;border:1px solid #ccc;background:#fafafa;color:#000;text-decoration:none}
-a.btn02 {display:inline-block;padding:7px;border:1px solid #3b3c3f;background:#4b545e;color:#fff;text-decoration:none;vertical-align:middle}
+a.btn02 {display:inline-block;padding:7px;border:2px solid #fe1e1e;background:#cb1818;color:#fff;text-decoration:none;vertical-align:middle}
 a.btn02:focus, .btn02:hover {text-decoration:none}
 button.btn02 {display:inline-block;margin:0;padding:7px;border:1px solid #3b3c3f;background:#4b545e;color:#fff;text-decoration:none}
 

@@ -3,7 +3,6 @@ include_once('./_common.php');
 include_once(G5_CAPTCHA_PATH.'/captcha.lib.php');
 include_once(G5_LIB_PATH.'/register.lib.php');
 include_once(G5_LIB_PATH.'/mailer.lib.php');
-
 // 리퍼러 체크
 referer_check();
 
@@ -34,7 +33,7 @@ $mb_password    = trim($_POST['mb_password']);
 $mb_password_re = trim($_POST['mb_password_re']);
 $mb_name        = trim($_POST['mb_name']);
 $mb_nick        = trim($_POST['mb_nick']);
-$mb_email       = trim($_POST['mb_email']);
+$mb_email       = trim($_POST["mb_email"]."@".$_POST["mb_email2"]);
 $mb_sex         = isset($_POST['mb_sex'])           ? trim($_POST['mb_sex'])         : "";
 $mb_birth       = isset($_POST['mb_birth'])         ? trim($_POST['mb_birth'])       : "";
 $mb_homepage    = isset($_POST['mb_homepage'])      ? trim($_POST['mb_homepage'])    : "";
