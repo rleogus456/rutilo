@@ -3,7 +3,7 @@
 	$p=true;
 	include_once(G5_PATH."/admin/head.php");
 	if($id){
-		$view=sql_fetch("select * from `best_reserve` where `id`='".$id."'");
+		$view=sql_fetch("select * from `rutilo_reserve` where `id`='".$id."'");
 		//$view=sql_fetch("select *,r.mb_id as mb_id, m.name as modelname,r.type as type,m.id as model_id,r.id as id from `best_reserve` as r left join `best_model` as m on r.model=m.id where r.id='".$id."'");
         //$reserve_view1=sql_fetch("select * from `best_reserve` where id={$id}");
         $count = count(explode(",",$view["model"]))-2;
@@ -11,13 +11,15 @@
 		$model_id = explode(",",$view["model"]);
         $model_num=explode(",",$view["number"]);
 		for($i=0;$i<count($model_id)-1;$i++){
-			$sql = "SELECT * FROM `best_model` where `id` in ('{$model_id[$i]}')";
+			$sql = "SELECT * FROM `rutilo_product` where `id` in ('{$model_id[$i]}')";
 			$modelname = sql_fetch($sql);
 			$name[$i] = $modelname["name"];
             $product_id[$i]=$modelname["id"];
 			$price = $price + $modelname["price"];     
-            $sql1 = "SELECT * FROM `best_reserve` where `id` in ('{$model_id[$i]}')";
+            $sql1 = "SELECT * FROM `rutilo_reserve` where `id` in ('{$model_id[$i]}')";
+            $sql2 = "SELECT * FROM `rutilo_delivery` where `id` in ('{$model_id[$i]}')";
             $modelnumber = sql_fetch($sql1);
+            $deli = sql_fetch($sql2);
             $number[$i]=$model_num[$i];
             $total_price = $view['price'];
 		}

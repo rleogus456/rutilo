@@ -1,13 +1,5 @@
 <?php
-	$partner=sql_fetch("select * from `best_partner` where mb_id='".$member['mb_id']."'");
-	$branch=sql_fetch("select * from `best_branch` where mb_id='".$member['mb_id']."'");
-	if(!$is_admin && !$partner['id'] && !$branch['id']){
-		@alert("권한이 없습니다.",G5_URL);
-	}else if(!$is_admin && $partner['id'] && !$p){
-		goto_url(G5_URL."/admin/partner_view.php?id=".$partner['id']);
-	}else if(!$is_admin && $branch['id'] && !$p){
-		goto_url(G5_URL."/admin/branch_view.php?id=".$branch['id']);
-	}
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -127,15 +119,23 @@
 			<?php if($is_admin){ ?>
 
 				<li class="accordion" data-accordion>
-					<div data-control class="list-title">사이트관리</div>
+					<div data-control class="list-title">가맹점관리</div>
 					<div data-content class="list-item">
 <!--						<div><a href="<?php echo G5_URL."/admin/tel.php"; ?>">전화번호관리</a></div>-->
-						<div><a href="<?php echo G5_URL."/admin/partner_list.php"; ?>">협력업체관리</a></div>
+						<div><a href="<?php echo G5_URL."/admin/partner_list.php"; ?>">가맹점관리</a></div>
 					</div>
 				</li>
-
+                <li class="accordion" data-accordion>
+					<div class="list-title" style="background:none;"><a href="<?php echo G5_URL."/admin/slide_list.php"; ?>">슬라이드 이미지</a></div>
+				</li>
 				<li class="accordion" data-accordion>
 					<div class="list-title" style="background:none;"><a href="<?php echo G5_URL."/admin/member_list.php"; ?>">회원관리</a></div>
+				</li>
+                <li class="accordion" data-accordion>
+					<div class="list-title" style="background:none;"><a href="<?php echo G5_URL."/admin/trainer_list.php"; ?>">트레이너</a></div>
+				</li>
+				<li class="accordion" data-accordion>
+					<div class="list-title" style="background:none;"><a href="<?php echo G5_URL."/admin/construction_list.php"; ?>">시공방법</a></div>
 				</li>
 <!--
 				<li class="accordion" data-accordion>
@@ -190,6 +190,6 @@
 				}
 			?>
 			</ul>
-			<div id="copy">&copy; 삼시세끼 All Rights Reserved.</div>
+			<div id="copy">&copy; 루틸로 All Rights Reserved.</div>
 		</aside>
 		<!-- 메뉴 end -->

@@ -4,14 +4,14 @@
 	if($search){
 		$where="and name like '%{$search}%'";
 	}
-	$total=sql_fetch("select count(*) as cnt from `best_model` where 1 {$where}");
+	$total=sql_fetch("select count(*) as cnt from `rutilo_product` where 1 {$where}");
 	if(!$page)
 		$page=1;
 	$total=$total['cnt'];
 	$rows=10;
 	$start=($page-1)*$rows;
 	$total_page=ceil($total/$rows);
-	$sql="select * from `best_model` where 1 {$where} order by `id` desc limit {$start},{$rows}";
+	$sql="select * from `rutilo_product` where 1 {$where} order by `id` desc limit {$start},{$rows}";
 	$query=sql_query($sql);
 	$j=0;
 	while($data=sql_fetch_array($query)){
@@ -113,7 +113,7 @@
 			<?php
 			}
 			?>
-			<div class="text-right mt20">
+			<div class="text-right mt20 mb20">
 				<a href="<?php echo G5_URL."/admin/model_write.php"; ?>" class="adm-btn01">추가하기</a>
 			</div>
 		</article>

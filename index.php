@@ -25,7 +25,17 @@ $notice_query=sql_query($notice_sql);
 while($notice_data=sql_fetch_array($notice_query)){
 	$notice_list[]=$notice_data;
 }
-$best_short=sql_fetch("select * from `best_short`");
+$rutilo_product = "SELECT * FROM `rutilo_product`";
+$product_query=sql_query($rutilo_product);
+while($product_data=sql_fetch_array($product_query)){
+	$list[]=$product_data;
+}
+
+$rutilo_construction = "SELECT * FROM `rutilo_construction`";
+$con_query=sql_query($rutilo_construction);
+while($cont_data=sql_fetch_array($con_query)){
+	$video[]=$cont_data;
+}
 ?>
 <script type="text/javascript">
 	$(function(){
@@ -40,53 +50,19 @@ $best_short=sql_fetch("select * from `best_short`");
 		include_once(G5_BBS_PATH.'/newwin.inc.php'); // 팝업레이어
 	}
 	?>
-	<div id="main_event" class="owl-carousel">
-	<?php
-		for($i=0;$i<count($event_list);$i++){
-			$thumb = get_list_thumbnail("event", $event_list[$i]['wr_id'], 1100, 464);
-			if($thumb['src']) {
-				$img_content = '<img src="'.$thumb['src'].'" alt="'.$thumb['alt'].'">';
-			}
-			if($img_content){
-	?>
-		<div class="item"><a href="<?php echo G5_BBS_URL."/board.php?bo_table=event&wr_id=".$event_list[$i]['wr_id']; ?>"><?php echo $img_content; ?></a></div>
-	<?php
-			}
-		}
-		if(count($event_list)<=0){
-	?>
-		<div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/main_slide.jpg"; ?>" alt="" /></a></div>
-		<div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/main_slide2.jpg"; ?>" alt="" /></a></div>
-		<div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/main_slide3.jpg"; ?>" alt="" /></a></div>
-		<div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/main_slide4.jpg"; ?>" alt="" /></a></div>		
-	<?php
-		}
-	?>
-	</div>
 	<div class="width-fixed">
 	<div class="wrap">
 		<div id="main_banner">
-<!--
-			<div class="menu">
-				<div >
-				<div class="menu1"><div class="bgorange"><a href="<?php echo G5_URL."/page/rent/list.php"; ?>"><?php if($menu1_event['wr_id']){ ?><i class="event"></i><?php } ?><span class="icon"></span><span class="txt"></span></a></div></div>
-				</div>
-				<div >
-				<div class="menu2"><div class="bgyellow"><a href="<?php echo G5_URL."/page/rent/long.php"; ?>"><?php if($menu2_event['wr_id']){ ?><i class="event"></i><?php } ?><span class="icon"></span><span class="txt"></span></a></div></div>
-				</div>
-				<div>
-				    <div class="menu3"><div><a href="<?php echo G5_URL."/page/accident"; ?>"><?php if($menu3_event['wr_id']){ ?><i class="event"></i><?php } ?><span class="icon"></span><span class="txt"></span></a></div></div>
-				    <div class="menu4"><div><a href="<?php echo G5_URL."/page/mypage/reserve.php"; ?>"><span class="icon"></span><span class="txt"></span></a></div></div>
-				</div>				
-			</div>
--->           
         	<div class="menu">
+        	    <?php for($i=0;$i<3;$i++){ ?>
 				<div>
-					<div class="menu1"><iframe width="100%" height="240px" src="https://www.youtube.com/embed/OKPZPWJUgew" frameborder="0" allowfullscreen></iframe>
-					<h1><span class="textRed">| </span>루틸로 No 101</h1>
-					<p class="videoText">고품질 놀라운 성능 본  컬러의 색상을 되살린다.</p>
+					<div class="menu1"><iframe width="100%" height="240px" src="<?php echo $video[$i]['videolink']; ?>" frameborder="0" allowfullscreen></iframe>
+					<h1><span class="textRed">| </span><?php echo $video[$i]['title']; ?></h1>
+					<p class="videoText"><?php echo $video[$i]['content']; ?></p>
 				    </div>
 				</div>
+				<?php } ?>
+<!--
 				<div >
                     <div class="menu2"><iframe width="100%" height="240px" src="https://www.youtube.com/embed/OKPZPWJUgew" frameborder="0" allowfullscreen></iframe>
                     <h1><span class="textRed">| </span>루틸로 No 201</h1>
@@ -97,8 +73,9 @@ $best_short=sql_fetch("select * from `best_short`");
 				    <div class="menu3"><iframe width="100%" height="240px" src="https://www.youtube.com/embed/OKPZPWJUgew" frameborder="0" allowfullscreen></iframe>
 				    <h1><span class="textRed">| </span>루틸로 No 301</h1>
 				    <p class="videoText">새차 같은 컬로톤의 재생, 광택의 스팟이 다르다.</p>
-				</div>				   
+			    	</div>				   
 				</div>				
+-->
 			</div>									
 		</div>	
 		</div>
@@ -107,19 +84,21 @@ $best_short=sql_fetch("select * from `best_short`");
 <div id="main_product">
 	<div class="width-fixed wrap">
 		<div>
+		
 			<div class="list">
 				<h2>Rutilo</h2>
 				<p>새차처럼 보호와 코팅을 한번에!!</p>
 				<div>
 				<ul>
-                    <?php for($i=0;$i<5;$i++){ ?>
+                    <?php for($j=0;$j<5;$j++){ ?>
                     <li>
-                       <a href="#">
-                        <div class="img"><div><div><img src="img/mobile_logo.png" alt=""></div></div></div>
+                       <a href="<?php echo G5_URL."/page/view.php?tab=product&id=".$list[$j]['id']; ?>">
+                        <div class="img"><div><div><img src="<?php echo G5_DATA_URL."/model/".$list[$j]['photo']; ?>" alt="image" /></div></div></div>
+                        <div class="h2back"><h3><?php echo $list[$j]['name'];?></h3></div>
                         <div class="txt">									
-                        <h2>루틸로 101</h2>									
-                        <h3>프리미엄 자동차표면 코팅제 all in one(일반용)</h3>	      
-                        <h4>250ml ￦32000원</h4>              							
+                            <h2><?php echo $list[$j]['name'];?></h2>									
+                            <h3><?php echo $list[$j]['content'];?> (<?php echo $list[$j]['type'];?>)</h3>	      
+                            <h4><?php echo $list[$j]['volume'];?>ml ￦<?php echo $list[$j]['price'];?>원</h4>              							
                         </div>
                         </a>	
                     </li>    
@@ -151,6 +130,7 @@ $best_short=sql_fetch("select * from `best_short`");
 -->
 				</div>
 			</div>
+			
 		</div>
 	</div>
 </div>
@@ -181,36 +161,7 @@ $best_short=sql_fetch("select * from `best_short`");
 			$("#" + activeTab).fadeIn()
 		});
 	});
-	$(function(){
-		var owl1=$("#main_event");		
-		owl1.owlCarousel({
-			animateOut: 'fadeOut',
-			autoplay:true,
-			autoplayTimeout:5000,
-			autoplaySpeed:2000,
-			smartSpeed:2000,
-			loop:true,
-			dots:true,
-            nav:true,
-            navText: [ '', '' ],
-            items:1
-		});	
-		setTimeout(function(){main_notice_slide()},5000);
-		var n=0;
-		var main_notice_len=$("#main_notice li").length;
-		/* 메인배너 슬라이드 */
-		function main_notice_slide(act,roop){
-			n++;
-			if(n>=main_notice_len){
-				n=0;
-			}
-			go=n * -46;
-			$("#main_notice ul").animate(
-				{'margin-top': go+'px'}
-			);
-			setTimeout(function(){main_notice_slide()},5000);
-		}
-	});
+	
 </script>
 <?php
 include_once('./_tail.php');

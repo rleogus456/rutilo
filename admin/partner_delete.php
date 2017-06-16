@@ -7,8 +7,7 @@
 		alert("잘못된 정보입니다.");
 	}
 	$dir=G5_DATA_PATH."/partner";
-	$partner=sql_fetch("select * from `best_partner` where id='".$id."'");
-	sql_query("delete from `best_partner` where id='{$id}'");
-	@unlink($dir."/".$partner['banner']);
-	@unlink($dir."/".$partner['content']);
+	$partner=sql_fetch("select * from `franch_status` where id='".$id."'");
+	sql_query("delete from `franch_status` where id='{$id}'");
+	@unlink($dir."/".$partner['photo']);
 	alert("삭제 되었습니다.");

@@ -11,6 +11,6 @@ if (!$mb['mb_id'])
 
 $g5['title'] = '회원가입이 완료되었습니다.';
 include_once('./_head.php');
-include_once($member_skin_path.'/register_result.skin.php');
+include_once($member_skin_path.'/register_result.skin.php?tab=form');
 include_once('./_tail.php');
 ?>

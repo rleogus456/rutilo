@@ -2,7 +2,7 @@
 	include_once("../common.php");
 	include_once(G5_PATH."/admin/head.php");
 	if($id){
-		$write=sql_fetch("select * from `best_model` where id='".$id."'");
+		$write=sql_fetch("select * from `rutilo_product` where id='".$id."'");
 	}
 	$short=sql_fetch("select * from best_short");
     
@@ -34,16 +34,23 @@
 							<th>제품이름 *</th>
 							<td><input type="text" name="name" id="name" required class="adm-input01 grid_100" value="<?php echo $write['name']; ?>" /></td>
 						</tr>
-<!--
 						<tr>
-							<th>렌탈자격요건</th>
-							<td><input type="text" name="condition" class="adm-input01 grid_100" id="condition" value="<?php echo $write['condition']; ?>" /></td>
+						    <th>제품코드 *</th>
+						    <td><input type="text" name="code" id="code" required class="adm-input01 grid_100" value="<?php echo $write['code']; ?>" /></td>
 						</tr>
--->
                        	<tr>
 							<th>제품가격 *</th>
 							<td><input type="text" name="price" id="price" required class="adm-input01 grid_100" value="<?php echo $write['price']; ?>" /></td>
 						</tr>
+                       <tr>
+                           <th>용량(ml) *</th>
+                           <td><input type="text" name="volume" id="volume" required class="adm-input01 grid_100" value="<?php echo $write['volume']; ?>"></td>
+                       </tr>
+                       
+                       <tr>
+                           <th>구성품 *</th>
+                           <td><input type="text" name="components" id="components" required class="adm-input01 grid_100" value="<?php echo $write['components']; ?>"></td>
+                       </tr>
                         <tr>
 							<th>카테고리 *</th>
 							<td><input type="text" name="type" id="type" required class="adm-input01 grid_100" value="<?php echo $write['type']; ?>" /></td>

@@ -1,14 +1,14 @@
 <?php
 	include_once("../common.php");
 	include_once(G5_PATH."/admin/head.php");
-	$total=sql_fetch("select count(*) as cnt from `best_partner`");
+	$total=sql_fetch("select count(*) as cnt from `franch_status`");
 	if(!$page)
 		$page=1;
 	$total=$total['cnt'];
 	$rows=10;
 	$start=($page-1)*$rows;
 	$total_page=ceil($total/$rows);
-	$sql="select * from `best_partner` order by `id` desc limit {$start},{$rows}";
+	$sql="select * from `franch_status` order by `id` desc limit {$start},{$rows}";
 	$query=sql_query($sql);
 	$j=0;
 	while($data=sql_fetch_array($query)){
@@ -21,7 +21,7 @@
 <div id="wrap">
 	<section>
 		<header id="admin-title">
-			<h1>협력업체관리</h1>
+			<h1>가맹점 관리</h1>
 			<hr />
 		</header>
 		<article>
@@ -30,9 +30,9 @@
 					<thead>
 						<tr>
 							<th class="md_none">번호</th>
-							<th>업체이름</th>
-							<th>전화번호</th>
-							<th>관리 id</th>
+							<th>매장명</th>
+							<th>대표</th>
+							<th>전화번호</th>							
 							<th>관리</th>
 						</tr>
 					</thead>
@@ -42,17 +42,17 @@
 					?>
 						<tr>
 							<td class="md_none" onclick="location.href='<?php echo G5_URL."/admin/partner_view.php?id=".$list[$i]['id']."&page=".$page; ?>'"><?php echo $list[$i]['num']; ?></td>
+							<td onclick="location.href='<?php echo G5_URL."/admin/partner_view.php?id=".$list[$i]['id']."&page=".$page; ?>'"><?php echo $list[$i]['title']; ?></td>
 							<td onclick="location.href='<?php echo G5_URL."/admin/partner_view.php?id=".$list[$i]['id']."&page=".$page; ?>'"><?php echo $list[$i]['name']; ?></td>
 							<td onclick="location.href='<?php echo G5_URL."/admin/partner_view.php?id=".$list[$i]['id']."&page=".$page; ?>'"><?php echo $list[$i]['tel']; ?></td>
-							<td onclick="location.href='<?php echo G5_URL."/admin/partner_view.php?id=".$list[$i]['id']."&page=".$page; ?>'"><?php echo $list[$i]['mb_id']; ?></td>
-							<td><a href="<?php echo G5_URL."/admin/partner_write.php?id=".$list[$i]['id']."&page=".$page; ?>" class="btn">수정</a> <a href="<?php echo G5_URL."/admin/partner_delete.php?id=".$list[$i]['id']."&page=".$page; ?>" class="btn">삭제</a></td>
+							<td><a href="<?php echo G5_URL."/admin/partner_write.php?id=".$list[$i]['id']."&page=".$page; ?>" class="btn01">수정/</a> <a href="<?php echo G5_URL."/admin/partner_delete.php?id=".$list[$i]['id']."&page=".$page; ?>" class="btn01">삭제</a></td>
 						</tr>
 					<?php
 						}
 						if(count($list)==0){
 					?>
 						<tr>
-							<td colspan="5" class="text-center" style="padding:50px 0;">협력업체가 없습니다.</td>
+							<td colspan="5" class="text-center" style="padding:50px 0;">가맹점이 없습니다.</td>
 						</tr>
 					<?php
 						}
@@ -94,7 +94,7 @@
 			}
 			?>
 			<div class="text-right mt20">
-				<a href="<?php echo G5_URL."/admin/partner_write.php"; ?>" class="adm-btn01">업체추가</a>
+				<a href="<?php echo G5_URL."/admin/partner_write.php"; ?>" class="adm-btn01">가맹점추가</a>
 			</div>
 		</article>
 	</section>

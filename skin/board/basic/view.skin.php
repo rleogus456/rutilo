@@ -8,9 +8,15 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
 
 <script src="<?php echo G5_JS_URL; ?>/viewimageresize.js"></script>
 
+<div class="width-fixed" >
 <!-- 게시물 읽기 시작 { -->
-<div id="bo_v_table"><?php echo $board['bo_subject']; ?></div>
-
+<!-- <div id="bo_v_table"><?php echo $board['bo_subject']; ?></div>
+ --><section class="section03" style="margin-bottom:0px">	
+		<header>
+            <h4><?php echo $board['bo_subject'] ?></h4>
+            <p class="sectionP">루틸로를 이용하시면서 생기는 모든 궁금증 물어보세요</p>  
+		</header>
+	</section>
 <article id="bo_v" style="width:<?php echo $width; ?>">
     <header>
         <h1 id="bo_v_title">
@@ -23,10 +29,10 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
 
     <section id="bo_v_info">
         <h2>페이지 정보</h2>
-        작성자 <strong><?php echo $view['name'] ?><?php if ($is_ip_view) { echo "&nbsp;($ip)"; } ?></strong>
-        <span class="sound_only">작성일</span><strong><?php echo date("y-m-d H:i", strtotime($view['wr_datetime'])) ?></strong>
-        조회<strong><?php echo number_format($view['wr_hit']) ?>회</strong>
-        댓글<strong><?php echo number_format($view['wr_comment']) ?>건</strong>
+        작성자 <strong><?php echo $view['name']; ?></strong>
+        <p><span class="sound_only">작성일</span><strong><?php echo date("y-m-d H:i", strtotime($view['wr_datetime'])) ?></strong></p>
+        <!-- 조회<strong><?php echo number_format($view['wr_hit']) ?>회</strong>
+        댓글<strong><?php echo number_format($view['wr_comment']) ?>건</strong> -->
     </section>
 
     <?php
@@ -110,7 +116,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
         </ul>
         <?php } ?>
 
-        <ul class="bo_v_com">
+       <ul class="bo_v_com" style="display:none">
             <?php if ($update_href) { ?><li><a href="<?php echo $update_href ?>" class="btn_b01">수정</a></li><?php } ?>
             <?php if ($delete_href) { ?><li><a href="<?php echo $delete_href ?>" class="btn_b01" onclick="del(this.href); return false;">삭제</a></li><?php } ?>
             <?php if ($copy_href) { ?><li><a href="<?php echo $copy_href ?>" class="btn_admin" onclick="board_move(this.href); return false;">복사</a></li><?php } ?>
@@ -155,7 +161,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
         <?php if ($is_signature) { ?><p><?php echo $signature ?></p><?php } ?>
 
         <!-- 스크랩 추천 비추천 시작 { -->
-        <?php if ($scrap_href || $good_href || $nogood_href) { ?>
+        <!-- <?php if ($scrap_href || $good_href || $nogood_href) { ?>
         <div id="bo_v_act">
             <?php if ($scrap_href) { ?><a href="<?php echo $scrap_href;  ?>" target="_blank" class="btn_b01" onclick="win_scrap(this.href); return false;">스크랩</a><?php } ?>
             <?php if ($good_href) { ?>
@@ -173,7 +179,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
         </div>
         <?php } else {
             if($board['bo_use_good'] || $board['bo_use_nogood']) {
-        ?>
+        ?> -->
         <div id="bo_v_act">
             <?php if($board['bo_use_good']) { ?><span>추천 <strong><?php echo number_format($view['wr_good']) ?></strong></span><?php } ?>
             <?php if($board['bo_use_nogood']) { ?><span>비추천 <strong><?php echo number_format($view['wr_nogood']) ?></strong></span><?php } ?>
@@ -191,18 +197,21 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
 
     <?php
     // 코멘트 입출력
-    include_once('./view_comment.php');
+    //include_once(G5_BBS_PATH.'/view_comment.php');
      ?>
 
     <!-- 링크 버튼 시작 { -->
     <div id="bo_v_bot">
-        <?php echo $link_buttons ?>
+		<?php if ($is_admin) { ?><a href="<?php echo $update_href ?>" class="btn_b01">수정</a><?php } ?>
+		<?php if ($is_admin) { ?><a href="<?php echo $delete_href ?>" class="btn_b01" onclick="del(this.href); return false;">삭제</a><?php } ?>
+		<a href="<?php echo $list_href ?>" class="btn_b01">목록</a>
+		<?php //echo $link_buttons ?>
     </div>
     <!-- } 링크 버튼 끝 -->
 
 </article>
 <!-- } 게시판 읽기 끝 -->
-
+</div>
 <script>
 <?php if ($board['bo_download_point'] < 0) { ?>
 $(function() {

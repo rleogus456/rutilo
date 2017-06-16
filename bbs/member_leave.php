@@ -7,9 +7,9 @@ if (!$member['mb_id'])
 if ($is_admin == 'super')
     alert('최고 관리자는 탈퇴할 수 없습니다');
 
-/*if (!($_POST['mb_password'] && check_password($_POST['mb_password'], $member['mb_password'])))
+if (!($_POST['mb_password'] && check_password($_POST['mb_password'], $member['mb_password'])))
     alert('비밀번호가 틀립니다.');
-*/
+
 // 회원탈퇴일을 저장
 $date = date("Ymd");
 $sql = " update {$g5['member_table']} set mb_leave_date = '{$date}' where mb_id = '{$member['mb_id']}' ";

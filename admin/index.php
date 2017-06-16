@@ -9,7 +9,7 @@
 		$member_list[$j]['num']=$j+1;
 		$j++;
 	}
-	$sql="select *,m.name as model,c.number as car,r.id as id from `best_reserve` as r left join `best_model` as m on r.model=m.id left join `best_car` as c on r.car=c.id order by r.`id` desc limit 0,5";
+	$sql="select *,m.name as model,c.number as car,r.id as id from `rutilo_reserve` as r left join `rutilo_product` as m on r.model=m.id order by r.`id` desc limit 0,5";
 	$query=sql_query($sql);
 	$j=0;
 	while($data=sql_fetch_array($query)){

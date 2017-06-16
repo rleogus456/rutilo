@@ -5,13 +5,13 @@
 	if(!$id){
 		alert("잘못된 정보입니다.");
 	}
-	$view=sql_fetch("select * from `best_partner` where id='".$id."'");
+	$view=sql_fetch("select * from `franch_status` where id='".$id."'");
 ?>
 <!-- 본문 start -->
 <div id="wrap">
 	<section>
 		<header id="admin-title">
-			<h1>협력업체관리</h1>
+			<h1>가맹점관리</h1>
 			<hr />
 		</header>
 		<article>
@@ -19,31 +19,37 @@
 				<div class="adm-table02">
 					<table>
 						<tr>
-							<th>업체이름</th>
+							<th>썸네일</th>
+							<td><img src="<?php echo G5_DATA_URL."/partner/".$view['photo']; ?>" alt="배너" /></td>
+						</tr>
+						<tr>
+							<th>매장명</th>
+							<td><?php echo $view['title']; ?></td>
+						</tr>
+						<tr>
+							<th>대표자</th>
 							<td><?php echo $view['name']; ?></td>
+						</tr>
+						<tr>
+							<th>주소</th>
+							<td><?php echo $view['addr']; ?></td>
 						</tr>
 						<tr>
 							<th>전화번호</th>
 							<td><?php echo $view['tel']; ?></td>
 						</tr>
 						<tr>
-							<th>배너</th>
-							<td><img src="<?php echo G5_DATA_URL."/partner/".$view['banner']; ?>" alt="배너" /></td>
-						</tr>
-						<tr>
-							<th>내용</th>
-							<td><img src="<?php echo G5_DATA_URL."/partner/".$view['content']; ?>" alt="배너" /></td>
-						</tr>
-						<?php if($is_admin){ ?>
-						<tr>
-							<th>아이디</th>
-							<td><?php echo $view['mb_id']; ?></td>
-						</tr>
-						<tr>
-							<th>배너보이기</th>
-							<td><?php echo $view['show']?"보이기":"안보임"; ?></td>
-						</tr>
-						<?php } ?>
+							<th>fax</th>
+							<td><?php echo $view['fax']; ?></td>
+						</tr>		
+                    	<tr>
+							<th>영업시간</th>
+							<td><?php echo $view['opening']; ?></td>
+						</tr>				
+					    <tr>
+							<th>etc</th>
+							<td><?php echo $view['etc']; ?></td>
+						</tr>							
 					</table>
 				</div>
 				<div class="text-center mt20" style="margin-bottom:20px;">

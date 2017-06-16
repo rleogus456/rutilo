@@ -1,28 +1,13 @@
 <?php
 include_once('../common.php');
 include_once(G5_PATH.'/head.php');
+$rutilo_product = "SELECT * FROM `rutilo_product`";
+$product_query=sql_query($rutilo_product);
+while($product_data=sql_fetch_array($product_query)){
+	$list[]=$product_data;
+}
+
 ?>
-	<div id="main_event" class="owl-carousel">
-	<?php
-		for($i=0;$i<count($event_list);$i++){
-			$thumb = get_list_thumbnail("event", $event_list[$i]['wr_id'], 1100, 464);
-			if($thumb['src']) {
-				$img_content = '<img src="'.$thumb['src'].'" alt="'.$thumb['alt'].'">';
-			}
-			if($img_content){
-	?>
-		<div class="item"><a href="<?php echo G5_BBS_URL."/board.php?bo_table=event&wr_id=".$event_list[$i]['wr_id']; ?>"><?php echo $img_content; ?></a></div>
-	<?php
-			}
-		}
-		if(count($event_list)<=0){
-	?>
-		<div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/slide03.jpg"; ?>" alt="" /></a></div>
-		
-	<?php
-		}
-	?>
-	</div>
 
 <div class="width-fixed">
 	<section class="section03">	
@@ -35,18 +20,18 @@ include_once(G5_PATH.'/head.php');
 		
 		<article class="product">
         	<div>
-				<ul>
-                    <?php for($i=0;$i<4;$i++){ ?>
+            <ul>
+                    <?php for($j=0;$j<count($list);$j++){ ?>
                     <li>
-                       <a href=""<?php echo G5_URL."productIntro"; ?>"">
-                        <div class="img"><div><div><img src="<?php echo G5_IMG_URL."/mobile_logo.png"?>" alt=""></div></div></div>
+                       <a href="<?php echo G5_URL."/page/view.php?tab=product&id=".$list[$j]['id']; ?>">
+                        <div class="img"><div><div><img src="<?php echo G5_DATA_URL."/model/".$list[$j]['photo']; ?>" alt="image" /></div></div></div>
                         <div class="txt">									
-                        <h2>루틸로 101</h2>									
-                        <h3>프리미엄 자동차표면 코팅제 all in one(일반용)</h3>	      
-                        <h4>250ml ￦32000원</h4>              							
+                            <h2><?php echo $list[$j]['name'];?></h2>									
+                            <h3><?php echo $list[$j]['content'];?> (<?php echo $list[$j]['type'];?>)</h3>	      
+                            <h4><?php echo $list[$j]['volume'];?>ml ￦<?php echo $list[$j]['price'];?>원</h4>              							
                         </div>
                         </a>	
-                    </li>       
+                    </li>    
                     <?php }?>
 				</ul>
             </div>
@@ -59,37 +44,7 @@ include_once(G5_PATH.'/head.php');
 		</article>
 	</section>	
 </div>
-<script>
-$(function(){
-		var owl1=$("#main_event");		
-		owl1.owlCarousel({
-			animateOut: 'fadeOut',
-			autoplay:true,
-			autoplayTimeout:5000,
-			autoplaySpeed:2000,
-			smartSpeed:2000,
-			loop:true,
-			dots:true,
-            nav:true,
-            navText: [ '', '' ],
-            items:1
-		});	
-		setTimeout(function(){main_notice_slide()},5000);
-		var n=0;
-		var main_notice_len=$("#main_notice li").length;
-		/* 메인배너 슬라이드 */
-		function main_notice_slide(act,roop){
-			n++;
-			if(n>=main_notice_len){
-				n=0;
-			}
-			go=n * -46;
-			$("#main_notice ul").animate(
-				{'margin-top': go+'px'}
-			);
-			setTimeout(function(){main_notice_slide()},5000);
-		}
-	});</script>
+
 
 <?php
 include_once(G5_PATH.'/tail.php');

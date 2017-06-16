@@ -1,28 +1,12 @@
 <?php
 include_once('../common.php');
 include_once(G5_PATH.'/head.php');
+$trainer = "SELECT * FROM `rutilo_trainer`";
+$query=sql_query($trainer);
+while($data=sql_fetch_array($query)){
+	$list[]=$data;
+}
 ?>
-	<div id="main_event" class="owl-carousel">
-	<?php
-		for($i=0;$i<count($event_list);$i++){
-			$thumb = get_list_thumbnail("event", $event_list[$i]['wr_id'], 1100, 464);
-			if($thumb['src']) {
-				$img_content = '<img src="'.$thumb['src'].'" alt="'.$thumb['alt'].'">';
-			}
-			if($img_content){
-	?>
-		<div class="item"><a href="<?php echo G5_BBS_URL."/board.php?bo_table=event&wr_id=".$event_list[$i]['wr_id']; ?>"><?php echo $img_content; ?></a></div>
-	<?php
-			}
-		}
-		if(count($event_list)<=0){
-	?>
-		<div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/slide02.jpg"; ?>" alt="" /></a></div>
-		
-	<?php
-		}
-	?>
-	</div>
 
 <div class="width-fixed">
 	<section class="section03">	
@@ -34,22 +18,20 @@ include_once(G5_PATH.'/head.php');
 		</header>
 		
 		<article class="trainer">
-        	<div>
-				<ul>
-                    <?php for($i=0;$i<4;$i++){ ?>
-                    <li>
-                       <a href="#">
-                        <div class="img"><div><div><img src="<?php echo G5_IMG_URL."/mobile_logo.png"?>" alt=""></div></div></div>
+            <div>
+                <ul>
+                    <?php for($j=0;$j<count($list);$j++){ ?>           
+                    <li>  
+                        <a href="#" onclick="trainer_Info(<?php echo $list[$j]['id'];?>)">                       
+                        <div class="img"><div><div><img src="<?php echo G5_DATA_URL."/trainer/".$list[$j]['photo']; ?>" alt="image" /></div></div></div>
                         <div class="txt">									
-                        <h2>트레이너 : 루틸로</h2>									
-                        <h3>경력 : 7년</h3>
-                        <h3>소속 : 골드라이너</h3>
-                        <h3>Tel : 010-1234-5678</h3>	      
-                        <h4>자세히</h4>              							
+                            <h2>트레이너 : <?php echo $list[$j]['name'];?></h2>									
+                            <h3>경력 : <?php echo $list[$j]['career'];?> <br>소속 : <?php echo $list[$j]['belong'];?><br>TEL :  <?php echo $list[$j]['tel'];?></h3>	      
+                            <h4>자세히</h4> 
                         </div>
                         </a>	
                     </li>    
-                    <?php }?>
+                    <?php }?>                     
 				</ul>
             </div>
          
@@ -62,37 +44,15 @@ include_once(G5_PATH.'/head.php');
 	</section>	
 </div>
 <script>
-$(function(){
-		var owl1=$("#main_event");		
-		owl1.owlCarousel({
-			animateOut: 'fadeOut',
-			autoplay:true,
-			autoplayTimeout:5000,
-			autoplaySpeed:2000,
-			smartSpeed:2000,
-			loop:true,
-			dots:true,
-            nav:true,
-            navText: [ '', '' ],
-            items:1
-		});	
-		setTimeout(function(){main_notice_slide()},5000);
-		var n=0;
-		var main_notice_len=$("#main_notice li").length;
-		/* 메인배너 슬라이드 */
-		function main_notice_slide(act,roop){
-			n++;
-			if(n>=main_notice_len){
-				n=0;
-			}
-			go=n * -46;
-			$("#main_notice ul").animate(
-				{'margin-top': go+'px'}
-			);
-			setTimeout(function(){main_notice_slide()},5000);
-		}
-	});</script>
-
+function trainer_Info(f){
+	var id=f;
+	$.post(g5_url+"/page/modal/trainerInfo.php",{id:id},function(data){
+		$(".msg").html(data);
+		msg_active();
+	});
+    return false;
+}
+</script>
 <?php
 include_once(G5_PATH.'/tail.php');
 ?>

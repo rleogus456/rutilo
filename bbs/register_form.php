@@ -81,13 +81,14 @@ if ($w == "") {
     set_session("ss_reg_mb_name", $member['mb_name']);
     set_session("ss_reg_mb_hp", $member['mb_hp']);
 
-    $member['mb_email']       = get_text($member['mb_email']);
+    $member['mb_email']       = get_text($member['mb_email']."@".$member["mb_email2"]);
     $member['mb_homepage']    = get_text($member['mb_homepage']);
     $member['mb_birth']       = get_text($member['mb_birth']);
     $member['mb_tel']         = get_text($member['mb_tel']);
     $member['mb_hp']          = get_text($member['mb_hp']);
     $member['mb_addr1']       = get_text($member['mb_addr1']);
     $member['mb_addr2']       = get_text($member['mb_addr2']);
+    $member['mb_addr3']       = get_text($member['mb_addr3']);
     $member['mb_signature']   = get_text($member['mb_signature']);
     $member['mb_recommend']   = get_text($member['mb_recommend']);
     $member['mb_profile']     = get_text($member['mb_profile']);
@@ -122,6 +123,7 @@ $agree2 = preg_replace('#[^0-9]#', '', $agree2);
 // add_javascript('js 구문', 출력순서); 숫자가 작을 수록 먼저 출력됨
 if ($config['cf_use_addr'])
     add_javascript(G5_POSTCODE_JS, 0);    //다음 주소 js
+
 
 include_once($member_skin_path.'/register_form.skin.php');
 include_once('./_tail.php');

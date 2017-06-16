@@ -14,6 +14,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 	#password_lost > div header p{font-size:14px;color:#737373;}
 	#password_lost > div > div{padding:40px 18px;}
 	#password_lost > div > div .btn{margin-top:12px;font-size:20px;letter-spacing:-0.02em;font-family:nbgr;height:50px;border:1px solid #f1bdbf;box-shadow:2px 2px 0 #b9b9b9;background:#fe1e1e;color:#fff;}
+    #password_lost > .input01{height:45px;font-size: 16px;box-sizing:border-box;border:1px solid #ddd;vertical-align:middle;padding:10px;line-height:25px;}
 	@media all and (max-width: 1120px){
 		#password_lost{display:block;box-sizing:border-box;}
 		#password_lost > div{float:none;width:100%;}
@@ -65,8 +66,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 		<div class="section01_content wrap" id="password_lost">
 			<div class="mr">
 				<header>
-					<h2>아이디 찾기</h2>
-					<p>회원가입 시 등록하신 휴대폰번호를 입력하세요.</p>
+				    
 				</header>
 				<div>
 					<form name="idlost" action="#" onsubmit="return idlost_submit(this);" method="post" autocomplete="off">
@@ -87,9 +87,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
         <section class="section01">
         <div class="section01_content wrap" id="password_lost">
         <div>
-				<header>
-					<h2>비밀번호 찾기</h2>
-					<p>회원가입 시 등록하신 이메일을 입력하세요.</p>
+                <header>				
 				</header>
 				<div>
 					<form name="pwlost" action="#" onsubmit="return pwlost_submit(this);" method="post" autocomplete="off">

@@ -178,10 +178,9 @@ if (!isset($_POST['wr_subject']) || !trim($_POST['wr_subject']))
     alert('제목을 입력하여 주십시오.');
 
 if ($w == '' || $w == 'r') {
-
     if ($member['mb_id']) {
         $mb_id = $member['mb_id'];
-        $wr_name = addslashes(clean_xss_tags($board['bo_use_name'] ? $member['mb_name'] : $member['mb_nick']));
+        $wr_name = addslashes(clean_xss_tags($_POST['wr_name'] ? $_POST['wr_name'] : $member['mb_name']));
         $wr_password = $member['mb_password'];
         $wr_email = addslashes($member['mb_email']);
         $wr_homepage = addslashes(clean_xss_tags($member['mb_homepage']));
@@ -645,6 +644,7 @@ if (!($w == 'u' || $w == 'cu') && $config['cf_email_use'] && $board['bo_use_emai
 @include_once($board_skin_path.'/write_update.tail.skin.php');
 
 delete_cache_latest($bo_table);
+
 
 if ($file_upload_msg)
     alert($file_upload_msg, G5_HTTP_BBS_URL.'/board.php?bo_table='.$bo_table.'&amp;wr_id='.$wr_id.'&amp;page='.$page.$qstr);

@@ -14,14 +14,14 @@
 	if($sel!="" && $search!=""){
 		$where.=" and `{$sel}` like '%{$search}%'";
 	}
-	$total=sql_fetch("select count(*) as cnt from `best_reserve` as r left join `best_model` as m on r.model=m.id left join `best_car` as c on r.car=c.id where {$where}");
+	$total=sql_fetch("select count(*) as cnt from `rutilo_reserve` as r left join `rutilo_product` as m on r.model=m.id where {$where}");
 	if(!$page)
 		$page=1;
 	$total=$total['cnt'];
 	$rows=10;
 	$start=($page-1)*$rows;
 	$total_page=ceil($total/$rows);
-	$sql="select *,r.type as rtype,m.name as model,r.id as id,r.year as ryear from `best_reserve` as r left join `best_model` as m on r.model=m.id where {$where} order by r.`id` desc limit {$start},{$rows}";
+	$sql="select *,m.name as model,r.id as id from `rutilo_reserve` as r left join `rutilo_product` as m on r.model=m.id where {$where} order by r.`id` desc limit {$start},{$rows}";
 	$query=sql_query($sql);
 	$j=0;
 	while($data=sql_fetch_array($query)){
@@ -34,7 +34,7 @@
 	if(!$is_admin){
 		$where="`mb_id`='{$member['mb_id']}'";
 	}
-	$model_query=sql_query("select * from `best_model`");
+	$model_query=sql_query("select * from `rutilo_product`");
 	$branch_query=sql_query("select * from `best_branch` where {$where}");
 	while($model_data=sql_fetch_array($model_query)){
 		$model_list[]=$model_data;
@@ -134,7 +134,7 @@
 							<td onclick="location.href='<?php echo G5_URL."/admin/reserve_view.php?id=".$list[$i]['id']."&page=".$page."&s=".$s."&m=".$m."&b".$b; ?>'"><?php echo hyphen_hp_number($list[$i]['mb_phone']); ?></td>
                            	<td onclick="location.href='<?php echo G5_URL."/admin/reserve_view.php?id=".$list[$i]['id']."&page=".$page."&s=".$s."&m=".$m."&b".$b; ?>'"><?php echo  $list[$i]['mb_addr']; ?></td>					
 							<td onclick="location.href='<?php echo G5_URL."/admin/reserve_view.php?id=".$list[$i]['id']."&page=".$page."&s=".$s."&m=".$m."&b".$b; ?>'"><?php echo $status; ?></td>
-							<td><a href="<?php echo G5_URL."/admin/reserve_write.php?id=".$list[$i]['id']."&page=".$page; ?>" class="btn">수정/ </a><a href="<?php echo G5_URL."/admin/reserve_delete.php?id=".$list[$i]['id']."&page=".$page; ?>" class="btn">삭제 </a></td>
+							<td><a href="<?php echo G5_URL."/admin/reserve_write.php?id=".$list[$i]['id']."&page=".$page; ?>" class="btn01">수정/ </a><a href="<?php echo G5_URL."/admin/reserve_delete.php?id=".$list[$i]['id']."&page=".$page; ?>" class="btn01">삭제 </a></td>
 						</tr>
 					<?php
 						}

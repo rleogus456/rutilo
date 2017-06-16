@@ -2,27 +2,7 @@
 include_once('../common.php');
 include_once(G5_PATH.'/head.php');
 ?>
-	<div id="main_event" class="owl-carousel">
-	<?php
-		for($i=0;$i<count($event_list);$i++){
-			$thumb = get_list_thumbnail("event", $event_list[$i]['wr_id'], 1100, 464);
-			if($thumb['src']) {
-				$img_content = '<img src="'.$thumb['src'].'" alt="'.$thumb['alt'].'">';
-			}
-			if($img_content){
-	?>
-		<div class="item"><a href="<?php echo G5_BBS_URL."/board.php?bo_table=event&wr_id=".$event_list[$i]['wr_id']; ?>"><?php echo $img_content; ?></a></div>
-	<?php
-			}
-		}
-		if(count($event_list)<=0){
-	?>
-		<div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/slide05.jpg"; ?>" alt="" /></a></div>
-		
-	<?php
-		}
-	?>
-	</div>
+
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 <div class="width-fixed">
 	<section class="section03">	
@@ -89,36 +69,6 @@ function initMap() {
       
       }
 
-$(function(){
-		var owl1=$("#main_event");		
-		owl1.owlCarousel({
-			animateOut: 'fadeOut',
-			autoplay:true,
-			autoplayTimeout:5000,
-			autoplaySpeed:2000,
-			smartSpeed:2000,
-			loop:true,
-			dots:true,
-            nav:true,
-            navText: [ '', '' ],
-            items:1
-		});	
-		setTimeout(function(){main_notice_slide()},5000);
-		var n=0;
-		var main_notice_len=$("#main_notice li").length;
-		/* 메인배너 슬라이드 */
-		function main_notice_slide(act,roop){
-			n++;
-			if(n>=main_notice_len){
-				n=0;
-			}
-			go=n * -46;
-			$("#main_notice ul").animate(
-				{'margin-top': go+'px'}
-			);
-			setTimeout(function(){main_notice_slide()},5000);
-		}
-	});
 </script>
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0PgkTu9n9pgKasFt_kE4lsiSimUcfTg0&callback=initMap">

@@ -5,7 +5,7 @@
 	if(!$id){
 		alert("잘못된 정보입니다.");
 	}
-	$view=sql_fetch("select * from `best_model` where id='".$id."'");
+	$view=sql_fetch("select * from `rutilo_product` where id='".$id."'");
 ?>
 <!-- 본문 start -->
 <div id="wrap">
@@ -35,19 +35,35 @@
 						<th>제품이름 *</th>
 						<td><?php echo $view['name']; ?></td>
 					</tr>
+                   	<tr>
+						<th>제품코드 *</th>
+						<td><?php echo $view['code']; ?></td>
+					</tr>
                 	<tr>
 						<th>제품가격 *</th>
 						<td><?php echo $view['price']; ?></td>
 					</tr>
+                   <tr>
+                       <th>카테고리 *</th>
+                       <td><?php echo $view['type']?></td>
+                   </tr>
+                   <tr>
+                       <th>구성품 *</th>
+                       <td><?php echo $view['components'] ?></td>
+                   </tr>
+                    <tr>
+                        <th>용량(ml) *</th>
+                        <td><?php echo $view['volume'] ?></td>
+                    </tr>
 				    <tr>
 						<th>설명</th>
 						<td><?php echo $view['content']; ?></td>
 					</tr>
 					<tr>
 						<th>상세설명</th>
-						<td><?php echo $view['content1']; ?></td>
-						
+						<td><?php echo $view['content1']; ?></td>						
 					</tr>
+					
 					<tr>
 					    <th>이미지 링크</th>
 					    <td><?php echo $view['imglink'];?></td>

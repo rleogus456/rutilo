@@ -27,10 +27,10 @@ $member_id = get_cookie('ck_save_id');
 	?>
 	</div>
 <div class="width-fixed">
-      <section class="section03">
+      <section class="section03"style="margin-bottom:0px">
            <header>
                <h4>LOGIN</h4>
-               <p>로그인 핫면 더욱 다양한 서비스를 이용하실 수 있습니다.</p>
+               <p>로그인 하면 더욱 다양한 서비스를 이용하실 수 있습니다.</p>
            </header>
        </section>
     <div class="loing_Back">        
@@ -43,11 +43,11 @@ $member_id = get_cookie('ck_save_id');
                         <input type="hidden" name="regid" id="regid" value="" />
                         <label for="login_id" class="idLabel">아이디 </label>
                         <div class="login_id">
-                           <input type="text" name="mb_id" id="login_id" required class="input02 " size="20" maxLength="20" value="<?php echo $member_id; ?>">
+                           <input type="text" name="mb_id" id="login_id" required class="input02 " size="20" maxLength="20" value="<?php echo $member_id; ?>" autofocus placeholder="아이디">
                         </div>
                         <label for="login_pw" class="pwLabel">비밀번호</label>
                         <div class="login_pw">
-                            <input type="password" name="mb_password" id="login_pw" required class="input02" size="20" maxLength="20" >
+                            <input type="password" name="mb_password" id="login_pw" required class="input02" size="20" maxLength="20" placeholder="비밀번호" >
                         </div>
                         <div class="login_chk">
 <!--

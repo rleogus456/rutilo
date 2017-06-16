@@ -3,7 +3,7 @@
 	$p=true;
 	include_once(G5_PATH."/admin/head.php");
 	if($id){
-		$write=sql_fetch("select * from `best_reserve` where id='".$id."'");
+		$write=sql_fetch("select * from `rutilo_reserve` where id='".$id."'");
 		$write['start_arr']=explode(" ",$write['start']);
 		$write['start_date']=$write['start_arr'][0];
 		$write['start_arr']=explode(":",$write['start_arr'][1]);
@@ -19,7 +19,7 @@
 	if(!$is_admin){
 		$where="`mb_id`='{$member['mb_id']}'";
 	}
-	$model_query=sql_query("select * from `best_model`");
+	$model_query=sql_query("select * from `rutilo_product`");
 	$branch_query=sql_query("select * from `best_branch` where {$where}");
 	while($model_data=sql_fetch_array($model_query)){
 		$model_list[]=$model_data;

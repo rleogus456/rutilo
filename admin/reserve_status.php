@@ -1,9 +1,8 @@
 <?php
 	include_once("../common.php");
-	$reserve=sql_fetch("select * from `best_reserve` where id='".$id."'");
-	$branch_data=sql_fetch("select * from `best_branch` where mb_id='".$member['mb_id']."'");
-	$car=sql_fetch("select * from `best_car` where id='".$reserve['car']."'");
-	if(!$is_admin && $branch_data['id']!=$car['branch'] && $branch_data['name']!=$reserve['rental_point']){
+	$reserve=sql_fetch("select * from `rutilo_reserve` where id='".$id."'");
+
+	if(!$is_admin){
 		alert("권한이 없습니다.");
 	}
 	if($s==2){
@@ -12,7 +11,7 @@
 		}
 	}
 	if($id){
-		sql_query("update `best_reserve` set `status`='{$s}'{$end_sql} where id='{$id}';");
+		sql_query("update `rutilo_reserve` set `status`='{$s}'{$end_sql} where id='{$id}';");
 	}else{
 		alert("잘못된 접근입니다.");
 	}
