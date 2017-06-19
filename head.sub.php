@@ -70,6 +70,7 @@ if (defined('G5_IS_ADMIN')) {
 <link rel="stylesheet" href="<?php echo G5_CSS_URL."/owl.carousel.css"; ?>" />
 <link rel="stylesheet" href="<?php echo G5_CSS_URL."/owl.theme.default.css"; ?>" />
 <link rel="stylesheet" href="<?php echo G5_CSS_URL."/style.css"; ?>" />
+
 <!-- 웹폰트 -->
 <link href='http://fonts.googleapis.com/earlyaccess/nanumgothic.css' rel='stylesheet' type='text/css'>
 <!--[if lt IE 9]>
@@ -104,6 +105,7 @@ if ($is_admin) {
 <script src="<?php echo G5_JS_URL ?>/wrest.js"></script>
 <script src="<?php echo G5_JS_URL ?>/script.js"></script>
 <script src="<?php echo G5_JS_URL ?>/player_api.js"></script>
+<script src="<?php echo G5_JS_URL ?>/jquery.select-to-autocomplete.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
 

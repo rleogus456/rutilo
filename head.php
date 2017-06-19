@@ -211,31 +211,21 @@ $branch=sql_fetch("select * from `best_branch` where mb_id='".$member['mb_id']."
 			}
 		}
 		if(count($event_list)<=0){?>		
-	<?php if($bo_table=="questions"){?> 
-	    <div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/slide06.jpg"; ?>" alt="" /></a></div>
-	<?php }elseif($tab=="intro"){?>
-        <div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/slide01.jpg"; ?>" alt="" /></a></div>
-    <?php }elseif($tab=="product"){?>
-        <div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/slide03.jpg"; ?>" alt="" /></a></div>	       
-    <?php }elseif($tab=="construction"){?>
-        <div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/slide04.jpg"; ?>" alt="" /></a></div>
-    <?php }elseif($tab=="center"){?>
-        <div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/slide02.jpg"; ?>" alt="" /></a></div>	
-    <?php }elseif($tab=="detailSevice"){?>    
-        <div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/slide05.jpg"; ?>" alt="" /></a></div>	        
-    <?php }elseif($tab=="form" && $w=="u"){ ?>
-        <div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/slide07.jpg"; ?>" alt="" /></a></div>	        
-    <?php }elseif($tab=="form"){?>
-        <div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/slide06.jpg"; ?>" alt="" /></a></div>
-    <?php }elseif($tab=="regform"){ ?>
-        <div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/slide07.jpg"; ?>" alt="" /></a></div>	        
-    <?php }else{?>
+    <?php if($w=="u"){ ?>
+          <div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/slide07.jpg"; ?>" alt="" /></a></div>    
+	<?php }elseif($tab==$slide['category'] && $tab){?> 
+	    <div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_DATA_URL."/slide/".$slide['photo']; ?>" alt="" /></a></div>
+    <?php } else if($bo_table=="questions"){?>
+        <div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/slide06.jpg"; ?>" alt="" /></a></div>    
+    <?php } else{?>
         <div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/main_slide.jpg"; ?>" alt="" /></a></div>
 		<div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/main_slide2.jpg"; ?>" alt="" /></a></div>
 		<div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/main_slide3.jpg"; ?>" alt="" /></a></div>
 		<div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/main_slide4.jpg"; ?>" alt="" /></a></div>
-     <?php } ?> 
+    <?php } ?> 
     <?php } ?>
+    <?php 
+    ?>
 </div>
 
 <script>

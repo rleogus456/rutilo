@@ -193,7 +193,6 @@ span.bold{font-weight: bold; font-size: 15px;}
 .section03 > header div.result > div.resultTxt{background: url(../img/register_result_back.png);background-size: cover;background-repeat: no-repeat;}
 .section03 > header div.resultTxt> h4{font-size: 22px;font-weight: bold;color: #fff;line-height: 103px}
 .section03{color:#444;letter-spacing:-0.05em;margin-bottom:100px;}
-
 .section03 > header h3{font-size:20px;text-align:center;color:#666;font-weight:400;margin-top:20px}
 .section03 > article h3{font-size:24px;font-family:"Nanum Gothic",'NanumGothic';font-weight:normal;margin-bottom:30px;text-align: center}
 .section03 > article h4{font-size:36px;font-family:"Nanum Gothic", "NanumGothic";font-weight:normal;text-align: center;margin-top:30px;color:#373737}
@@ -205,7 +204,6 @@ span.bold{font-weight: bold; font-size: 15px;}
 .section03 > article .large{font-size:22px;font-weight:bold;color:#1e1e1e; margin: 10px 15px 10px 0}
 .section03 > article > .introImg{border-top: 2px solid #fe1e1e; padding-top: 10px}
 .section03 > article > .introDiv2{position: absolute;right: 35px;top: 40%;}
-
 .section03 article.trainer{border-top: 2px solid #fe1e1e; padding-top: 50px;}
 .section03 article.trainer > div ul{width:100%;text-align:center;font-size:0;}
 .section03 article.trainer > div ul li{width:24%;box-sizing:border-box;display:inline-block;transition: all .2s ease-in-out;margin: 0 5px 10px 5px;border: 2px solid #cdcdcd;padding: 10px}
@@ -240,7 +238,6 @@ span.bold{font-weight: bold; font-size: 15px;}
 .section03 article.franchisee > div ul li a .txt h3{font-family:"Malgun Gothic","MalgunGothic","맑은고딕","Nanum Gothic";font-weight:normal;font-size:16px;color:#8d8d8d;letter-spacing:-0.5px;text-align: left}
 .section03 article.franchisee > div ul li a .txt h5{font-family:"Malgun Gothic","MalgunGothic","맑은고딕","Nanum Gothic";font-weight:normal;font-size:16px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;letter-spacing:-0.05em;color:#888;text-decoration:line-through;margin-top:5px;}
 .section03 article.franchisee > div ul li a .txt h6{font-family:"Malgun Gothic","MalgunGothic","맑은고딕","Nanum Gothic";font-weight:normal;font-size:16px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;letter-spacing:-0.05em;color:#888;margin-top:5px;}
-
 .section03 article.product{display:block;width:100%;margin-top:43px;}
 .section03 article.product p{color: #8d8d8d;font-size: 18px;margin-bottom: 20px}
 .section03 article.product > div ul{width:100%;text-align:center;font-size:0;}
@@ -260,7 +257,6 @@ span.bold{font-weight: bold; font-size: 15px;}
 .section03 article.product > div ul li a .txt h3{font-family:"Malgun Gothic","MalgunGothic","맑은고딕","Nanum Gothic";font-weight:normal;font-size:16px;color:#8d8d8d;letter-spacing:-0.5px;padding-bottom: 5px;margin-bottom: 0}
 .section03 article.product > div ul li a .txt h5{font-family:"Malgun Gothic","MalgunGothic","맑은고딕","Nanum Gothic";font-weight:normal;font-size:16px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;letter-spacing:-0.05em;color:#888;text-decoration:line-through;margin-top:5px;}
 .section03 article.product > div ul li a .txt h6{font-family:"Malgun Gothic","MalgunGothic","맑은고딕","Nanum Gothic";font-weight:normal;font-size:16px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;letter-spacing:-0.05em;color:#888;margin-top:5px;}
-
 .section03 article.construction{display:table;width:100%;}
 .section03 article.construction h1{margin-top: 10px;font-weight: 500;font-size: 26px}
 .section03 article.construction h1:before{content: "|" ;color: #fe1e1e; margin-right: 10px}
@@ -270,7 +266,6 @@ span.bold{font-weight: bold; font-size: 15px;}
 .section03 article.construction > div > div > div.videoTxt{width: 100%;height: 100%}
 .section03 article.construction > div > div > div > a{display:block;width:100%;height:100%;}
 .section03 article.construction > div > div > div > span.videoText{color: #bbb;font-size: 15px;margin-top: 3px}
-
 .section03_nav{margin-top:27px;text-align:center;border-top: 2px solid #fe1e1e;border-bottom: 1px solid #ddd;padding: 15px}
 .section03_nav ul{display:inline-block;width:auto;margin:0 auto;margin-left:1px;}
 .section03_nav li{display:inline-block;border-right:1px solid #fff;width:253px;height:78px;box-sizing:border-box;}
@@ -326,7 +321,7 @@ div.desc, div.url { display:none; }
 #main_product .list{display:block;width:100%;margin-top:43px;}
 #main_product .list p{color: #8d8d8d;font-size: 18px;margin-bottom: 50px}
 #main_product .list > div ul{width:100%;text-align:center;font-size:0;}
-#main_product .list > div ul li a:hover > div.h2back{display: block;background: url(../img/menuBack.png);z-index: 9999;background-size: contain;background-repeat: no-repeat;height: 99px}
+#main_product .list > div ul li a:hover > div.h2back{display: block;background: url(../img/menuBack.png);z-index: 9999;background-size: contain;background-repeat: no-repeat;height: 99px;background-position: 5px}
 #main_product .list > div ul li a:hover > div.h2back h3{font-family:"Malgun Gothic","MalgunGothic","맑은고딕","Nanum Gothic";font-weight:normal;font-size:26px;color: #595959;overflow:hidden;padding: 10px}
 .h2back{display: none;}
 #main_product .list > div ul li a:hover > .txt h3{display: none}
@@ -503,12 +498,11 @@ div.desc, div.url { display:none; }
 #mypage_header .mypage > h1{font-size: 36px;padding: 22px 0;background:#fe1e1e;border-radius: 0px 0 13px 13px;text-align:center;}
 #mypage_header .mypageUser{width:78%;}
 #mypage_header .mypageUser > div{float:left}
-#mypage_header .mypageBoderT{border-top: 2px solid #fe1e1e;border-bottom: 2px solid #fe1e1e}
+#mypage_header .mypageBoderT{border-top: 2px solid #fe1e1e;}
 #mypage_header .mypageImg{width: 17%;position: relative;padding:20px;}
 #mypage_header .mypageSubList{position: absolute;top: 95px;padding: 33px}
 #mypage_header ul.mypageSubList > li:hover > ul > div.menuLine1{display:none;height:1px;background-color: #d4d4d4;width:1100px;display:none;position:absolute;top:118px;left:-33px;}
 #mypage_header ul.mypageSubList > li:hover > ul.subMenu > div.menuLine1{display: block;}
-
 #mypage_header ul.mypageSubList > li > ul {position: absolute;display: block;top: 18px;right: initial}
 #mypage_header ul.mypageSubList > li > ul li{display: none}
 #mypage_header ul.mypageSubList > li:hover > ul.subMenu{width: 1000px;height: 150px}
@@ -518,14 +512,11 @@ div.desc, div.url { display:none; }
 #mypage_header ul.mypageSubList > li > ul li:after{content: none;}
 #mypage_header ul.mypageSubList > li  a {color: #959595;}
 #mypage_header ul.mypageSubList > li  a:hover{color: #fe1e1e;font-weight: bold}
-
 #mypage_header .mypageSub{position: relative;top: 36px;text-align: center}
 #mypage_header ul.mypageSub > li{text-align: center;width:46%;}
 #mypage_header ul.mypageSub li.cont:after{content:"|";color:#959595;margin-left:12px;margin-right:12px;}
-
 #mypage_header ul.mypageSub > li:hover > ul > div.menuLine1{display:none;height:1px;background-color: #d4d4d4;width:1100px;display:none;position:absolute;top:118px;left:-33px;}
 #mypage_header ul.mypageSub > li:hover > ul.subMenu > div.menuLine1{display: block;}
-
 #mypage_header ul.mypageSub > li > ul {position: absolute;display: block;top: 18px;right: initial;}
 #mypage_header ul.mypageSub > li > ul li{display: none}
 #mypage_header ul.mypageSub > li > ul.subMenu{width: 1100px;border-bottom: 1px solid #ddd;margin-left:-8px}
@@ -535,9 +526,7 @@ div.desc, div.url { display:none; }
 #mypage_header ul.mypageSub > li > ul li:after{content: none;}
 #mypage_header ul.mypageSub > li  a {color: #959595;}
 #mypage_header ul.mypageSub > li  a:hover{color: #fe1e1e;font-weight: bold}
-
-
-#mypage_header .mypageSubList1{position: absolute;top: 128px;padding: 33px 0;width:100%;}
+#mypage_header .mypageSubList1{position: absolute;top: 128px;padding: 33px 0;}
 #mypage_header ul.mypageSubList1 > li:hover > ul > div.menuLine{display:none;height:1px;background-color: #d4d4d4;width:1100px;display:none;position:absolute;top:111px;left:-33px;}
 #mypage_header ul.mypageSubList1 > li:hover > ul.subMenu > div.menuLine{display: block;}
 #mypage_header ul.mypageSubList1 > li:hover > ul.subMenu{width: 1000px;height: 150px}
@@ -1274,8 +1263,7 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
 	#main_way a{padding:30px 41px 28px 41px;}	
 	#main_way h1{font-size:43px;}
 	#main_way i{width:160px;height:175px;top:-10px;}
-    #main_product .list > div ul li{width: 48%;}
-    
+    #main_product .list > div ul li{width: 48%;}    
 	.section01_header{padding:16px 0 15px 0;}
 	.section01_header h1{font-size:24px;}
 	.sub_call_banner{height:140px;padding:30px 20px;}
@@ -1427,8 +1415,7 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
 	.rent_list li p{font-size:12px;}
 	.rent_list li h4{font-size:12px;}
 	.rent_list li h4 span{margin-right:5px;}
-	.input01{height:38px;line-height:18px;}
-    
+	.input01{height:38px;line-height:18px;}    
     .input02{height:40px;font-size:12px;}
     .input03{height:38px;line-height:18px;}
 	.login_section .section01_content{width:100%;box-sizing:border-box;margin:0;}
