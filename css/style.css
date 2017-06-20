@@ -28,6 +28,7 @@ span.bold{font-weight: bold; font-size: 15px;}
 .mt_60{margin-top: 60px !important}
 .ml10{margin-left:10px !important;}
 .mr10{margin-right:10px !important;}
+.mb20{margin-bottom: 20px}
 .color_white{color:#fff !important;}
 .width-fixed{width:1100px;margin:0 auto;position:relative;}
 .width800{width: 1100px;position: relative;margin: 0 auto;border-top: 2px solid #fe1e1e}
@@ -58,6 +59,7 @@ span.bold{font-weight: bold; font-size: 15px;}
 /* 준비중 페이지 */
 
 /* 헤더 */
+.container{width:100%;min-height:100%;box-sizing:border-box;padding-top:128px;margin-top:-128px;position:relative;padding-bottom:135px;background: #fff}
 .red{color: #fe1e1e;font-size: 16px}
 .backRed{background: #fff;width: 1100px;margin: 0 auto;height: 115px;}
 .imgBack{background: #fe1e1e;width: 270px;height: 115px;position: absolute;top:-33px}
@@ -65,7 +67,7 @@ span.bold{font-weight: bold; font-size: 15px;}
 #header{width:100%;height:128px;z-index:1000;position:absolute;top: 0px}
 #top_header{width:100%;height:33px;text-align:right;font-size:14px;margin-top: 33px}
 #top_header select{width: 100px;background: #fff; color: #fe1e1e;font-size: 14px;}
-#top_header p,#top_header ul,#top_header li{display:inline-block;padding-top: 10px;padding-right:12px}
+#top_header p,#top_header ul,#top_header li{display: inline-block;padding-top: 10px;padding-right: 12px}
 #top_header p{position:relative;padding-left:23px;padding-right:13px;color:#222;}
 #top_header p span{width:16px;height:16px;display:inline-block;background-image:url("../img/top_head_icon.png");background-repeat:no-repeat;background-position:top left;position:absolute;left:0;top:50%;margin-top:-8px;}
 #top_header li a.cart{color:#fe1e1e;padding-right:3px;position: relative;top:-3px}
@@ -116,9 +118,9 @@ span.bold{font-weight: bold; font-size: 15px;}
 #main_header div > ul > li:hover > ul.subMenu1{display:block;}
 #main_header div > ul > li:hover > ul.subMenu2{display:block;}
 #main_header div > ul > li:hover > ul.subMenu3{display:block;}
-#main_header div > ul > li > ul.subMenu1{display:none;position:absolute;width:1080px;background-color:#fff;top:50px;left:-388px;padding:30px 10px 30px 10px;text-align:center;border-bottom: 2px solid #fe1e1e}
-#main_header div > ul > li > ul.subMenu2{display:none;position:absolute;width:1080px;background-color:#fff;top:50px;left:-718px;padding:30px 10px 30px 10px;text-align:center;border-bottom: 2px solid #fe1e1e}
-#main_header div > ul > li > ul.subMenu3{display:none;position:absolute;width:1080px;background-color:#fff;top:50px;left:-844px;padding:30px 10px 30px 10px;text-align:center;border-bottom: 2px solid #fe1e1e}
+#main_header div > ul > li > ul.subMenu1{display:none;position:absolute;width:1080px;background-color:#fff;top:50px;left:-388px;padding:30px 10px;text-align:center;border-bottom: 2px solid #fe1e1e}
+#main_header div > ul > li > ul.subMenu2{display:none;position:absolute;width:1080px;background-color:#fff;top:50px;left:-718px;padding:30px 10px;text-align:center;border-bottom: 2px solid #fe1e1e}
+#main_header div > ul > li > ul.subMenu3{display:none;position:absolute;width:1080px;background-color:#fff;top:50px;left:-844px;padding:30px 10px;text-align:center;border-bottom: 2px solid #fe1e1e}
 
 .sub_header #top_header li a{color:#1e1e1e;}
 .sub_header #main_header{background-repeat:no-repeat;background-position:bottom left;}
@@ -284,8 +286,6 @@ div.movs {width:33.3%;padding:8px;box-sizing:border-box;display:inline-block;flo
 div.thumb{width:100%;height:157px;border-radius:10px;position:relative;}
 div.movs div{ margin:0; padding:0;}
 div.desc, div.url { display:none; }
-
-.container{width:100%;min-height:100%;box-sizing:border-box;padding-top:128px;margin-top:-128px;position:relative;padding-bottom:135px;background: #fff}
 
 #main_event{position:relative;margin-bottom:20px;}
 #main_event .owl-dots{text-align:right;width:100%;position:absolute;bottom:22px;right: 55px}
@@ -1058,10 +1058,8 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
 @media all and (max-width: 1480px){
 	.sub_call_pop{position:fixed;right:10px;top:138px;height:140px;}
 }
-@media all and (min-width: 1120px){    
-	.login_header{padding-top:0;border-bottom:3px solid #febf0f;margin-bottom:36px;}
-}
 @media all and (max-width: 1120px){
+    .login_header{padding-top:0;border-bottom:3px solid #febf0f;margin-bottom:36px;}
     .section03 article.product > div ul li{width: 40%}
     #mall_buy li > div input[type='button']{width: 100%}
     .form_list01 li > div > div{width: 100%;}
@@ -1210,8 +1208,7 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
 	.contect div span { margin-right:15px;}
     #mypage_header .mypage > h1 {font-size:20px;}
 }
-@media all and (max-width: 980px){
-    
+@media all and (max-width: 980px){    
     textarea.fregister_term{width: 70%}
 }
 @media all and (max-width: 900px){    

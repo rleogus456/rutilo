@@ -42,7 +42,7 @@ $point = $list['price'] / 100 ;
                         </div>
                         <div class="buy">                           
                             <div class="total">                              
-                               <h2> 
+                                <h2>
                                     <div class="txt">주문수량</div>                              
                                     <div class="num">
                                         <input type="text" name="number" id="number" onkeyup="return num_enter(this);" data-max="10" required value="<?php echo $view['out'] || $view['number']-$view['sell']<=0?0:1; ?>" />
@@ -53,26 +53,15 @@ $point = $list['price'] / 100 ;
                                         <a class="btn02" href="<?php echo $link; ?>">바로구매</a>
                                         <a class="btn01" href="<?php echo $link; ?>">장바구니</a>
                                     </div>   
-                               </h2>                              
+                                </h2>                              
                             </div>                                                      
                         </div>
                         <div id="view_header">
-                             <ul class="mypageSubList">
-                        <li class="cont conten">
-                            <a href="">제품설명</a>
-<!--
-                            <ul class="subMenu">
-                                <li>주문내역</li>
-                                <li>주문배송조회</li>
-                                <li>반품/교환</li>
-                                <li>1:1 문의</li>
-                            </ul>
--->
-                        </li>
-                        <li class="cont conten1"><a href="" >MSDS</a></li>
-                        <li class="cont conten2"><a href="">지원정보</a></li>
-                        
-                    </ul> 
+                            <ul class="mypageSubList">
+                                <li class="cont conten"><a href="">제품설명</a></li>
+                                <li class="cont conten1"><a href="" >MSDS</a></li>
+                                <li class="cont conten2"><a href="">지원정보</a></li>                        
+                            </ul> 
                         </div>
                     </div>
                 </div>

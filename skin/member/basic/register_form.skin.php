@@ -42,9 +42,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
                             <ul class="mypageSub">
                                 <li class="cont">
                                     <a href="<?php echo G5_BBS_URL."/register_form.php?w=u"; ?>">개인정보수정</a>
-
                                     <ul class="subMenu menuLine">
-                                        <!--<li><div class="menuLine"></div></li>-->
                                         <li><a href="<?php echo G5_URL."/page/mypage/orderHistory.php?tab=regform" ?>">주문내역</a></li>
                                         <li><a href="<?php echo G5_URL."/page/mypage/viewOrders.php?tab=regform" ?>">주문배송조회</a></li>
                                         <li><a href="<?php echo G5_URL."/page/mypage/viewReturn.php?tab=regform" ?>">반품/교환</a></li>
@@ -68,16 +66,13 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
                             </div>
                         </div>
                         </div>        
-                    </div>
-                 
+                    </div>                 
                 <?php }else{ ?>
                 <h4><?php echo "회원가입"; ?></h4>
                 <p><?php echo "루틸로에 오신것을 환영합니다."; ?></p>
                 <?php }?>
             </header>
         </section>
-
-
 	<section class="section01">	
 		<div class="section01_content wrap">
 			<div id="register_form">
