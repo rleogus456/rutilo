@@ -121,7 +121,6 @@
 				<li class="accordion" data-accordion>
 					<div data-control class="list-title">가맹점관리</div>
 					<div data-content class="list-item">
-<!--						<div><a href="<?php echo G5_URL."/admin/tel.php"; ?>">전화번호관리</a></div>-->
 						<div><a href="<?php echo G5_URL."/admin/partner_list.php"; ?>">가맹점관리</a></div>
 					</div>
 				</li>
@@ -132,16 +131,15 @@
 					<div class="list-title" style="background:none;"><a href="<?php echo G5_URL."/admin/member_list.php"; ?>">회원관리</a></div>
 				</li>
                 <li class="accordion" data-accordion>
-					<div class="list-title" style="background:none;"><a href="<?php echo G5_URL."/admin/trainer_list.php"; ?>">트레이너</a></div>
+					<div data-control class="list-title">트레이닝</div>
+					<div data-content class="list-item">
+						<div><a href="<?php echo G5_URL."/admin/trainer_list.php"; ?>">트레이너</a></div>				
+						<div><a href="<?php echo G5_URL."/admin/center_list.php"; ?>">트레이닝 센터</a></div>
+					</div>
 				</li>
 				<li class="accordion" data-accordion>
 					<div class="list-title" style="background:none;"><a href="<?php echo G5_URL."/admin/construction_list.php"; ?>">시공방법</a></div>
 				</li>
-<!--
-				<li class="accordion" data-accordion>
-					<div class="list-title" style="background:none;"><a href="<?php echo G5_URL."/admin/branch_list.php"; ?>">지점관리</a></div>
-				</li>
--->
 				<li class="accordion" data-accordion>
 					<div data-control class="list-title">제품관리</div>
 					<div data-content class="list-item">

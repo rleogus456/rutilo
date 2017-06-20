@@ -7,34 +7,16 @@
 <title>Simple Map</title>
 
 <meta name="viewport" content="initial-scale=1.0">
-
 <meta charset="utf-8">
-
-<!--  Style Sheet (bootstrap) -->
-
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-<!-- font-awesome (css icon) -->
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-
-<!-- JQuery  -->
-
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-
-<!-- BootStrap -->
-
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<!-- Google map Library -->
-
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0PgkTu9n9pgKasFt_kE4lsiSimUcfTg0&libraries=places&callback=initAutocomplete"
-
-        async defer></script>       
+        async defer></script>      
 
 <style>
 
-/***** Google maps CSS *****/
 
 #map {
 
@@ -168,29 +150,17 @@
 <!-- 모달창 -->
 
 <div class="modal fade" id="myModal" role="dialog">
-
     <div class="modal-dialog">
-
 <!-- Modal content-->
 
 <div class="modal-content" style="width: 730px; height: 750px;">
-
 <!-- 주소찾기 -->
 
 <div class="modal-header" style="">
-
 <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-<h4 class="modal-title">
-
-<i class="fa fa-map-o" style="font-size: 24px"></i>주소찾기
-
-</h4>
-
 </div>
 
 <div class="modal-body" style="height: 84%; padding: 10px;">
-
 <!-- 구글 맵 검색input -->
 
 <input id="pac-input" class="controls" type="text"

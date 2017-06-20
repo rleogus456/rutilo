@@ -62,20 +62,6 @@ while($cont_data=sql_fetch_array($con_query)){
 				    </div>
 				</div>
 				<?php } ?>
-<!--
-				<div >
-                    <div class="menu2"><iframe width="100%" height="240px" src="https://www.youtube.com/embed/OKPZPWJUgew" frameborder="0" allowfullscreen></iframe>
-                    <h1><span class="textRed">| </span>루틸로 No 201</h1>
-                    <p class="videoText">휠의 에너지를 재충전 한다.</p>
-                    </div>
-				</div>
-				<div>
-				    <div class="menu3"><iframe width="100%" height="240px" src="https://www.youtube.com/embed/OKPZPWJUgew" frameborder="0" allowfullscreen></iframe>
-				    <h1><span class="textRed">| </span>루틸로 No 301</h1>
-				    <p class="videoText">새차 같은 컬로톤의 재생, 광택의 스팟이 다르다.</p>
-			    	</div>				   
-				</div>				
--->
 			</div>									
 		</div>	
 		</div>
@@ -104,30 +90,6 @@ while($cont_data=sql_fetch_array($con_query)){
                     </li>    
                     <?php }?>
 				</ul>
-<!--
-					<ul>
-					<?php
-					for($j=0;$j<count($list);$j++){
-							$class="";
-							if($j>=4)
-								$class="md_hidden";
-						if($list[$j]["IndexPage"]=="Y"){
-					?>
-						<li<?=($class?" class='".$class."'":"")?>>
-							<a href="<?php echo G5_URL."/page/mall/view.php?&sPID=".$list[$j]['PID']."&sCVIndex=".$list[$j]['CVIndex'] ?>">
-								<?php if($list[$j]['out'] || ($list[$j]['number']-$list[$j]['sell'])<=0){ ?><div class="out"><i></i></div><?php } ?>
-								<div class="img"><div><div><img src="/shop/images/<?=(strlen($list[$j]['MainImg'])>0?"upload/".$list[$j]['MainImg']:"ProductNoneImage.png")?>" width="100%"></div></div></div>
-								<div class="txt">									
-									<h4><b><?=(strlen($list[$j]['KrName'])==0?$list[$j]['Name']:$list[$j]['KrName'])?></b></h4>									
-									<h3><?=number_format($list[$j]['BZPrice'])?> 원</h3>									
-								</div>
-							</a>
-						</li>
-					<?php }
-						}
-					?>
-					</ul>
--->
 				</div>
 			</div>
 			

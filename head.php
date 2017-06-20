@@ -7,7 +7,7 @@ if ($config['cf_include_head'] && is_file(G5_PATH.'/'.$config['cf_include_head']
     return; // 이 코드의 아래는 실행을 하지 않습니다.
 }
 if($is_member){
-		$link="javascript:location.href='".G5_URL."/page/mypage/cart.php?tab=form&id=".$id."&type=".$type."&number=1';";
+		$link="javascript:location.href='".G5_URL."/page/mypage/cart.php?tab=form';";
 	}else{
 		$link="javascript:location.href='".G5_BBS_URL."/login.php?id=".$id."&type=".$type."';";
 	}
@@ -23,8 +23,6 @@ if (G5_IS_MOBILE) {
     include_once(G5_MOBILE_PATH.'/head.php');
     return;
 }
-$partner=sql_fetch("select * from `best_partner` where mb_id='".$member['mb_id']."'");
-$branch=sql_fetch("select * from `best_branch` where mb_id='".$member['mb_id']."'");
 ?>
 <!-- 헤더 시작 -->
 <header id="header" class="<?php echo $main?"":"sub_header"; ?>">
@@ -32,9 +30,6 @@ $branch=sql_fetch("select * from `best_branch` where mb_id='".$member['mb_id']."
 	<div class="backRed">
 		<div class="width-fixed">
 			<?php if($is_member){ ?>
-				<p>
-				
-				</p>
 				<ul>        
                    <li><?php echo $member['mb_name']; ?> 님
                        <ul class="mypage">
@@ -76,9 +71,7 @@ $branch=sql_fetch("select * from `best_branch` where mb_id='".$member['mb_id']."
 		<div class="imgBack"><h1><a href="<?php echo G5_URL; ?>"></a></h1></div>
 			<ul>
 			<div class="menuLine"></div>
-				<li>
-				    <a href="<?php echo G5_URL."/page/intro.php?tab=intro"; ?>">회사소개</a>                    
-				</li>
+				<li><a href="<?php echo G5_URL."/page/intro.php?tab=intro"; ?>">회사소개</a></li>
 				<li>
 				   <a href="<?php echo G5_URL."/page/product.php?tab=product"; ?>">제품 소개</a>                     
 				     <ul class="subMenu1">
@@ -90,12 +83,8 @@ $branch=sql_fetch("select * from `best_branch` where mb_id='".$member['mb_id']."
                         </div>
                     </ul>                    
 				</li>
-				<li>
-                    <a href="<?php echo G5_URL."/page/construction.php?tab=construction"; ?>">시공 방법</a>                    
-                </li>
-				<li>
-                    <a href="<?php echo G5_URL."/page/detailSevice.php?tab=detailSevice"; ?>">디테일링 서비스</a>                    
-                </li>
+				<li><a href="<?php echo G5_URL."/page/construction.php?tab=construction"; ?>">시공 방법</a></li>
+				<li><a href="<?php echo G5_URL."/page/detailSevice.php?tab=detailSevice"; ?>">디테일링 서비스</a></li>
 				<li>
 				    <a href="<?php echo G5_URL."/page/trainingCenter.php?tab=center"; ?>">트레이닝 센터</a>
                     <ul class="subMenu2">
@@ -115,9 +104,7 @@ $branch=sql_fetch("select * from `best_branch` where mb_id='".$member['mb_id']."
                         </div>
 				    </ul>
                 </li>
-				<li>
-					<a href="<?=G5_BBS_URL?>/board.php?bo_table=questions">문의 게시판</a>                    
-				</li>
+				<li><a href="<?=G5_BBS_URL?>/board.php?bo_table=questions">문의 게시판</a></li>
 			</ul>
 		</div>
 	</div>
@@ -148,9 +135,7 @@ $branch=sql_fetch("select * from `best_branch` where mb_id='".$member['mb_id']."
 					</div>
 				</div>
 				<ul>
-                    <li>
-                        <a href="<?php echo G5_URL."/page/intro.php?tab=intro"; ?>">회사소개</a>                    
-                    </li>
+                    <li><a href="<?php echo G5_URL."/page/intro.php?tab=intro"; ?>">회사소개</a></li>
                     <li>
                         <a href="#">제품 소개</a>
                          <ul>
@@ -160,12 +145,8 @@ $branch=sql_fetch("select * from `best_branch` where mb_id='".$member['mb_id']."
                             <li><a href="<?=G5_URL?>/page/product.php?tab=product">의류</a></li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="<?php echo G5_URL."/page/construction.php?tab=construction"; ?>">시공 방법</a>  			   
-                    </li>
-                    <li>
-                       <a href="<?php echo G5_URL."/page/detailSevice.php?tab=detailSevice"; ?>">디테일링 서비스</a>		  
-                    </li>
+                    <li><a href="<?php echo G5_URL."/page/construction.php?tab=construction"; ?>">시공 방법</a></li>
+                    <li><a href="<?php echo G5_URL."/page/detailSevice.php?tab=detailSevice"; ?>">디테일링 서비스</a></li>
                     <li>
                         <a href="#">트레이닝 센터</a>
                         <ul>
@@ -181,9 +162,7 @@ $branch=sql_fetch("select * from `best_branch` where mb_id='".$member['mb_id']."
                             <li><a href="<?=G5_URL?>/page/franchisee/franchiseeStatus.php?tab=center">가맹현황</a></li>
                         </ul>
                     </li>				    
-                    <li>
-                        <a href="<?php echo G5_BBS_URL."/board.php?bo_table=questions"; ?>">문의게시판</a>                  
-                    </li>			
+                    <li><a href="<?php echo G5_BBS_URL."/board.php?bo_table=questions"; ?>">문의게시판</a></li>			
 			    </ul>
 			</div>
 		</div>
@@ -191,7 +170,6 @@ $branch=sql_fetch("select * from `best_branch` where mb_id='".$member['mb_id']."
 	</div>
 	<!-- 모바일 헤더 끝 -->
 </header>
-
 <!-- 헤더끝 -->
 <div class="msg"></div>
 <div class="modal"></div>
@@ -204,28 +182,22 @@ $branch=sql_fetch("select * from `best_branch` where mb_id='".$member['mb_id']."
 			if($thumb['src']) {
 				$img_content = '<img src="'.$thumb['src'].'" alt="'.$thumb['alt'].'">';
 			}
-			if($img_content){
-	?>
-		<div class="item"><a href="<?php echo G5_BBS_URL."/board.php?bo_table=event&wr_id=".$event_list[$i]['wr_id']; ?>"><?php echo $img_content; ?></a></div>
-	<?php
-			}
-		}
+			if($img_content){ ?>
+	    	<div class="item"><a href="<?php echo G5_BBS_URL."/board.php?bo_table=event&wr_id=".$event_list[$i]['wr_id']; ?>"><?php echo $img_content; ?></a></div>
+	<?php	}	}
 		if(count($event_list)<=0){?>		
-    <?php if($w=="u"){ ?>
-          <div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/slide07.jpg"; ?>" alt="" /></a></div>    
-	<?php }elseif($tab==$slide['category'] && $tab){?> 
-	    <div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_DATA_URL."/slide/".$slide['photo']; ?>" alt="" /></a></div>
-    <?php } else if($bo_table=="questions"){?>
-        <div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/slide06.jpg"; ?>" alt="" /></a></div>    
-    <?php } else{?>
-        <div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/main_slide.jpg"; ?>" alt="" /></a></div>
-		<div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/main_slide2.jpg"; ?>" alt="" /></a></div>
-		<div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/main_slide3.jpg"; ?>" alt="" /></a></div>
-		<div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/main_slide4.jpg"; ?>" alt="" /></a></div>
-    <?php } ?> 
-    <?php } ?>
-    <?php 
-    ?>
+    <?php   if($w=="u"){ ?>
+            <div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/slide07.jpg"; ?>" alt="" /></a></div>    
+	<?php   }elseif($tab==$slide['category'] && $tab){?> 
+	        <div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_DATA_URL."/slide/".$slide['photo']; ?>" alt="" /></a></div>
+    <?php   } else if($bo_table=="questions"){?>
+            <div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/slide06.jpg"; ?>" alt="" /></a></div>    
+    <?php   } else{?>
+            <div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/main_slide.jpg"; ?>" alt="" /></a></div>
+		    <div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/main_slide2.jpg"; ?>" alt="" /></a></div>
+		    <div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/main_slide3.jpg"; ?>" alt="" /></a></div>
+		    <div class="item"><a href="<?php echo G5_URL; ?>"><img src="<?php echo G5_IMG_URL."/main_slide4.jpg"; ?>" alt="" /></a></div>
+    <?php   }   }?> 
 </div>
 
 <script>
@@ -259,4 +231,4 @@ $branch=sql_fetch("select * from `best_branch` where mb_id='".$member['mb_id']."
 			setTimeout(function(){main_notice_slide()},5000);
 		}
 	});
-    </script>
+</script>

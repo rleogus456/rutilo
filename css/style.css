@@ -182,7 +182,7 @@ span.bold{font-weight: bold; font-size: 15px;}
 .section03 > header div.videoTxt > h1{color: #fe1e1e;font-size: 34px; font-weight: bold;}
 .section03 > header div.videoTxt > p {color: #8d8d8d;font-size: 18px;margin-top: 10px;margin-bottom: 0px; text-align: left;}
 .section03 > header span.bgRed{background: #fe1e1e; color: #fff;font-size: 32px;padding: 3px}
-.section03 > header h1{font-size: 20px; font-weight: normal}
+.section03 > header h1{font-size: 20px; font-weight: normal;line-height: 30px}
 .section03 > header h4{padding:0 0 0px 0;position:relative;margin-bottom:14px;font-size:45px;font-family:'Noto Sans KR';font-weight:normal;text-align:center;}
 .section03 > header h4:after{content:"";width:30px;height:3px;display:block;position:absolute;left:50%;margin-left:-15px;margin-bottom: 20px;bottom:60px;background:#fe1e1e;}
 .section03 > header{padding:40px 0;}
@@ -367,7 +367,7 @@ div.desc, div.url { display:none; }
 .rent_list li p{color:#a6a6a6;font-size:14px;margin-bottom:3px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;}
 .rent_list li h4{font-size:14px;color:#ce2027;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;}
 .rent_list li h4 span{margin-right:15px;font-weight:normal;color:#a6a6a6;}
-.rent_list li > a{position:absolute;top:60px;right:75px;color:#fff;background:#febf0f;width:114px;height:46px;box-sizing:border-box;font-size:17px;font-family:nbgr;text-align:center;padding:15px 0 13px 0;box-shadow:3px 3px 0 #baafaf;}
+.rent_list li > a{position:absolute;top:60px;right:75px;color:#fff;background:#fe1e1e;width:114px;height:46px;box-sizing:border-box;font-size:17px;font-family:nbgr;text-align:center;padding:15px 0 13px 0;box-shadow:3px 3px 0 #baafaf;}
 .sub_call_pop{position:absolute;right:-182px;top:138px;width:166px;height:138px;background:#fff;border:1px solid #ddd;padding:15px;box-sizing:border-box;font-family:nbgr;}
 .sub_call_pop .top{width:100%;height:50px;border-bottom:1px solid #ddd;box-sizing:border-box;}
 .sub_call_pop .top i{width:30px;height:30px;display:inline-block;float:left;background-image:url("../img/call_pop_icon.png");background-repeat:no-repeat;margin-right:20px;margin-top:3px;}
@@ -388,6 +388,7 @@ div.desc, div.url { display:none; }
 .sub_call_banner a div{padding-left:30px;font-size:27px;position:relative;}
 .sub_call_banner a div:before{content:"";width:1px;height:73px;background:#ec7123;position:absolute;box-shadow:1px 1px 0 #fbbb00;margin-top:-36px;top:50%;left:0;}
 /* 차량 선택 페이지 */
+
 /* 상세보기 */
 #view_header ul.mypageSubList > li > ul {position: absolute;display: block;top: 26px;right: initial;}
 #view_header ul.mypageSubList > li > ul li{display: none}
@@ -520,13 +521,13 @@ div.desc, div.url { display:none; }
 #mypage_header ul.mypageSub > li > ul {position: absolute;display: block;top: 18px;right: initial;}
 #mypage_header ul.mypageSub > li > ul li{display: none}
 #mypage_header ul.mypageSub > li > ul.subMenu{width: 1100px;border-bottom: 1px solid #ddd;margin-left:-8px}
-#mypage_header ul.mypageSub > li > ul.subMenu li{    display: inline-block;    line-height: 22px;    text-align: center;    position: relative; margin-top: 45px;  padding: 10px 0;  border: 1px solid #fff;    width: 130px;}
+#mypage_header ul.mypageSub > li > ul.subMenu li{display: inline-block;line-height: 22px;text-align: center;position: relative; margin-top: 45px;  padding: 10px 0;  border: 1px solid #fff;border-top: 1px solid #ddd; width: 130px;}
 #mypage_header ul.mypageSub > li > ul.subMenu li:hover{border: 1px solid #ddd;border-bottom: 1px solid #fff}
 #mypage_header ul.mypageSub > li > ul li a{font-weight: normal;}
 #mypage_header ul.mypageSub > li > ul li:after{content: none;}
 #mypage_header ul.mypageSub > li  a {color: #959595;}
 #mypage_header ul.mypageSub > li  a:hover{color: #fe1e1e;font-weight: bold}
-#mypage_header .mypageSubList1{position: absolute;top: 128px;padding: 33px 0;}
+#mypage_header .mypageSubList1{position: absolute;top: 115px;padding: 33px 0;}
 #mypage_header ul.mypageSubList1 > li:hover > ul > div.menuLine{display:none;height:1px;background-color: #d4d4d4;width:1100px;display:none;position:absolute;top:111px;left:-33px;}
 #mypage_header ul.mypageSubList1 > li:hover > ul.subMenu > div.menuLine{display: block;}
 #mypage_header ul.mypageSubList1 > li:hover > ul.subMenu{width: 1000px;height: 150px}
@@ -549,8 +550,6 @@ div.desc, div.url { display:none; }
 /*#footer ul li.last:after{content:"";}*/
 #mypage_header ul li a:hover{color:#898989;}
 #mypage_header.sub_footer{background:#fff;border-top:1px solid #ddd;}
-
-
 .section01_header .intro_head{width:155px;height:44px;background-image:url("../img/intro_head.png");background-repeat:no-repeat;background-position:top left;}
 .section01_header .register_form_head{width:156px;height:44px;background-image:url("../img/register_form_head.png");background-repeat:no-repeat;background-position:top left;}
 .section01_header .register_modify_head{width:156px;height:44px;background-image:url("../img/register_modify_head.png");background-repeat:no-repeat;background-position:top left;}
@@ -645,7 +644,6 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
 /* 아이디 비밀번호 찾기 페이지 */
 
 /* 모달 */
-
 .modal,.msg{background:url("../img/mask.png") repeat top left;position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1200;opacity:0;filter: alpha(opacity=0);transition: opacity .5s ease-in-out;-moz-transition: opacity .5s ease-in-out;-o-transition: opacity .5s ease-in;-webkit-transition: opacity .5s ease-in-out;}
 .msg{background:url("../img/mask.png") repeat top left;position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1300;opacity:0;transition: opacity .5s ease-in-out;-moz-transition: opacity .5s ease-in-out;-o-transition: opacity .5s ease-in;-webkit-transition: opacity .5s ease-in-out;}
 .msg > div { box-sizing:border-box; }
@@ -729,11 +727,6 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
 #event_form li > div .input01.wr_1{width:120px;}
 /* 이벤트 */
 
-/*.partners {width: 50%;float: left;background: #fff}
-.partners a.bell{background-image: url(../img/partners01.jpg);padding:10px 0 0 30px;margin-top: 5px;width:100%;height:120px;background-size:contain;background-repeat:no-repeat}
-.partners a.pet{background-image: url(../img/partners03.jpg);padding: 0px;width: 100%;height:170px;background-size:contain;background-repeat:no-repeat}
-.partners a.bell:hover{background-image: url(../img/partners02.jpg);}
-.partners a.pet:hover{background-image: url(../img/partners04.jpg);}*/
 #rent_view{width:100%;display:inline-block;}
 #rent_view .top{width:100%;height:394px;border:1px solid #ddd;box-sizing:border-box;background:#fff;}
 #rent_view .img{width:53%;padding:20px;box-sizing:border-box;height:100%;float:left;}
@@ -1132,7 +1125,6 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
 	.form_list01{border-bottom:1px dashed #c4c4c4;padding-bottom:50px;margin-bottom:50px;}
 	.form_list01 li > div.bdr{border-right:0;}
 	.form_list01 p{float:none;text-align:right;}        
-    #register_form li > div input{margin:0;}
     #register_form li > div input[type='button']{width:100%;margin-top: 6px;}
     #register_form p{margin:10px 0;width:100%;float:left;}
     #register_form p span {text-align:left}
@@ -1222,9 +1214,8 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
     
     textarea.fregister_term{width: 70%}
 }
-@media all and (max-width: 900px){
-    
-      .section03 article.franchisee > div ul li {width: 45%}
+@media all and (max-width: 900px){    
+    .section03 article.franchisee > div ul li {width: 45%}
     .section03 article.trainer > div ul li {width: 40%}
     .msg_map > div#map {width:400px;height:400px}
     #mall_buy .price_info > div.cartInfo > div.tot_price{width: 55%;left: 45%}
@@ -1531,8 +1522,7 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
 	#accident .call .btn{margin-top:130px;}
 	#accident .call p{margin-top:15px;}
 	#setting li{height:50px;padding:15px 20px;font-size:16px;}
-	#setting li a{width:70px;}
-    
+	#setting li a{width:70px;}    
 	#partner > div > h3{height:55px;font-size:16px;padding:18px 20px;}
 	#main_banner div .event{width:46px;height:10px;top:15px;}
 	#main_banner div.menu2 .event{right:72px;}
@@ -1553,11 +1543,11 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
 	#main_tab .table04 table th{padding:7px;font-size:14px;}
 	#main_tab .table04 table td{padding:7px;font-size:14px;}
 }
-
 @media all and (max-width: 690px){
     .section03 > header{padding: 0}
     #mypage_header .mypageImg {padding:4px;width: 30%}
     #mypage_header .mypage{width: 100% }
+    #mypage_header .mypageBoderT{border: 0}
     #mypage_header .mypageList li {font-size: 16px;}
     #mypage_header .mypageList p {font-size: 20px}
     #mypage_header .mypageList{}
@@ -1586,16 +1576,13 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
     #main_way h3{font-size:20px;}
     #mall_buy .price_info table tr td .title h3{margin-left: 0px}
 }
-@media all and (max-width: 590px){
-    
+@media all and (max-width: 590px){    
     #mall_buy .price_info table.infoT tr th{width: 22%;}
     .section03 > header p{font-size: 14px}
     .red{font-size: 14px;}
     .section03 > header div.result > div.resultTxt{background: 0}
     .section03 > header div.result h3{font-size: 25px;margin-bottom: 0}
     .section03 > header div.resultTxt> h4{font-size: 15px;color: #000;line-height:35px}
-    #mypage_header .mypageImg{top:-77px}
-    /*mypage_header .mypage > h1{font-size: 30px}*/
     #mypage_header .mypage{height: 77px}
     #mypage_header ul li.disPb {display: none}
     #login_form .login_id{margin-left: 0;top:-23px}
@@ -1699,7 +1686,7 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
 	.form_list01 li > div > label{width:100px;padding:15px 0;font-size:12px;display:block;}
 	.form_list01 li > div > div{width:100%;padding:0;}
     #register_form .btn_group01{margin-top:10px;}
-	#register_form .input01{width:100%;float:left;display:inline-block;}
+	#register_form .input01{width:100% !important;float:left;display:inline-block;}
     #register_form .input03{width:100%;display:inline-block;}
 	#register_form p{font-size:11px;}
 	.btn_group01 .btn{height:35px;font-size:13px;padding:10px 0;margin-top:50px;}
@@ -1861,8 +1848,6 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
 	#main_banner div.menu2 .event{right:51px;}
 	#main_banner div.menu1 .event,#main_banner div.menu3 .event{left:16px;}
 }
-
-
 /* ie8 hack */
 @media \0screen {
 	#main_banner .menu1 .txt{filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='./img/main_m1_txt.png', sizingMethod='scale');background:none;}
