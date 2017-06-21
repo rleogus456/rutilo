@@ -45,42 +45,60 @@ while($data=sql_fetch_array($query)){
             <header style="<?php if($is_member){echo "border-bottom:3px solid #ddd";}?>">
                 <?php if($is_member){
                 ?>
-                <div id="mypage_header">
-                      <div class="mypageBoderT">
-                          <div class="mypage">
-                              <h1>마이페이지</h1>
-
-                              <ul class="mypageSub">
-                                  <li class="cont">
-                                      <a href="<?php echo G5_BBS_URL."/register_form.php?w=u"; ?>">개인정보수정</a>
-
-                                      <ul class="subMenu menuLine">
-                                          <!--<li><div class="menuLine"></div></li>-->
-                                          <li><a href="<?php echo G5_URL."/page/mypage/orderHistory.php?tab=regform" ?>">주문내역</a></li>
-                                          <li><a href="<?php echo G5_URL."/page/mypage/viewOrders.php?tab=regform" ?>">주문배송조회</a></li>
-                                          <li><a href="<?php echo G5_URL."/page/mypage/viewReturn.php?tab=regform" ?>">반품/교환</a></li>
-                                          <li><a href="<?php echo G5_URL; ?>">1:1 문의</a></li>
-                                      </ul>
-                                  </li>
-                                  <li><a href="<?php echo G5_BBS_URL."/member_confirm.php?tab=form"?>" >회원탈퇴</a></li>
-                              </ul>
-                          </div>
-                          <div class="mypageUser">
-                            <div class="mypageImg"><img src="<?php echo G5_IMG_URL."/mypage_profile.jpg" ?>" alt="profile"></div>
-                            <div>
-                                 <div class="mypageList">
-                                     <h2><?php echo $member['mb_name']; ?> 님</h2>
-                                     <p>회원님의 정보를 확인 할 수 있습니다.</p>
-                                 </div>
-                                 <ul class="mypageSubList1">
+                 <div id="mypage_header">
+                    <div class="mypageBoderT">
+                        <div class="mypage">
+                            <h1>마이페이지</h1>
+                            <ul class="mypageSub">
+                                <li class="cont">
+                                    <a href="<?php echo G5_BBS_URL."/register_form.php?w=u"; ?>">개인정보수정</a>
+                                    <ul class="subMenu menuLine">
+                                        <li><a href="<?php echo G5_URL."/page/mypage/orderHistory.php?tab=regform" ?>">주문내역</a></li>
+                                        <li><a href="<?php echo G5_URL."/page/mypage/viewOrders.php?tab=regform" ?>">주문배송조회</a></li>
+                                        <li><a href="<?php echo G5_URL."/page/mypage/viewReturn.php?tab=regform" ?>">반품/교환</a></li>
+                                        <li><a href="<?php echo G5_URL; ?>">1:1 문의</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="<?php echo G5_BBS_URL."/member_confirm.php?tab=form"?>" >회원탈퇴</a></li>
+                            </ul>
+                        </div>
+                        <div class="mypageUser">
+                            <div class="mypage1">
+                                <h1>마이페이지</h1>
+                                <div class="mypageImg"><img src="<?php echo G5_IMG_URL."/mypage_profile.jpg" ?>" alt="profile"></div>
+                                <div class="mypageList">
+                                    <h2><?php echo $member['mb_name']; ?> 님</h2>
+                                    <p>회원님의 정보를 확인 할 수 있습니다.</p>
+                                </div>
+                                <ul class="mypageSub">
+                                    <li class="cont">
+                                        <a href="<?php echo G5_BBS_URL."/register_form.php?w=u"; ?>">개인정보수정</a>
+                                        <ul class="subMenu menuLine">
+                                            <li><a href="<?php echo G5_URL."/page/mypage/orderHistory.php?tab=regform" ?>">주문내역</a></li>
+                                            <li><a href="<?php echo G5_URL."/page/mypage/viewOrders.php?tab=regform" ?>">주문배송조회</a></li>
+                                            <li><a href="<?php echo G5_URL."/page/mypage/viewReturn.php?tab=regform" ?>">반품/교환</a></li>
+                                            <li><a href="<?php echo G5_BBS_URL."/board.php?bo_table=questions"; ?>">1:1 문의</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="<?php echo G5_BBS_URL."/member_confirm.php?tab=form"?>" >회원탈퇴</a></li>
                                     <li class="cont tab"><a href="">마일리지 <span><?php echo $member['mb_point']; ?></span>P</a></li>
                                     <li class="last"><a href="<?php echo G5_BBS_URL."/logout.php"; ?>">로그아웃</a></li>
                                 </ul>
                             </div>
-                          </div>
-                        </div>        
-                     </div>
-                 </div>	
+                            <div class="mypageImg dispN"><img src="<?php echo G5_IMG_URL."/mypage_profile.jpg" ?>" alt="profile"></div>
+                            <div>                               
+                                <div class="mypageList dispN">
+                                    <h2><?php echo $member['mb_name']; ?> 님</h2>
+                                    <p>회원님의 정보를 확인 할 수 있습니다.</p>
+                                 </div>
+                                 <ul class="mypageSubList1">
+                                    <li class="cont tab"><a href="">마일리지 <span><?php echo $member['mb_point']; ?></span>P</a></li>
+                                    <li><a href="<?php echo G5_BBS_URL."/logout.php"; ?>">로그아웃</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>        
+                </div>     
                 <?php }else{ ?>
                 <h4><?php echo "회원가입"; ?></h4>
                 <p><?php echo "루틸로에 오신것을 환영합니다."; ?></p>

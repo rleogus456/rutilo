@@ -122,7 +122,7 @@ if (G5_IS_MOBILE) {
 					<div>
 						<?php if($is_member){ ?>
                             <?php if(!$is_admin) {?> 
-                            <a href="<?php echo G5_URL."/page/mypage/cart.php"; ?> " class="bg_darkred color_white btn ">장바구니</a>
+                            <a href="<?php echo G5_URL."/page/mypage/cart.php?tab=form"; ?> " class="bg_darkred color_white btn ">장바구니</a>
                             <a href="<?php echo G5_BBS_URL."/register_form.php?tab=form&w=u"; ?>" class="bg_yellow color_white btn">정보수정</a>
                             <?php }else{?>
                             <a href="<?php echo G5_URL."/admin"; ?>" class="bg_darkred color_white btn mr10">관리자</a>

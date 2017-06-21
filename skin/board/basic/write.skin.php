@@ -81,8 +81,9 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
                 <tr>
                     <th scope="row"><label for="wr_name">작성자<strong class="sound_only">필수</strong></label></th>
                     <td class="last"><input type="text" name="wr_name" value="<?php echo $name; ?>" id="wr_name" required class="input01" size="50" maxlength="20"></td>
-                    <th scopt="row"><label for="wr_name">아이디<strong class="sound_only">필수</strong></label></th>
-                    <td><input type="text" name="wr_id" value="<?php echo $member['mb_id']; ?>"id="wr_id" required class="input01" size="50" maxlength="20"></td>
+                    
+                    <th scopt="row" class="mobile"><label for="wr_name">아이디<strong class="sound_only">필수</strong></label></th>
+                    <td class="mobile"><input type="text" name="wr_id" value="<?php echo $member['mb_id']; ?>"id="wr_id" required class="input01" size="50" maxlength="20"></td>
                 </tr>             
                 <?php if ($is_password) { ?>
                 <tr>

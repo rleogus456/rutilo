@@ -49,8 +49,7 @@
 			<div class="rent_list">
 				<ul>
 					<?php
-						for($i=0;count($list)>$i;$i++){
-					?>
+						for($i=0;count($list)>$i;$i++){	?>
 					<li>
 						<div onclick="location.href='<?php echo G5_URL."/admin/model_view.php?id=".$list[$i]['id']; ?>'">
 							<div class="img">
@@ -62,40 +61,36 @@
 							</div>
 							<div class="txt">
 								<h3><?php echo $list[$i]['name']; ?></h3>
-								
-								<h4><span>가격&nbsp;&nbsp;&nbsp;&nbsp;</span><?php echo number_format($list[$i]['price']); ?>원</h4>
-								
+								<p>용량&nbsp;&nbsp;|&nbsp;&nbsp;<?php echo $list[$i]['volum']; ?><?php echo $list[$i]['type']; ?></p>
+								<p><span>구성품&nbsp;&nbsp;|&nbsp;&nbsp;</span><?php echo $list[$i]['components']; ?></p>
+								<h4><span>가격&nbsp;&nbsp;&nbsp;&nbsp;</span><?php echo number_format($list[$i]['price']); ?>원</h4>								
 							</div>
 						</div>
 						<a href="<?php echo G5_URL."/admin/model_write.php?page=".$page."&id=".$list[$i]['id']; ?>" class="btn mod" style="background:#666;">수정하기</a>
 						<a href="<?php echo G5_URL."/admin/model_delete.php?page=".$page."&id=".$list[$i]['id']; ?>" class="btn del">삭제하기</a>
 					</li>
-					<?php
-						}
-						if(count($list)==0){
-					?>
+					<?php  }
+						if(count($list)==0){ ?>
 						<li class="text-center" style="padding:70px 0;">제품이 없습니다.</li>
-					<?php
-						}
-					?>
+					<?php } ?>
 				</ul>
 			</div>
 			<?php
-				if($total_page>1){
-					$start_page=1;
-					$end_page=$total_page;
-					if($total_page>5){
-						if($total_page<($page+2)){
-							$start_page=$total_page-4;
-							$end_page=$total_page;
-						}else if($page>3){
-							$start_page=$page-2;
-							$end_page=$page+2;
-						}else{
-							$start_page=1;
-							$end_page=5;
-						}
-					}
+            if($total_page>1){
+                $start_page=1;
+                $end_page=$total_page;
+                if($total_page>5){
+                    if($total_page<($page+2)){
+                        $start_page=$total_page-4;
+                        $end_page=$total_page;
+                    }else if($page>3){
+                        $start_page=$page-2;
+                        $end_page=$page+2;
+                    }else{
+                        $start_page=1;
+                        $end_page=5;
+                    }
+                }
 			?>
 			<div class="num_list01">
 				<ul>
@@ -110,9 +105,7 @@
 				<?php } ?>
 				</ul>
 			</div>
-			<?php
-			}
-			?>
+			    <?php }	?>
 			<div class="text-right mt20 mb20">
 				<a href="<?php echo G5_URL."/admin/model_write.php"; ?>" class="adm-btn01">추가하기</a>
 			</div>

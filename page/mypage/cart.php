@@ -27,20 +27,19 @@ while($data=sql_fetch_array($query)){
 <section class="section03">
     <header>
 		<h4>장바구니</h4>
-		    <p>루틸로에 오신 것을 환영 합니다.</p>
-		    <div class="width-fixed">
-		        <nav class="section03_nav">
-                    <ul class="list3">
-                        <li class="active" style="width:28%"><a><span class="texts">STEP 01</span> <br>장바구니</a></li>
-                        <li style="width: 5%;vertical-align: top;padding-top:5px"><img src="../../img/section03_navImg.jpg" alt=""></li>
-                        <li style="width:28%"><a><span class="texts">STEP 02</span> <br>주문결제</a></li>
-                        <li style="width: 5%;vertical-align: top;padding-top:5px"><img src="../../img/section03_navImg.jpg" alt=""></li>
-                        <li style="width:28%"><a><span class="texts">STEP 03</span> <br>주문완료</a></li>
-                    </ul>
-                </nav>  
-		    </div>
-		</header>
- 
+        <p>루틸로에 오신 것을 환영 합니다.</p>
+        <div class="width-fixed">
+            <nav class="section03_nav">
+                <ul class="list3">
+                    <li class="active" style="width:28%"><a><span class="texts">STEP 01</span> <br>장바구니</a></li>
+                    <li style="width: 5%;vertical-align: top;padding-top:5px"><img src="../../img/section03_navImg.jpg" alt=""></li>
+                    <li style="width:28%"><a><span class="texts">STEP 02</span> <br>주문결제</a></li>
+                    <li style="width: 5%;vertical-align: top;padding-top:5px"><img src="../../img/section03_navImg.jpg" alt=""></li>
+                    <li style="width:28%"><a><span class="texts">STEP 03</span> <br>주문완료</a></li>
+                </ul>
+            </nav>  
+        </div>
+	</header> 
 	<article id="mall_buy" class="wrap">		
 		<div class="width-fixed">
 			<form action="<?php echo G5_URL."/page/mypage/order_form.php"; ?>" method="post" name="cart_list" id="cart_list">
@@ -80,7 +79,6 @@ while($data=sql_fetch_array($query)){
 									<div>
 										<div class="img"><div><div><img src="<?php if($list[$i]['photo']){ echo G5_DATA_URL."/model/".$list[$i]['photo'];}else{echo $list[$i]['photo2'];} ?>" alt="<?php echo $list[$i]['name']; ?>" /></div></div></div>
 										<div class="title">
-<!--											<h4><?php echo str_replace("|","/",$list[$i]['type']); ?></h4>-->
 											<h3><?php echo $list[$i]['name']; ?></h3>
 											<p>[ <?php echo $list[$i]['components']; ?> ]</p>
 										</div>
@@ -101,19 +99,9 @@ while($data=sql_fetch_array($query)){
 								</td>
 							</tr>
 						<?php }
-                       
-						if(count($list)<=0){
-						?>
-						<tr>
-							<td colspan="6">장바구니에 목록이 없습니다.</td>
-						</tr>
-						<?php
-						}else{
-						?>										
-						
-						<?php
-						}
-						?>
+						if(count($list)<=0){ ?>
+						<tr><td colspan="6">장바구니에 목록이 없습니다.</td></tr>
+						<?php	}	?>	
 						</tbody>
 					</table>		
 					<input type="button" value="선택 삭제" class="delete_btn" onclick="return form_check('delete');" />		
@@ -121,17 +109,15 @@ while($data=sql_fetch_array($query)){
 					    <h2>총 주문금액</h2>
 					    <div class="price">
 					        <h2>상품 총 금액 <span class="text-r" id="total"><?php echo $total_price;?>원</span></h2>					        
-					    </div>
-					    
+					    </div>					    
 					    <div class="delivery">
-					        <h2>배송료 <span class="text-r" id="deli"><?php echo $delivery; ?>원</span></h2>
+					        <h2>배송료 <span class="text-r" id="deli"><?php if($total_price > '50000' || $total_price == '0'){ echo "0"; }else{ echo $delivery;} ?>원</span></h2>
 					    </div>
 					    <div class="line"></div>
-<!--
-					    <?php  if($total_price < '50000' ){
-                            $total_price = $total_price + $delivery;
-                        } ?>
--->
+				    <?php   if($total_price == '0'){                               
+                            }elseif($total_price < '50000'){
+                                $total_price = $total_price + $delivery;
+                            } ?>
 					    <div class="tot_price">
                             <p class="point">(적립마일리지 <span id="point"><?php echo $total_price/'100'; ?></span>P)</p>
 					        <h2>결제예정금액 <span class="text-r" id="totdel"><?php echo $total_price ;?>원</span></h2>
@@ -149,14 +135,12 @@ while($data=sql_fetch_array($query)){
 				<div class="btn_group01">
 					<input style="background-color:#fff" type="button" value="계속쇼핑하기" class="btn1 grid_30" onclick="return form_check('more');" />
 					<input  type="button" value="구매하기" class="btn grid_30" onclick="return form_check('buy');" />
-				</div>	
-					
+				</div>
 			</form>
 		</div>
 	</article>
 </section>
-<script type="text/javascript">  
-   
+<script type="text/javascript">
 	function all_checked(sw) {
 		var f = document.cart_list;
 		for (var i=0; i<f.length; i++) {
@@ -203,15 +187,13 @@ while($data=sql_fetch_array($query)){
         
 		var total_num_txt=total_num.number_format();
 		var total_price2_txt=total_price2.number_format();
-        point = total_price2/'100';
-       
+        point = total_price2/'100';       
         
 		$(t).parent().parent().parent().parent().find("tfoot tr .num").html(total_num_txt);
 		$(t).parent().parent().parent().parent().find("tfoot tr .price").html(total_price2_txt+"원");
         $("#total").html(total_price2_txt+"원");
         $("#point").html(point);
-        $("#totdel").html(total_price2_txt+"원");
-        
+        $("#totdel").html(total_price2_txt+"원");        
 	}
 	Number.prototype.number_format = function(round_decimal) {
 		return this.toFixed(round_decimal).replace(/(\d)(?=(\d{3})+$)/g, "$1,");
@@ -252,8 +234,7 @@ while($data=sql_fetch_array($query)){
 			f.submit();
         }
 		return true;
-	}
-    
+	}    
 </script>
 <?php
 include_once(G5_PATH.'/tail.php');

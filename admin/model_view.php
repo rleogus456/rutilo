@@ -35,7 +35,7 @@
 						<th>제품이름 *</th>
 						<td><?php echo $view['name']; ?></td>
 					</tr>
-                   	<tr>
+					<tr>
 						<th>제품코드 *</th>
 						<td><?php echo $view['code']; ?></td>
 					</tr>
@@ -43,14 +43,14 @@
 						<th>제품가격 *</th>
 						<td><?php echo $view['price']; ?></td>
 					</tr>
-                   <tr>
-                       <th>카테고리 *</th>
-                       <td><?php echo $view['type']?></td>
-                   </tr>
-                   <tr>
-                       <th>구성품 *</th>
-                       <td><?php echo $view['components'] ?></td>
-                   </tr>
+                    <tr>
+                        <th>카테고리 *</th>
+                        <td><?php echo $view['type']?></td>
+                    </tr>
+                    <tr>
+                        <th>구성품 *</th>
+                        <td><?php echo $view['components'] ?></td>
+                    </tr>
                     <tr>
                         <th>용량(ml) *</th>
                         <td><?php echo $view['volume'] ?></td>
@@ -60,10 +60,17 @@
 						<td><?php echo $view['content']; ?></td>
 					</tr>
 					<tr>
+						<th>MSDS</th>
+						<td><?php echo $view['msds']; ?></td>
+					</tr>
+					<tr>
+						<th>지원정보</th>
+						<td><?php echo $view['info']; ?></td>
+					</tr>
+					<tr>
 						<th>상세설명</th>
 						<td><?php echo $view['content1']; ?></td>						
 					</tr>
-					
 					<tr>
 					    <th>이미지 링크</th>
 					    <td><?php echo $view['imglink'];?></td>

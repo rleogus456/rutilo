@@ -490,17 +490,34 @@ div.desc, div.url { display:none; }
 #mall_view .join_box .btn01{padding-left:10px;padding-right:10px;width:auto;position:absolute;right:30px;top:50%;margin-top:-20px;}
 
 /* 회원가입 페이지 */
-#mypage_header .mypageList h2{font-size:25px;padding:13px 0;}
-#mypage_header .mypageList p {text-align: left; color: #888 ; font-size: 18px;margin-bottom: 7px !important;}
-#mypage_header .mypageList li {font-size: 20px;}
+#mypage_header .mypageBoderT div.mypage-info div h2{font-size:25px;padding:20px 0;color: #000}
+#mypage_header .mypageBoderT div.mypage-info div p {text-align: left; color: #888 ; font-size: 18px;margin-bottom: 7px !important;}
+#mypage_header .mypageBoderT div.mypage-info div ul{padding-top: 11px;clear: both;}
+#mypage_header .mypageBoderT div.mypage-info div li{font-size: 17px;color:#959595}
+#mypage_header .mypageBoderT div.mypage-info div li a{color:#959595}
+#mypage_header .mypageBoderT div.mypage-info div li a:hover{color:#fe1e1e;font-weight: bold}
+#mypage_header .mypageBoderT div.mypage-info div li.cont:after{content:"|";color:#959595;margin-left:12px;margin-right:12px;}
+#mypage_header .mypageBoderT div.mypage-info h1{ font-size: 36px;padding: 22px 0;background: #fe1e1e;border-radius: 0px 0 13px 13px;text-align: center;display:none;color:#fff}
+#mypage_header ul.subMenu.menuLine{
+    width:100%;
+}
+#mypage_header ul.subMenu.menuLine li{
+    padding:15px 25px;
+    border:1px solid #fff;
+}
+#mypage_header ul.subMenu.menuLine li:hover{border:1px solid #ddd; border-bottom:none;font-weight:bold;color:#fe1e1e;}
 #mypage_header .mypageList span {color: #fe1e1e;}
 #mypage_header .mypageList{position: relative;}
 #mypage_header .mypageList div.mypageFL li{float: left}
-#mypage_header .mypage{color:#fff;width:22%;float:left;padding:0;}
-#mypage_header .mypage > h1{font-size: 36px;padding: 22px 0;background:#fe1e1e;border-radius: 0px 0 13px 13px;text-align:center;}
-#mypage_header .mypageUser{width:78%;}
+#mypage_header .mypage{color:#fff;width:100%%;clear:both;padding:0;margin-top:20px;border-bottom:1px solid #ddd;}
+#mypage_header .mypage1{color:#fff;width:22%;float:left;padding:0; display: block}
+#mypage_header .mypage1 > h1{font-size: 36px;padding: 22px 0;background:#fe1e1e;border-radius: 0px 0 13px 13px;text-align:center;}
+/*#mypage_header .mypageUser{width:78%;}*/
+#mypage_header .mypageBoderT div.mypage-info{width:78%;}
 #mypage_header .mypageUser > div{float:left}
 #mypage_header .mypageBoderT{border-top: 2px solid #fe1e1e;}
+#mypage_header .mypageBoderT div.mypage1 , #mypage_header .mypageBoderT div.mypage-info{float:right}
+#mypage_header .mypageBoderT div.mypage-info div{float:left;}
 #mypage_header .mypageImg{width: 17%;position: relative;padding:20px;}
 #mypage_header .mypageSubList{position: absolute;top: 95px;padding: 33px}
 #mypage_header ul.mypageSubList > li:hover > ul > div.menuLine1{display:none;height:1px;background-color: #d4d4d4;width:1100px;display:none;position:absolute;top:118px;left:-33px;}
@@ -515,13 +532,13 @@ div.desc, div.url { display:none; }
 #mypage_header ul.mypageSubList > li  a {color: #959595;}
 #mypage_header ul.mypageSubList > li  a:hover{color: #fe1e1e;font-weight: bold}
 #mypage_header .mypageSub{position: relative;top: 36px;text-align: center}
-#mypage_header ul.mypageSub > li{text-align: center;width:46%;}
+
 #mypage_header ul.mypageSub li.cont:after{content:"|";color:#959595;margin-left:12px;margin-right:12px;}
 #mypage_header ul.mypageSub > li:hover > ul > div.menuLine1{display:none;height:1px;background-color: #d4d4d4;width:1100px;display:none;position:absolute;top:118px;left:-33px;}
 #mypage_header ul.mypageSub > li:hover > ul.subMenu > div.menuLine1{display: block;}
 #mypage_header ul.mypageSub > li > ul {position: absolute;display: block;top: 18px;right: initial;}
 #mypage_header ul.mypageSub > li > ul li{display: none}
-#mypage_header ul.mypageSub > li > ul.subMenu{width: 1100px;border-bottom: 1px solid #ddd;margin-left:-8px}
+#mypage_header ul.mypageSub > li > ul.subMenu{width: 1100px;border-bottom: 2px solid #ddd;margin-left:-8px}
 #mypage_header ul.mypageSub > li > ul.subMenu li{display: inline-block;line-height: 22px;text-align: center;position: relative; margin-top: 45px;  padding: 10px 0;  border: 1px solid #fff;border-top: 1px solid #ddd; width: 130px;}
 #mypage_header ul.mypageSub > li > ul.subMenu li:hover{border: 1px solid #ddd;border-bottom: 1px solid #fff}
 #mypage_header ul.mypageSub > li > ul li a{font-weight: normal;}
@@ -539,17 +556,17 @@ div.desc, div.url { display:none; }
 #mypage_header ul.mypageSubList1 > li > ul li a{font-weight: normal;}
 #mypage_header ul.mypageSubList1 > li > ul li:after{content: none;}
 #mypage_header ul.mypageSubList1> li  a {color: #959595;}
-#mypage_header ul.mypageSubList1 > li  a:hover{color: #fe1e1e;font-weight: bold}
-#mypage_header ul.mypageSubList1 li.cont:after{content:"|";color:#959595;margin-left:12px;margin-right:12px;}
+/*#mypage_header ul.mypageSubList1 > li  a:hover{color: #fe1e1e;font-weight: bold}
+#mypage_header ul.mypageSubList1 li.cont:after{content:"|";color:#959595;margin-left:12px;margin-right:12px;}*/
 #mypage_header ul li.disPb{display: block}
 #mypage_header{height:134px;box-sizing:border-box;}
-#mypage_header ul{margin-bottom:10px;text-align: left; text-align: left;}
+#mypage_header ul{text-align: left; text-align: left;}
 #mypage_header ul li{display:inline-block;font-size:17px;letter-spacing:-0.05em;}
 #mypage_header ul.mypageSubList li.cont:after{content:"|";color:#959595;margin-left:12px;margin-right:12px;}
-#mypage_header ul li a{color:#fe1e1e;font-weight: normal}
+/*#mypage_header ul li a{color:#fe1e1e;font-weight: normal}
 #mypage_header ul li.last a{color:#959595}
-/*#footer ul li.last:after{content:"";}*/
-#mypage_header ul li a:hover{color:#898989;}
+!*#footer ul li.last:after{content:"";}*!
+#mypage_header ul li a:hover{color:#898989;}*/
 #mypage_header.sub_footer{background:#fff;border-top:1px solid #ddd;}
 .section01_header .intro_head{width:155px;height:44px;background-image:url("../img/intro_head.png");background-repeat:no-repeat;background-position:top left;}
 .section01_header .register_form_head{width:156px;height:44px;background-image:url("../img/register_form_head.png");background-repeat:no-repeat;background-position:top left;}
@@ -904,7 +921,7 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
 #mall_buy .price_info > div .title h3{font-size:27px;line-height:27px;}
 #mall_buy .price_info > div.cartInfo h2{font-size: 22px}
 #mall_buy .price_info > div.cartInfo {border: 2px solid #ddd; padding: 15px 30px; height: auto;margin-top: 30px}
-#mall_buy .price_info > div.cartInfo > div{position: relative;width: 40%; left: 60%}
+#mall_buy .price_info > div.cartInfo > div{position: relative;width: 45%; left: 55%}
 #mall_buy .price_info > div.cartInfo > div > h2 > span.text-r{position: relative;float: right;font-size: 17px;font-weight: bold; color: #787878}
 #mall_buy .price_info > div.cartInfo > div.price{border-bottom: 1px solid #ddd;padding-bottom: 10px}
 #mall_buy .price_info > div.cartInfo > div.price > h2 {font-size: 16px;font-weight: normal; color: #787878}
@@ -1060,6 +1077,19 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
 	.sub_call_pop{position:fixed;right:10px;top:138px;height:140px;}
 }
 @media all and (max-width: 1120px){
+    #mypage_header .mypage1{width:100% !important; float:none !important;}
+    #mypage_header .mypage1 > h1{display:none}
+    #mypage_header .mypageSub{text-align:left;margin-top:10px;}
+    #mypage_header .mypage1 > .mypageSub{top: 0;clear: both;padding: 15px;}
+    #mypage_header .mypageBoderT div.mypage-info h1{display:block;}
+    #mypage_header .mypageBoderT div.mypage-info{width:100%;}
+    #mypage_header .mypageImg{width:30% !important;margin-top:10px;}
+    #mypage_header .mypageBoderT div.mypage-info div{width:60%;padding:0 2%;}
+    #mypage_header .mypageBoderT div.mypage-info div ul{width:100%}
+    #main_product .list > div ul li a:hover > .txt h2{display: block}
+    #main_product .list > div ul li a:hover > .txt h3{display: block}
+    #main_product .list > div ul li a:hover > div.h2back{display: none}
+    #mypage_header ul.mypageSub > li > ul.subMenu{width: 100%}
     .login_header{padding-top:0;border-bottom:3px solid #febf0f;margin-bottom:36px;}
     .section03 article.product > div ul li{width: 40%}
     #mall_buy li > div input[type='button']{width: 100%}
@@ -1121,7 +1151,6 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
 	.form_list01 li{/*border:0;*/}
 	.form_list01 li > div{width:100%;float:none;min-height:60px;display: inline;}
 	.form_list01 li > div > label{padding:18px 0;}
-	.form_list01{border-bottom:1px dashed #c4c4c4;padding-bottom:50px;margin-bottom:50px;}
 	.form_list01 li > div.bdr{border-right:0;}
 	.form_list01 p{float:none;text-align:right;}        
     #register_form li > div input[type='button']{width:100%;margin-top: 6px;}
@@ -1213,6 +1242,7 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
     textarea.fregister_term{width: 70%}
 }
 @media all and (max-width: 900px){    
+    #mypage_header{height: 262px}
     .section03 article.franchisee > div ul li {width: 45%}
     .section03 article.trainer > div ul li {width: 40%}
     .msg_map > div#map {width:400px;height:400px}
@@ -1318,6 +1348,22 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
 }
 
 @media all and (max-width: 768px){
+    #mypage_header .mypageList h2{font-size: 23px}
+    #register_form li > div input{margin: 9px 0}
+    .section03 header{border: 0 !important}
+    #mypage_header .mypageImg{float: left}
+    #register_form .mypageP{padding: 0 !important}
+
+    #mypage_header .mypage1 > ul.mypageSub > li > ul{top:35px;right: 0;}
+    #mypage_header .mypage1 > .mypageSub{top:0;clear: both;border-bottom: 3px solid #ddd;padding-bottom: 15px}
+    #mypage_header .mypageUser{width: 100%}
+    /*#mypage_header .mypage{display: none}*/
+    #mypage_header .mypage1{display: block; width: 100%}
+    #mypage_header ul.mypageSub > li > ul.subMenu li{border-top: 1px solid #fff;width: 22%;}
+    
+    #mypage_header .mypage{width: 100% }
+    #mypage_header{height: auto}
+    #mypage_header .mypageUser > div{float: none}
     #mypage_header .mypage > h1 {font-size:18px;}
     #bo_w .input01{font-size:11px ;width: 140px}
     .section03 article.product > div ul li{width: 65%}
@@ -1326,13 +1372,13 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
     #mall_view .top > div{width: 100%; float: none;}
     #mypage_header ul.mypageSubList1 > li:hover > ul.subMenu > div.menuLine{display: none}
     #mypage_header ul.mypageSubList > li:hover > ul.subMenu > div.menuLine1{display: none}
-    #mypage_header .mypageSubList1{padding: 30px;}
+
+    #mypage_header .mypageSubList1{display: none}
     #mypage_header ul.mypageSubList > li:hover > ul.subMenu{width: 100%}
     #mypage_header ul.mypageSubList1 > li:hover > ul.subMenu{width: 100%}
     #mypage_header ul.mypageSubList1 > li:hover > ul.subMenu li{margin: 30px 5px}
     #mypage_header ul li.tab:before{content:"|";color:#959595;margin-left:12px;margin-right:12px;}
-    #mypage_header ul li.tab{margin-left: 0px}
-    /*#mypage_header .mypageList{left: 56.5%}*/
+
     #login_form .login_id,#login_form .login_pw{margin-bottom:4px;position:relative;text-align: center;left: 0;top:4px}
     .section03 article.franchisee > div ul li {width: 40%}
     .section03 article.trainer > div ul li {width: 40%}
@@ -1542,9 +1588,9 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
 	#main_tab .table04 table td{padding:7px;font-size:14px;}
 }
 @media all and (max-width: 690px){
+    #mypage_header .mypageList h2{font-size: 21px}
     .section03 > header{padding: 0}
     #mypage_header .mypageImg {padding:4px;width: 30%}
-    #mypage_header .mypage{width: 100% }
     #mypage_header .mypageBoderT{border: 0}
     #mypage_header .mypageList li {font-size: 16px;}
     #mypage_header .mypageList p {font-size: 20px}
@@ -1557,7 +1603,7 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
     .section03 article.product > div ul li{width: 65%}
     .section03 > header h4{font-size: 35px;margin-bottom: 10px;}
     .section03 > header h4:after{margin-bottom: 0}
-    .section03 > header p{font-size: 15px}
+    #mypage_header .mypageBoderT div.mypage-info div p{font-size: 15px}
     .section03 > article h4.intro{font-size: 25px; text-align: center}
     .section03 > article p{font-size: 15px;text-align: left;padding: 0px}
     .section03 > header div.videoTxt > h1{font-size: 30px}
@@ -1574,14 +1620,17 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
     #main_way h3{font-size:20px;}
     #mall_buy .price_info table tr td .title h3{margin-left: 0px}
 }
-@media all and (max-width: 590px){    
-    #mall_buy .price_info table.infoT tr th{width: 22%;}
-    .section03 > header p{font-size: 14px}
+@media all and (max-width: 590px){  
+    #mypage_header ul.subMenu.menuLine li{padding: 15px 15px}
+    #mypage_header .mypageBoderT div.mypage-info div li{font-size: 15px}
+    #mypage_header .mypageList h2{font-size: 19px}
+    #mall_buy .price_info table.infoT tr th{width: 23%;}
+    #mypage_header .mypageBoderT div.mypage-info div p{font-size: 14px}
     .red{font-size: 14px;}
     .section03 > header div.result > div.resultTxt{background: 0}
     .section03 > header div.result h3{font-size: 25px;margin-bottom: 0}
     .section03 > header div.resultTxt> h4{font-size: 15px;color: #000;line-height:35px}
-    #mypage_header .mypage{height: 77px}
+    #mypage_header .mypage{height: 51px}
     #mypage_header ul li.disPb {display: none}
     #login_form .login_id{margin-left: 0;top:-23px}
     #login_form .login_pw{top:-17px}
@@ -1591,10 +1640,18 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
     .section03 article.trainer > div ul li {width: 65%}
     .section03_nav ul.list3 li{padding: 0 !important}
     .section03_nav li a {font-size: 18px}
-    .section03_nav li{height: 50px}
+    
     #mall_buy .price_info > div.cartInfo > div.tot_price{width: 82%;left: 18%}
 }
 @media all and (max-width: 480px){
+    #mypage_header .mypage{height: 49px}
+    #mypage_header ul.subMenu.menuLine li{padding: 15px 10px;font-size: 14px}
+    #mypage_header .mypageBoderT div.mypage-info div li{font-size: 14px}
+    #mypage_header .mypage1 > .mypageSub{padding-top: 10px}
+    #mypage_header .mypage1 > ul.mypageSub > li > ul{top: 26px}
+    #mypage_header ul.mypageSub > li > ul.subMenu li{margin-top: 20px}
+    #mypage_header .mypage1 > .mypageSub li{font-size: 14px;letter-spacing:-2px }
+    #mypage_header .mypageList p{font-size: 15px}
     .btn_group01 .btn{height:35px;font-size:13px;padding:10px 0;width: 100% !important}
     .btn_group01 .btn1 {height: 35px;padding: 10px 0;width: 100% !important}
     #mypage_header .mypage > h1 {font-size:16px;}
@@ -1616,7 +1673,9 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
     #login_form .login_chk > div{left: 0}
     .input02{width: 100%}
     #login_form form .btn{width: 100%}
-    #mall_buy .price_info > div.cartInfo > div > h2 > span.text-r{float: none}
+    #mall_buy .price_info > div.cartInfo > div > h2 > span.text-r{float: none;font-size: 14px}
+    #mall_buy .price_info > div.cartInfo > div.price > h2{font-size: 14px}
+    #mall_buy .price_info > div.cartInfo > div.delivery > h2{font-size: 14px}
     .section03 article.product > div ul li{width: 75%}
     #view_header ul.mypageSubList > li  a{border-bottom: 0}
     #mypage_header .mypageSubList1{padding: 15px;top: 145px;}
@@ -1624,7 +1683,7 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
     #mypage_header ul.mypageSubList1 > li > ul{top: 10px;left: -8%}
     #mypage_header ul.mypageSubList1 > li:hover > ul.subMenu li{padding: 5px 8px;margin: 30px -2px}
     textarea.fregister_term{width: 65%; height: 80px}
-    .input03{width: 42%;height: 30px;padding: 5px; line-height: 20px}
+    .input03{width: 42%;height: 38px;padding: 5px; line-height: 20px}
     #mypage_header ul li{font-size: 15px;}
     #mypage_header ul.mypageSubList li.cont:after{margin-left:5px;margin-right:5px;}
     #mypage_header ul li.tab:before{margin-left:5px;margin-right:5px;}
@@ -1632,7 +1691,7 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
     div.movs{width: 43% ;margin-bottom: 20px}
     .section03 article.franchisee > div ul li {width: 90%}
     .section03 article.trainer > div ul li {width: 90%}
-    #mall_buy .price_info > div.cartInfo > div.tot_price{width: 82%;left: 18%}
+    #mall_buy .price_info > div.cartInfo > div.tot_price{width: 100%;left: 0%}
 	.wrap{padding:0;}
 	#main_event{margin-bottom:10px;}
 	#main_notice{margin-bottom:10px;}
@@ -1679,8 +1738,7 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
 	.rent_list li > a{right:15px;height:22px;width:53px;padding:5px 0;margin-top:-11px;}
 	.rent_list li h3{font-size:14px;}
 	.rent_list li p{font-size:8px;}	
-	.rent_list li h4 span{margin-right:3px;}
-	.input01{height:30px;line-height:20px;}
+	.rent_list li h4 span{margin-right:3px;}	
 	.form_list01{padding-bottom:10px;margin-bottom:10px;}
 	.form_list01 li > div{float:none;clear:both;}
 	.form_list01 li > div > label{width:100px;padding:15px 0;font-size:12px;display:block;}
@@ -1800,6 +1858,7 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
 }
 
 @media all and (max-width: 400px){
+    #mypage_header ul.mypageSub > li > ul.subMenu li{font-size: 13px}
     #mypage_header .mypage > h1 {font-size:14px;}
     #mall_view .top .buy .total .txt{font-size: 13px}
     #mall_view .top .txt .price{height: 115px}

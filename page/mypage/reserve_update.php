@@ -35,7 +35,7 @@
 //
 	$sql = "SELECT id FROM `rutilo_reserve` WHERE model in ('".$model."')";
 	$reserveid = sql_fetch($sql);
-//	
+    
 //    if($member['regid'] && !$member['off_gcm']){
 //        send_GCM($member['regid'],"삼시세끼","$mb_name 님의 주문이 요청이 완료 되었습니다.!");   
 //    }

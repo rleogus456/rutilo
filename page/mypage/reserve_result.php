@@ -11,6 +11,7 @@ if(!$cart_session){
 	}
 	set_session('cart_session',$cart_session);
 }
+print_r($_REQUEST);
 if($is_member)
 	$where="`mb_id`='{$member['mb_id']}'";
 else
@@ -119,7 +120,6 @@ $view1=sql_fetch("select * from `rutilo_delivery` where id='{$id}'");
 									<div>
 										<div class="img"><div><div><img src="<?php if($list[$i]['photo']){ echo G5_DATA_URL."/model/".$list[$i]['photo'];}else{echo $list[$i]['photo2'];} ?>" alt="<?php echo $list[$i]['name']; ?>" /></div></div></div>
 										<div class="title">
-<!--											<h4><?php echo str_replace("|","/",$list[$i]['type']); ?></h4>-->
 											<h3><?php echo $list[$i]['name']; ?></h3>
 											<p>[ <?php echo $list[$i]['components']; ?> ]</p>
 										</div>
@@ -205,21 +205,21 @@ $view1=sql_fetch("select * from `rutilo_delivery` where id='{$id}'");
 				    <table class="infoT">
 				        <tr>
 				            <th>받으시는 분</th>
-				            <td><?php echo $view1["mb_name"];?></td>
+				            <td><?php echo $view1["mb_id"];?></td>
 				            <th>전화번호</th>
 				            <td><?php echo $view1["mb_phone"];?></td>
 				        </tr>
 				        <tr>
 				            <th>휴대폰번호</th>
-				            <td colspan="3"><?php echo $view1["mb_name"];?></td>
+				            <td colspan="3"><?php echo $view1["mb_phone"];?></td>
 				        </tr>
 				        <tr>
 				            <th>주소</th>
-				            <td colspan="3"><?php echo $view1['mb_addr']; ?>"</td>
+				            <td colspan="3"><?php echo $view1["mb_addr"]; ?></td>
 				        </tr>
 				        <tr>
 				            <th>배송 주의사항</th>
-				            <td colspan="3"><?php echo $view1['requested']; ?>"</td>
+				            <td colspan="3"><?php echo $view1['requested']; ?></td>
 				        </tr>
 				    </table>
                     </div>
@@ -227,7 +227,7 @@ $view1=sql_fetch("select * from `rutilo_delivery` where id='{$id}'");
 				</div>		
 				<div class="btn_group01">
 					<input style="background-color:#fff" type="button" value="이전단계" class="btn1 grid_30" onclick="return form_check('back');" />
-					<input style="background-color:#fff" type="button" value="인쇄하기" class="btn1 grid_30" onclick="return form_check('back');" />
+					<input style="background-color:#87001f  " type="button" value="인쇄하기" class="btn grid_30" onclick="return form_check('back');" />
 					<input  type="button" value="결제하기" class="btn grid_30" onclick="return form_check('buy');" />
 				</div>
 			</form>

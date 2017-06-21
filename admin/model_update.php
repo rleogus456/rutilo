@@ -11,8 +11,10 @@
     $price=$_POST['price'];
     $type=$_POST['type'];
     $imglink=$_POST['imglink'];
+    $info=$_POST['info'];
     $photolink=$_POST['photolink'];
 	$content=nl2br($_POST['content']);
+    $msds=nl2br($_POST['msds']);
     $volume = $_POST['volume'];
     $components = $_POST['components'];
 	$dir=G5_DATA_PATH."/model";
@@ -20,8 +22,10 @@
 	@chmod($dir, G5_DIR_PERMISSION);
 	$filename1=time()."_model.jpg";
     $filename2=time()."_content.jpg";
+    $filename3=time()."_info.jpg";
 	$path1=$dir."/".$filename1;
     $path2=$dir."/".$filename2;
+    $path3=$dir."/".$filename3;
 	if($_FILES['photo']['tmp_name']){
 		image_resize_update($_FILES['photo']['tmp_name'],$_FILES['photo']['name'], $path1, 1100);
 		$photo=$filename1;
@@ -38,10 +42,11 @@
 			@unlink($dir."/".$model['content1']);
 		}
 	}
+
 	if($id){        
-		sql_query("update `rutilo_product` set`code`='{$code}. `name`='{$name}',`price`='{$price}',`content`='{$content}' {$content1_sql} {$photo_sql},`type`='{$type}',`volume`='{$volume}',`components`='{$components}',`imglink`='{$imglink}',`photolink`='{$photolink}' where `id`='{$id}'");
+		sql_query("update `rutilo_product` set `code`='{$code}',`name`='{$name}',`price`='{$price}',`content`='{$content}',`msds`='{$msds}',`info`='{$info}' {$content1_sql} {$photo_sql},`type`='{$type}',`volume`='{$volume}',`components`='{$components}',`imglink`='{$imglink}',`photolink`='{$photolink}' where `id`='{$id}'");
 	}else{
         
-		sql_query("insert into `rutilo_product` (`photo`,`code`,`name`,`price`,`content`,`content1`,`type`,`volume`,`components`,`imglink`,`photolink`) values('{$photo}','{$code}','{$name}','{$price}','{$content}','{$content1}','{$type}','$volume','$components','{$imglink}','{$photolink}')");
+		sql_query("insert into `rutilo_product` (`photo`,`code`,`name`,`price`,`content`,`content1`,`msds`,`info`,`type`,`volume`,`components`,`imglink`,`photolink`) values('{$photo}','{$code}','{$name}','{$price}','{$content}','{$content1}','{$msds}','{$info}','{$type}','{$volume}','{$components}','{$imglink}','{$photolink}')");
 	}
 	alert('저장되었습니다.',G5_URL."/admin/model_list.php?page=".$page);
