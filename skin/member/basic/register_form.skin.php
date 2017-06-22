@@ -58,22 +58,16 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
                                     <li class="cont"><a href="<?php echo G5_BBS_URL."/register_form.php?w=u"; ?>">개인정보수정</a></li>
                                     <li><a href="<?php echo G5_BBS_URL."/member_confirm.php?tab=form"?>" >회원탈퇴</a></li>
                                 </ul>
-                            </div>
-                            <!--<ul class="subMenu menuLine">
-                                <li><a href="<?php /*echo G5_URL."/page/mypage/orderHistory.php?tab=regform" */?>">주문내역</a></li>
-                                <li><a href="<?php /*echo G5_URL."/page/mypage/viewOrders.php?tab=regform" */?>">주문배송조회</a></li>
-                                <li><a href="<?php /*echo G5_URL."/page/mypage/viewReturn.php?tab=regform" */?>">반품/교환</a></li>
-                                <li><a href="<?php /*echo G5_URL; */?>">1:1 문의</a></li>
-                            </ul>-->
+                            </div>                        
                         </div>
                     </div>
                     <div style="clear:both" ></div>
                     <div class="mypage">
                         <ul class="subMenu menuLine">
-                            <li><a href="<?php /*echo G5_URL."/page/mypage/orderHistory.php?tab=regform" */?>">주문내역</a></li>
-                            <li><a href="<?php /*echo G5_URL."/page/mypage/viewOrders.php?tab=regform" */?>">주문배송조회</a></li>
-                            <li><a href="<?php /*echo G5_URL."/page/mypage/viewReturn.php?tab=regform" */?>">반품/교환</a></li>
-                            <li><a href="<?php /*echo G5_BBS_URL."/board.php?bo_table=questions"; */?>">1:1 문의</a></li>
+                            <li><a href="<?php echo G5_URL."/page/mypage/orderHistory.php?tab=regform" ?>">주문내역</a></li>
+                            <li><a href="<?php echo G5_URL."/page/mypage/viewOrders.php?tab=regform" ?>">주문배송조회</a></li>
+                            <li><a href="<?php echo G5_URL."/page/mypage/viewReturn.php?tab=regform" ?>">반품/교환</a></li>
+                            <li><a href="<?php echo G5_BBS_URL."/board.php?bo_table=questions"; ?>">1:1 문의</a></li>
                         </ul>
                     </div>
                 </div>

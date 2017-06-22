@@ -509,13 +509,13 @@ div.desc, div.url { display:none; }
 #mypage_header .mypageList span {color: #fe1e1e;}
 #mypage_header .mypageList{position: relative;}
 #mypage_header .mypageList div.mypageFL li{float: left}
-#mypage_header .mypage{color:#fff;width:100%%;clear:both;padding:0;margin-top:20px;border-bottom:1px solid #ddd;}
+#mypage_header .mypage{color:#fff;width:100%%;clear:both;padding:0;margin-top:8px;border-bottom:1px solid #ddd;}
 #mypage_header .mypage1{color:#fff;width:22%;float:left;padding:0; display: block}
 #mypage_header .mypage1 > h1{font-size: 36px;padding: 22px 0;background:#fe1e1e;border-radius: 0px 0 13px 13px;text-align:center;}
 /*#mypage_header .mypageUser{width:78%;}*/
 #mypage_header .mypageBoderT div.mypage-info{width:78%;}
 #mypage_header .mypageUser > div{float:left}
-#mypage_header .mypageBoderT{border-top: 2px solid #fe1e1e;}
+#mypage_header .mypageBoderT{border-top: 3px solid #fe1e1e;}
 #mypage_header .mypageBoderT div.mypage1 , #mypage_header .mypageBoderT div.mypage-info{float:right}
 #mypage_header .mypageBoderT div.mypage-info div{float:left;}
 #mypage_header .mypageImg{width: 17%;position: relative;padding:20px;}
@@ -1077,6 +1077,7 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
 	.sub_call_pop{position:fixed;right:10px;top:138px;height:140px;}
 }
 @media all and (max-width: 1120px){
+    #mypage_header{height: 262px}
     #mypage_header .mypage1{width:100% !important; float:none !important;}
     #mypage_header .mypage1 > h1{display:none}
     #mypage_header .mypageSub{text-align:left;margin-top:10px;}
@@ -1242,7 +1243,6 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
     textarea.fregister_term{width: 70%}
 }
 @media all and (max-width: 900px){    
-    #mypage_header{height: 262px}
     .section03 article.franchisee > div ul li {width: 45%}
     .section03 article.trainer > div ul li {width: 40%}
     .msg_map > div#map {width:400px;height:400px}
@@ -1360,9 +1360,7 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
     /*#mypage_header .mypage{display: none}*/
     #mypage_header .mypage1{display: block; width: 100%}
     #mypage_header ul.mypageSub > li > ul.subMenu li{border-top: 1px solid #fff;width: 22%;}
-    
     #mypage_header .mypage{width: 100% }
-    #mypage_header{height: auto}
     #mypage_header .mypageUser > div{float: none}
     #mypage_header .mypage > h1 {font-size:18px;}
     #bo_w .input01{font-size:11px ;width: 140px}
@@ -1630,7 +1628,7 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
     .section03 > header div.result > div.resultTxt{background: 0}
     .section03 > header div.result h3{font-size: 25px;margin-bottom: 0}
     .section03 > header div.resultTxt> h4{font-size: 15px;color: #000;line-height:35px}
-    #mypage_header .mypage{height: 51px}
+    #mypage_header .mypage{height: 52px}
     #mypage_header ul li.disPb {display: none}
     #login_form .login_id{margin-left: 0;top:-23px}
     #login_form .login_pw{top:-17px}
@@ -1644,9 +1642,10 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
     #mall_buy .price_info > div.cartInfo > div.tot_price{width: 82%;left: 18%}
 }
 @media all and (max-width: 480px){
+    #mypage_header .mypageBoderT div.mypage-info div h2{font-size: 23px}
     #mypage_header .mypage{height: 49px}
     #mypage_header ul.subMenu.menuLine li{padding: 15px 10px;font-size: 14px}
-    #mypage_header .mypageBoderT div.mypage-info div li{font-size: 14px}
+    #mypage_header .mypageBoderT div.mypage-info div li{font-size: 14px;letter-spacing: -2px}
     #mypage_header .mypage1 > .mypageSub{padding-top: 10px}
     #mypage_header .mypage1 > ul.mypageSub > li > ul{top: 26px}
     #mypage_header ul.mypageSub > li > ul.subMenu li{margin-top: 20px}
@@ -1858,6 +1857,10 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
 }
 
 @media all and (max-width: 400px){
+    #mypage_header .mypageBoderT div.mypage-info div h2{font-size: 21px}
+    #mypage_header .mypage1 > .mypageSub li{font-size: 13px}
+    #mypage_header .mypageBoderT div.mypage-info div li{font-size: 13px}
+    #mypage_header ul.subMenu.menuLine li{padding: 15px 8px;font-size: 13px;}
     #mypage_header ul.mypageSub > li > ul.subMenu li{font-size: 13px}
     #mypage_header .mypage > h1 {font-size:14px;}
     #mall_view .top .buy .total .txt{font-size: 13px}
