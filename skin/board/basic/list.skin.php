@@ -1,18 +1,32 @@
 <?php
 if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 // 선택옵션으로 인해 셀합치기가 가변적으로 변함
-$colspan = 6;
+$colspan = 7;
 //if ($is_checkbox) $colspan++;
 if ($is_good) $colspan++;
-if ($is_nogood) $colspan++;
 
+if (preg_match('/(iPhone|Android|iPod|BlackBerry|IEMobile|HTC|Server_KO_SKT|SonyEricssonX1|SKT)/', 
+$_SERVER['HTTP_USER_AGENT']) ) {
+    define('BROWSER_TYPE', 'M'); // mobile    
+} else {
+    define('BROWSER_TYPE', 'W'); // web (iPad 는 웹으로 간주)
+}
+if(BROWSER_TYPE == "M")
+{
+   $colspan = 5;
+}
 // add_stylesheet('css 구문', 출력순서); 숫자가 작을 수록 먼저 출력됨
 add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0);
 ?>
 
-<!-- <h2 id="container_title"><?php echo $board['bo_subject'] ?><span class="sound_only"> 목록</span></h2>
-<h3 id="container_title_sub">고객의 소리에 귀를 기울이겠습니다.</h3> -->
-
+<style>
+    tr.answer{display: none;border: 3px solid #ccc;background: #eee;border-radius: 10px;}
+    td.answer{padding: 30px}
+    td.answer >div.question span{font-size: 30px ; margin-right: 20px;font-weight: bold;}
+    td.answer >div.question{margin-bottom: 30px;font-size: 17px}
+    td.answer >div.answer span{font-size: 30px ; margin-right: 20px;font-weight: bold}
+    td.answer >div.answer{font-size: 17px}
+</style>
 <div class="width-fixed">
 	<section class="section03" style="margin-bottom:0px">
 		<header>
@@ -46,8 +60,9 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
 <!--
             <?php if ($rss_href) { ?><li><a href="<?php echo $rss_href ?>" class="btn_b01">RSS</a></li><?php } ?>
             <?php if ($admin_href) { ?><li><a href="<?php echo $admin_href ?>" class="btn_admin">관리자</a></li><?php } ?>
+            <?php if ($write_href) { ?><li><a href="<?php echo $write_href ?>" class="btn_b02">글쓰기</a></li><?php } ?>
+            <?php if ($reply_href) { ?><li><a href="<?php echo $reply_href ?>" class="btn_b01">답변</a></li><?php } ?>
 -->
-<!--            <?php if ($write_href) { ?><li><a href="<?php echo $write_href ?>" class="btn_b02">글쓰기</a></li><?php } ?>-->
         </ul>
         <?php } ?>
     </div>
@@ -72,27 +87,26 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
                 <col width="40%">
                 <col width="12%">
                 <col width="10%">
-                <col width="10%">
-                <col width="8%">
+                <col width="10%" class="mobile">
+                <col width="8%" class="mobile">
             </colgroup>
         <thead>
-            <tr>
+            <tr>                
                 <th scope="col">번호</th>     
                 <th scope="col">분류</th>
                 <th scope="col">제목</th>            
-                 <th scope="col">글쓴이</th> 
-                <th scope="col"><?php echo subject_sort_link('wr_datetime', $qstr2, 1) ?>등록일</a></th>
+                <th scope="col">글쓴이</th> 
+                <th scope="col" class="mobile"><?php echo subject_sort_link('wr_datetime', $qstr2, 1) ?>등록일</a></th>
                 <th scope="col">상태</a></th>
-                 <th scope="col"><?php echo subject_sort_link('wr_hit', $qstr2, 1) ?>조회</a></th>
+                <th scope="col" class="mobile"><?php echo subject_sort_link('wr_hit', $qstr2, 1) ?>조회</a></th>
                 <?php if ($is_good) { ?><th scope="col"><?php echo subject_sort_link('wr_good', $qstr2, 1) ?>추천</a></th><?php } ?>
                 <?php if ($is_nogood) { ?><th scope="col"><?php echo subject_sort_link('wr_nogood', $qstr2, 1) ?>비추천</a></th><?php } ?> 
             </tr>
         </thead>
         <tbody>
         <?php
-        for ($i=0; $i<count($list); $i++) {
-         ?>
-        <tr class="<?php if ($list[$i]['is_notice']) echo "bo_notice"; ?>">
+        for ($i=0; $i<count($list); $i++) {  ?>
+        <tr class="<?php if ($list[$i]['is_notice']) echo "bo_notice"; ?> question">
             <td class="td_num">
             <?php
             if ($list[$i]['is_notice']) // 공지사항
@@ -103,44 +117,73 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
                 echo $list[$i]['num'];
              ?>
             </td>
-            <!-- <?php if ($is_checkbox) { ?>
-            <td class="td_chk">
-                <label for="chk_wr_id_<?php echo $i ?>" class="sound_only"><?php echo $list[$i]['subject'] ?></label>
-                <input type="checkbox" name="chk_wr_id[]" value="<?php echo $list[$i]['wr_id'] ?>" id="chk_wr_id_<?php echo $i ?>">
-            </td>
-            <?php } ?> -->
             <td class="td_name sv_use"><?php echo $list[$i]['ca_name']; ?></td> 
-            <td class="td_subject">
-                <?php
-                echo $list[$i]['icon_reply'];
-                if ($is_category && $list[$i]['ca_name']) {
-                 ?>
-                <a href="<?php echo $list[$i]['ca_name_href'] ?>" class="bo_cate_link"><?php echo $list[$i]['ca_name'] ?></a>
-                <?php } ?>
-
-                <a href="<?php echo $list[$i]['href'] ?>">
-                    <?php echo $list[$i]['subject'] ?>
-                    <?php if ($list[$i]['comment_cnt']) { ?><span class="sound_only">댓글</span><?php echo $list[$i]['comment_cnt']; ?><span class="sound_only">개</span><?php } ?>
-                </a>
-
-                <?php
-                // if ($list[$i]['link']['count']) { echo '['.$list[$i]['link']['count']}.']'; }
-                // if ($list[$i]['file']['count']) { echo '<'.$list[$i]['file']['count'].'>'; }
-
-                if (isset($list[$i]['icon_new'])) echo $list[$i]['icon_new'];
-                if (isset($list[$i]['icon_hot'])) echo $list[$i]['icon_hot'];
-                if (isset($list[$i]['icon_file'])) echo $list[$i]['icon_file'];
-                if (isset($list[$i]['icon_link'])) echo $list[$i]['icon_link'];
-                if (isset($list[$i]['icon_secret'])) echo $list[$i]['icon_secret'];
-
-                 ?>
+            <td class="td_subject"><?php echo $list[$i]["wr_subject"]; ?>
+              <!--<div id="faq" >
+                    <ul>                      
+                        <li <?php /*if($i==0) { */?> class="active" <?php /*}*/?>>
+                            <h4 style="cursor:pointer">
+                                <span></span><?php /*echo $list[$i]["wr_subject"]; */?>
+                            </h4>
+                            <?php
+/*                              $reply_href=$list[$i]['href'];
+                                $c_id=$list[$i]["wr_id"];                                
+                                $sql = "select wr_id, wr_content from $write_table where wr_parent = '$c_id' and wr_is_comment = '1' ";
+                                $cmt = sql_fetch($sql);
+                                $c_wr_content = $cmt['wr_content'];
+                            */?>
+                            <div>
+                                <span></span>
+                                <?php /*if($c_wr_content){ */?>
+                                    Re: <?php /*echo $c_wr_content; */?>
+                                <?php /*}else {
+                                    echo $list[$i]['wr_content'];
+                                } */?>
+                            </div>
+                        </li>
+                    </ul>
+                </div>-->
             </td>
-             <td class="td_name sv_use"><?php echo $list[$i]['wr_name'] ?></td> 
-            <td class="td_date"><?php echo $list[$i]['datetime'] ?></td>
-            <td class="td_date">미답변</td>
-             <td class="td_num"><?php echo $list[$i]['wr_hit'] ?></td>
+        <?php 
+            $reply_href=$list[$i]['href'];
+            $c_id=$list[$i]["wr_id"];                                
+            $sql = "select wr_id, wr_content from $write_table where wr_parent = '$c_id' and wr_is_comment = '1' ";
+            $cmt = sql_fetch($sql);
+            $c_wr_content = $cmt['wr_content'];
+         ?>
+            <td class="td_name sv_use"><?php echo $list[$i]['wr_name'] ?></td>
+            <td class="td_date mobile"><?php echo $list[$i]['datetime'] ?></td>
+            <td class="td_date">
+                <?php if($is_admin){?>
+                    <?php if(!$c_wr_content){ ?>
+                        <a href="<?php echo $reply_href ?>" >댓글등록</a>
+                    <?php }else{ ?>
+                        <a href="<?php echo $reply_href ?>" style="color:#fe1e1e;font-weight:bold" >답변완료</a>
+                    <?php } ?>
+                <?php }elseif($is_member){ ?>
+                    <?php if($c_wr_content){ ?>
+                        <a href="<?php echo $reply_href ?>" style="color:#fe1e1e;font-weight:bold" >답변완료</a>
+                    <?php }else{?>
+                        <a href="<?php echo $reply_href ?>" >미답변</a>
+                    <?php } ?>
+                <?php } ?>
+            </td>
+             <td class="td_num mobile"><?php echo $list[$i]['wr_hit'] ?></td>
             <?php if ($is_good) { ?><td class="td_num"><?php echo $list[$i]['wr_good'] ?></td><?php } ?>
             <?php if ($is_nogood) { ?><td class="td_num"><?php echo $list[$i]['wr_nogood'] ?></td><?php } ?> 
+        </tr>
+  
+        <tr class="answer">
+            <td colspan="<?php echo $colspan ?>" class="answer" id="ans">
+                <?php
+                $sql = "select wr_id, wr_content from $write_table where wr_parent = ".$list[$i]["wr_id"]." and wr_is_comment = '1' ";
+                $cmt = sql_fetch($sql);
+                ?>
+                <div class="question"><span>Q</span><?php echo $list[$i]['wr_content'];?></div>
+                <?php if($cmt['wr_content']){?>
+                <div class="answer"><span>A</span><?php echo $cmt['wr_content'];?></div>
+                <?php }?>
+            </td>
         </tr>
         <?php } ?>
         <?php if (count($list) == 0) { echo '<tr><td colspan="'.$colspan.'" class="empty_table">게시물이 없습니다.</td></tr>'; } ?>
@@ -149,19 +192,10 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
     </div>
 
     <?php if ($list_href || $is_checkbox || $write_href) { ?>
-    <div class="bo_fx">
-        <!-- <?php if ($is_checkbox) { ?>
-        <ul class="btn_bo_adm">
-            <li><input type="submit" name="btn_submit" value="선택삭제" onclick="document.pressed=this.value"></li>
-            <li><input type="submit" name="btn_submit" value="선택복사" onclick="document.pressed=this.value"></li>
-            <li><input type="submit" name="btn_submit" value="선택이동" onclick="document.pressed=this.value"></li>
-        </ul>
-        <?php } ?> -->
+    <div class="bo_fx">         
         <ul class="btn_bo_user">
-            <!-- <?php if ($list_href) { ?><li><a href="<?php echo $list_href ?>" class="btn_b01">목록</a></li><?php } ?> -->
             <?php if ($write_href) { ?><li><a href="<?php echo $write_href ?>" class="btn_b02">글쓰기</a></li><?php } ?>
         </ul>
-
     </div>
     <?php } ?>
     </form>
@@ -210,6 +244,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
 //	});
 //    return false;
 //}
+
 function all_checked(sw) {
     var f = document.fboardlist;
 
@@ -273,4 +308,35 @@ function select_copy(sw) {
 }
 </script>
 <?php } ?>
+<script type="text/javascript">
+	$(function(){
+		$("#faq li h4").click(function(){
+			var p=$(this).parent();
+			var pindex=p.index();
+			var len=$("#faq li").length;
+			if(p.hasClass("active")){
+				p.find("div").css("min-height","0");
+				p.find("div").slideUp(function(){
+					p.removeClass("active");
+				});
+			}else{
+				p.find("div").css("min-height","123px");
+				p.find("div").slideDown(function(){
+					p.addClass("active");
+				});
+			}
+		});
+	});
+	$(document).ready(function(){                     
+	    $("tr.question").click(function(){
+           $(this).next().toggle();
+           $(this).click(function(){               
+               if($(this).next().attr(this,style) == "display: table-row;"){
+                   $(this).next().toggle();
+                   $(this).next().addClass("active");
+               }
+           })
+       });
+    });
+</script>
 <!-- } 게시판 목록 끝 -->

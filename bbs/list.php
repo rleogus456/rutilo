@@ -4,6 +4,8 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 // 분류 사용 여부
 $is_category = false;
 $category_option = '';
+
+
 if ($board['bo_use_category']) {
     $is_category = true;
     $category_href = G5_BBS_URL.'/board.php?bo_table='.$bo_table;

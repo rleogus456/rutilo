@@ -78,14 +78,18 @@ $point = $list['price'] / 100 ;
                 <?php } ?>
             </div>  
             <div class="supportInfo" id="proInfo">               
-                <div class="txt"><?php echo $list['info']; ?></div>
+                <div class="txt"><textarea name="" id="" rows="20" class="infoText" readonly><?php echo $list['info']; ?></textarea></div>
                 <?php if($list['infoImg']){ ?>
                 <img src="<?php echo G5_DATA_URL."/model/".$list['infoImg']; ?>" alt="image" />
                 <?php } ?>
             </div>   
 	</section>	
 </div>
+<script src="<?php echo G5_JS_URL ?>/autisize.js">
+    autosize($('textarea'));
+</script>
 <script>
+    
     function proinfo(){
         $(".proInfo").css("display","block");
         $(".msInfo").css("display","none");

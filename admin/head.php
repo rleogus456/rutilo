@@ -122,6 +122,7 @@
 					<div data-control class="list-title">가맹점관리</div>
 					<div data-content class="list-item">
 						<div><a href="<?php echo G5_URL."/admin/partner_list.php"; ?>">가맹점관리</a></div>
+						<div><a href="<?php echo G5_URL."/admin/franchisee_list.php"; ?>">가맹문의내용</a></div>
 					</div>
 				</li>
                 <li class="accordion" data-accordion>

@@ -279,7 +279,8 @@ span.bold{font-weight: bold; font-size: 15px;}
 .section03 div.proInfo{text-align: center;padding: 30px;display: none}
 .section03 div.msInfo{text-align: center;padding: 30px;display: none}
 .section03 div.supportInfo{text-align: center;padding: 30px;display: none}
-.section03 div#proInfo > div.txt{margin-bottom:30px}
+.section03 div > textarea.infoText{border: none;overflow: hidden;line-height: 40px;width: 100%;height: auto;font-family: "Malgun Gothic","MalgunGothic","맑은고딕","Nanum Gothic"; font-size: 17px}
+.section03 div#proInfo > div.txt{margin-bottom:30px;font-family: "Malgun Gothic","MalgunGothic","맑은고딕","Nanum Gothic"; font-size: 17px}
 #player { width:100%;}
 #player_screen { position:relative; width:100%; height:680px; }
 #player_screen iframe { position:relative; width:100%; height:680px; }
@@ -416,7 +417,7 @@ div.desc, div.url { display:none; }
 /*#footer ul li.last:after{content:"";}*/
 #view_header ul li a:hover{color:#898989;}
 #mall_view{font-family:"Malgun Gothic","MalgunGothic","맑은고딕",'Nanum Gothic';letter-spacing:-0.05em;}
-#mall_view .top{display:table;margin-bottom:18px;width:100%;}
+#mall_view .top{display:table;margin-bottom:30px;width:100%;}
 #mall_view .top > div{width:50%;height:100%;float:left;box-sizing:border-box;}
 #mall_view .top .img{overflow:hidden;}
 #mall_view .top .img > div{display:table;height:100%;width:100%;table-layout:fixed;text-align: center}
@@ -500,14 +501,11 @@ div.desc, div.url { display:none; }
 #mypage_header .mypageBoderT div.mypage-info div li a:hover{color:#fe1e1e;font-weight: bold}
 #mypage_header .mypageBoderT div.mypage-info div li.cont:after{content:"|";color:#959595;margin-left:12px;margin-right:12px;}
 #mypage_header .mypageBoderT div.mypage-info h1{ font-size: 36px;padding: 22px 0;background: #fe1e1e;border-radius: 0px 0 13px 13px;text-align: center;display:none;color:#fff}
-#mypage_header ul.subMenu.menuLine{
-    width:100%;
-}
-#mypage_header ul.subMenu.menuLine li{
-    padding:15px 25px;
-    border:1px solid #fff;
-}
-#mypage_header ul.subMenu.menuLine li:hover{border:1px solid #ddd; border-bottom:none;font-weight:bold;color:#fe1e1e;}
+#mypage_header ul.subMenu.menuLine{width:100%;}
+#mypage_header ul.subMenu.menuLine li{padding:15px 25px;border:1px solid #fff;}
+#mypage_header ul.subMenu.menuLine li{color: #959595}
+#mypage_header ul.subMenu.menuLine li:hover{border:1px solid #ddd; border-bottom:none;color:#fe1e1e;}
+#mypage_header ul.subMenu.menuLine li a:hover{color: #fe1e1e;font-weight:bold;}
 #mypage_header .mypageList span {color: #fe1e1e;}
 #mypage_header .mypageList{position: relative;}
 #mypage_header .mypageList div.mypageFL li{float: left}
@@ -1351,13 +1349,13 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
 }
 
 @media all and (max-width: 768px){
+    .section03 div#proInfo > div.txt{font-size: 16px}
     .form_list01 h2{padding: 30px 0 !important}
     #mypage_header .mypageList h2{font-size: 23px}
     #register_form li > div input{margin: 9px 0}
     .section03 header{border: 0 !important}
     #mypage_header .mypageImg{float: left}
     #register_form .mypageP{padding: 0 !important}
-
     #mypage_header .mypage1 > ul.mypageSub > li > ul{top:35px;right: 0;}
     #mypage_header .mypage1 > .mypageSub{top:0;clear: both;border-bottom: 3px solid #ddd;padding-bottom: 15px}
     #mypage_header .mypageUser{width: 100%}
@@ -1591,6 +1589,10 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
 	#main_tab .table04 table td{padding:7px;font-size:14px;}
 }
 @media all and (max-width: 690px){
+    #faq li > div {padding: 15px 16px 8px 15px}
+    #faq li > div > span{display: none}
+    #faq h4{padding: 0}
+    #faq h4 span{display: none}
     #mypage_header .mypageList h2{font-size: 21px}
     .section03 > header{padding: 0}
     #mypage_header .mypageImg {padding:4px;width: 30%}
@@ -1624,7 +1626,7 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
     #mall_buy .price_info table tr td .title h3{margin-left: 0px}
 }
 @media all and (max-width: 590px){
-
+    .section03 div#proInfo > div.txt{font-size: 15px}
     #register_form .mypageP{font-size: 13px}
     #mypage_header .mypageBoderT div.mypage-info div p{margin-bottom: 0 !important}
     #mypage_header .mypageBoderT div.mypage-info div h2{padding: 10px 0}
@@ -1865,6 +1867,8 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
 }
 
 @media all and (max-width: 400px){
+    .section03 div.supportInfo{padding: 10px}
+    .section03 div#proInfo > div.txt{font-size: 14px;}
     #mypage_header .mypageBoderT div.mypage-info div p{font-size: 12px}
     #mypage_header .mypageBoderT div.mypage-info div h2{font-size: 21px}
     #mypage_header .mypage1 > .mypageSub li{font-size: 13px}
@@ -1873,7 +1877,7 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
     #mypage_header ul.mypageSub > li > ul.subMenu li{font-size: 13px}
     #mypage_header .mypage > h1 {font-size:14px;}
     #mall_view .top .buy .total .txt{font-size: 13px}
-    #mall_view .top .txt .price{height: 115px}
+    #mall_view .top .txt .price{height: 90px}
     #mall_view .top .txt .price h2{font-size: 13px;line-height: 15px}
     #mall_view .top .txt .info .title p{font-size: 14px}
     #mall_view .top .txt .info .title h2{font-size: 25px;}
