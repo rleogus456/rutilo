@@ -66,12 +66,14 @@
 							<th>MSDS</th>
 							<td>
 							<textarea name="msds" id="msds" cols="30" rows="10" class="adm-input01 grid_100" style="height:100px;"><?php echo strip_tags($write['msds']); ?></textarea>
+							<input type="file" name="msdsImg" id="msdsImg" <?php echo $id?"":""; ?> />
 							</td>
 						</tr>
                         <tr>
 							<th>지원정보</th>
 							<td>
 							<textarea name="info" id="info" cols="30" rows="10" class="adm-input01 grid_100" style="height:100px;"><?php echo strip_tags($write['info']); ?></textarea>
+							<input type="file" name="infoImg" id="infoImg" <?php echo $id?"":""; ?> />
 							</td>
 						</tr>
                         <tr>

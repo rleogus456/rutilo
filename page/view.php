@@ -56,21 +56,52 @@ $point = $list['price'] / 100 ;
                                 </h2>                              
                             </div>                                                      
                         </div>
-                        <div id="view_header">
-                            <ul class="mypageSubList">
-                                <li class="cont conten"><a href="">제품설명</a></li>
-                                <li class="cont conten1"><a href="" >MSDS</a></li>
-                                <li class="cont conten2"><a href="">지원정보</a></li>                        
-                            </ul> 
-                        </div>
-                    </div>
+                                     
+                    </div>                        
                 </div>
             </div>
 		</article>
+            <div id="view_header">
+                <ul class="mypageSubList">
+                    <li class="cont conten"><a onclick="proinfo()">제품설명</a></li>
+                    <li class="cont conten1"><a onclick="msinfo()" >MSDS</a></li>
+                    <li class="cont conten2"><a onclick="info()">지원정보</a></li>                        
+                </ul> 
+            </div>
+            <div class="proInfo" id="proInfo">
+                <img src="<?php echo G5_DATA_URL."/model/".$list['content1']; ?>" alt="image" />
+            </div>
+            <div class="msInfo" id="proInfo">
+                <div class="txt"><?php echo $list['msds']; ?></div>
+                <?php if($list['msdsImg']){ ?>
+                <img src="<?php echo G5_DATA_URL."/model/".$list['msdsImg']; ?>" alt="image" />
+                <?php } ?>
+            </div>  
+            <div class="supportInfo" id="proInfo">               
+                <div class="txt"><?php echo $list['info']; ?></div>
+                <?php if($list['infoImg']){ ?>
+                <img src="<?php echo G5_DATA_URL."/model/".$list['infoImg']; ?>" alt="image" />
+                <?php } ?>
+            </div>   
 	</section>	
 </div>
 <script>
-    	function number_plus(){
+    function proinfo(){
+        $(".proInfo").css("display","block");
+        $(".msInfo").css("display","none");
+        $(".supportInfo").css("display","none");
+    }
+    function msinfo(){
+        $(".msInfo").css("display","block");
+        $(".proInfo").css("display","none");
+        $(".supportInfo").css("display","none");
+    }
+    function info(){
+        $(".msInfo").css("display","none");
+        $(".proInfo").css("display","none");
+        $(".supportInfo").css("display","block");
+    }
+    function number_plus(){
 		var price=$("#price").val();
 		var max_num=$("#number").attr("data-max");
 		var num_var=parseInt($("#number").val());

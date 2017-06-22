@@ -136,16 +136,12 @@
 							<td onclick="location.href='<?php echo G5_URL."/admin/reserve_view.php?id=".$list[$i]['id']."&page=".$page."&s=".$s."&m=".$m."&b".$b; ?>'"><?php echo $status; ?></td>
 							<td><a href="<?php echo G5_URL."/admin/reserve_write.php?id=".$list[$i]['id']."&page=".$page; ?>" class="btn01">수정/ </a><a href="<?php echo G5_URL."/admin/reserve_delete.php?id=".$list[$i]['id']."&page=".$page; ?>" class="btn01">삭제 </a></td>
 						</tr>
-					<?php
-						}
-						if(count($list)==0){
-					?>
+					<?php	}
+						if(count($list)==0){?>
 						<tr>
-							<td colspan="9" class="text-center" style="padding:50px 0;">주문요청이 없습니다.</td>
+							<td colspan="7" class="text-center" style="padding:50px 0;">주문요청이 없습니다.</td>
 						</tr>
-					<?php
-						}
-					?>
+					<?php	}    ?>
 					</tbody>
 				</table>
 			</div>

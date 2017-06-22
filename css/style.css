@@ -276,7 +276,10 @@ span.bold{font-weight: bold; font-size: 15px;}
 .section03_nav li:active a,.section03_nav li.active a{color:#fe1e1e;}
 .section03_nav ul.list3{width: 100%}
 .section03_nav span.texts{font-weight: normal; margin-left: 7px}
-
+.section03 div.proInfo{text-align: center;padding: 30px;display: none}
+.section03 div.msInfo{text-align: center;padding: 30px;display: none}
+.section03 div.supportInfo{text-align: center;padding: 30px;display: none}
+.section03 div#proInfo > div.txt{margin-bottom:30px}
 #player { width:100%;}
 #player_screen { position:relative; width:100%; height:680px; }
 #player_screen iframe { position:relative; width:100%; height:680px; }
@@ -287,7 +290,6 @@ div.movs {width:33.3%;padding:8px;box-sizing:border-box;display:inline-block;flo
 div.thumb{width:100%;height:157px;border-radius:10px;position:relative;}
 div.movs div{ margin:0; padding:0;}
 div.desc, div.url { display:none; }
-
 #main_event{position:relative;margin-bottom:20px;}
 #main_event .owl-dots{text-align:right;width:100%;position:absolute;bottom:22px;right: 55px}
 #main_event .owl-dot{display:inline-block;margin:0 5px;}
@@ -401,7 +403,7 @@ div.desc, div.url { display:none; }
 #view_header ul.mypageSubList > li  a:hover{color: #fe1e1e;font-weight: bold;border: 1px solid #ddd; border-bottom: 1px solid #fff}
 #view_header ul.mypageSubList > li > ul li a {color: #fe1e1e}
 #view_header ul li.disPb{display: block}
-#view_header{height:40px;box-sizing:border-box;}
+#view_header{height:37px;box-sizing:border-box;border-bottom: 1px solid #ddd}
 #view_header ul{margin-bottom:10px;text-align: left;    margin-bottom: 10px;text-align: left; position: absolute;}
 #view_header ul li{display:inline-block;font-size:17px;letter-spacing:-0.05em;}
 #view_header ul.mypageSubList li.conten{border-left: 1px solid #ccc;position: relative;left: 2px}
@@ -414,7 +416,7 @@ div.desc, div.url { display:none; }
 /*#footer ul li.last:after{content:"";}*/
 #view_header ul li a:hover{color:#898989;}
 #mall_view{font-family:"Malgun Gothic","MalgunGothic","맑은고딕",'Nanum Gothic';letter-spacing:-0.05em;}
-#mall_view .top{display:table;height:436px;margin-bottom:18px;width:100%;border-bottom: 1px solid #ddd}
+#mall_view .top{display:table;margin-bottom:18px;width:100%;}
 #mall_view .top > div{width:50%;height:100%;float:left;box-sizing:border-box;}
 #mall_view .top .img{overflow:hidden;}
 #mall_view .top .img > div{display:table;height:100%;width:100%;table-layout:fixed;text-align: center}
@@ -956,7 +958,6 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
 /*카트*/
 /*guide*/
 .privacy_head {width:316px;height:44px;background-image:url("../img/privacy_head.png");background-repeat:no-repeat;background-position:top left;}
-
 .agreement_head {width:159px;height:45px;background-image:url("../img/agreement_head.png");background-repeat:no-repeat;background-position:top left;}
 .guide_top_txt {margin-bottom:30px;color:#aa4a4d;font-size:14px;line-height:20px;font-family:'nbgr';}
 .guide_common_wrap { padding:50px;background:#fff; }
@@ -1077,6 +1078,8 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
 	.sub_call_pop{position:fixed;right:10px;top:138px;height:140px;}
 }
 @media all and (max-width: 1120px){
+    #mypage_header .mypageBoderT div.mypage-info div li{padding: 0 2%}
+    #mypage_header .mypageBoderT div.mypage-info div.infoArea{width: 100%}
     #mypage_header{height: 262px}
     #mypage_header .mypage1{width:100% !important; float:none !important;}
     #mypage_header .mypage1 > h1{display:none}
@@ -1348,6 +1351,7 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
 }
 
 @media all and (max-width: 768px){
+    .form_list01 h2{padding: 30px 0 !important}
     #mypage_header .mypageList h2{font-size: 23px}
     #register_form li > div input{margin: 9px 0}
     .section03 header{border: 0 !important}
@@ -1375,8 +1379,6 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
     #mypage_header ul.mypageSubList > li:hover > ul.subMenu{width: 100%}
     #mypage_header ul.mypageSubList1 > li:hover > ul.subMenu{width: 100%}
     #mypage_header ul.mypageSubList1 > li:hover > ul.subMenu li{margin: 30px 5px}
-    #mypage_header ul li.tab:before{content:"|";color:#959595;margin-left:12px;margin-right:12px;}
-
     #login_form .login_id,#login_form .login_pw{margin-bottom:4px;position:relative;text-align: center;left: 0;top:4px}
     .section03 article.franchisee > div ul li {width: 40%}
     .section03 article.trainer > div ul li {width: 40%}
@@ -1619,6 +1621,9 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
     #mall_buy .price_info table tr td .title h3{margin-left: 0px}
 }
 @media all and (max-width: 590px){  
+    #register_form .mypageP{font-size: 13px}
+    #mypage_header .mypageBoderT div.mypage-info div p{margin-bottom: 0 !important}
+    #mypage_header .mypageBoderT div.mypage-info div h2{padding: 10px 0}
     #mypage_header ul.subMenu.menuLine li{padding: 15px 15px}
     #mypage_header .mypageBoderT div.mypage-info div li{font-size: 15px}
     #mypage_header .mypageList h2{font-size: 19px}
@@ -1642,6 +1647,7 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
     #mall_buy .price_info > div.cartInfo > div.tot_price{width: 82%;left: 18%}
 }
 @media all and (max-width: 480px){
+    #mypage_header .mypageBoderT div.mypage-info div p{font-size: 13px}
     #mypage_header .mypageBoderT div.mypage-info div h2{font-size: 23px}
     #mypage_header .mypage{height: 49px}
     #mypage_header ul.subMenu.menuLine li{padding: 15px 10px;font-size: 14px}
@@ -1675,6 +1681,9 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
     #mall_buy .price_info > div.cartInfo > div > h2 > span.text-r{float: none;font-size: 14px}
     #mall_buy .price_info > div.cartInfo > div.price > h2{font-size: 14px}
     #mall_buy .price_info > div.cartInfo > div.delivery > h2{font-size: 14px}
+    #mall_buy .input01{width:100% !important;float:left;display:inline-block;}
+    #mall_buy .input03{width:100%;display:inline-block;}
+    #mall_buy select#reg_mb_email2{margin: 9px 10px}
     .section03 article.product > div ul li{width: 75%}
     #view_header ul.mypageSubList > li  a{border-bottom: 0}
     #mypage_header .mypageSubList1{padding: 15px;top: 145px;}
@@ -1857,6 +1866,7 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
 }
 
 @media all and (max-width: 400px){
+    #mypage_header .mypageBoderT div.mypage-info div p{font-size: 12px}
     #mypage_header .mypageBoderT div.mypage-info div h2{font-size: 21px}
     #mypage_header .mypage1 > .mypageSub li{font-size: 13px}
     #mypage_header .mypageBoderT div.mypage-info div li{font-size: 13px}

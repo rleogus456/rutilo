@@ -21,9 +21,9 @@
 						<th>제품사진 *</th>
 						<td>
 						<?php if($view['photo']==""){ ?>
-						<img src="<?php echo $view['photolink']; ?>" alt="image" />
+						    <img src="<?php echo $view['photolink']; ?>" alt="image" />
 						<?php }else{?>
-						<img src="<?php echo G5_DATA_URL."/model/".$view['photo']; ?>" alt="image" />
+						    <img src="<?php echo G5_DATA_URL."/model/".$view['photo']; ?>" alt="image" />
 						<?php }?>
 						</td>
 					</tr>
@@ -61,15 +61,23 @@
 					</tr>
 					<tr>
 						<th>MSDS</th>
-						<td><?php echo $view['msds']; ?></td>
+						<td><?php echo $view['msds']; ?><br><br>
+						    <?php if($view['msdsImg']){?>
+						        <img src="<?php echo G5_DATA_URL."/model/".$view['msdsImg']; ?>" alt="image" />
+						    <?php }?>
+						</td>					
 					</tr>
 					<tr>
 						<th>지원정보</th>
-						<td><?php echo $view['info']; ?></td>
+						<td><?php echo $view['info']; ?><br><br>
+				            <?php if($view['infoImg']){?>
+						        <img src="<?php echo G5_DATA_URL."/model/".$view['infoImg']; ?>" alt="image" />
+						    <?php }?>	
+				        </td>			
 					</tr>
 					<tr>
 						<th>상세설명</th>
-						<td><?php echo $view['content1']; ?></td>						
+						<td><img src="<?php echo G5_DATA_URL."/model/".$view['content1']; ?>" alt="image" /></td>						
 					</tr>
 					<tr>
 					    <th>이미지 링크</th>
@@ -77,8 +85,6 @@
 					</tr>
 				</table>
 			</div>
-			
-		
 			<div class="text-center mt20" style="margin-bottom:20px;">
 				<a href="<?php echo G5_URL."/admin/model_write.php?id=".$id."&page=".$page; ?>" class="adm-btn01">수정하기</a>
 				<?php if($is_admin){ ?><a href="<?php echo G5_URL."/admin/model_list.php?page=".$page; ?>" class="adm-btn01">목록으로</a><?php } ?>

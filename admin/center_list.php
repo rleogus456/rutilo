@@ -21,7 +21,7 @@
 <div id="wrap">
 	<section>
 		<header id="admin-title">
-			<h1>트레이너</h1>
+			<h1>트레이닝 센터</h1>
 			<hr />
 		</header>
 		<article>
