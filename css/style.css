@@ -1374,7 +1374,6 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
     #mall_view .top > div{width: 100%; float: none;}
     #mypage_header ul.mypageSubList1 > li:hover > ul.subMenu > div.menuLine{display: none}
     #mypage_header ul.mypageSubList > li:hover > ul.subMenu > div.menuLine1{display: none}
-
     #mypage_header .mypageSubList1{display: none}
     #mypage_header ul.mypageSubList > li:hover > ul.subMenu{width: 100%}
     #mypage_header ul.mypageSubList1 > li:hover > ul.subMenu{width: 100%}
@@ -1395,7 +1394,11 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
     #mall_buy #cart.price_info table tr .price{width:17%;}	
     #mall_buy .price_info table tr td{padding: 10px}
     #mall_buy .price_info table tr td.price{padding: 0px}
-    #mall_buy .price_info table tr td .title h3{font-size:15px; margin-top: 15px;}    
+    #mall_buy .price_info table tr td .title h3{font-size:15px; margin-top: 15px;}   
+    #mall_buy .input01{width:100% !important;float:left;display:inline-block;}
+    #mall_buy .input03{width:100%;display:inline-block;}
+    #mall_buy select#reg_mb_email2{margin: 9px 10px}
+    textarea.fregister_term{width: 87%; height: 80px; margin: 9px 10px}
 	#mobile_header h1{width:123px;height:52px;margin:0 auto;}
 	#mobile_header h1 a{padding:6px;}
     .mypage_header h1{display: none}
@@ -1620,7 +1623,8 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
     #main_way h3{font-size:20px;}
     #mall_buy .price_info table tr td .title h3{margin-left: 0px}
 }
-@media all and (max-width: 590px){  
+@media all and (max-width: 590px){
+
     #register_form .mypageP{font-size: 13px}
     #mypage_header .mypageBoderT div.mypage-info div p{margin-bottom: 0 !important}
     #mypage_header .mypageBoderT div.mypage-info div h2{padding: 10px 0}
@@ -1642,8 +1646,7 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
     .section03 article.franchisee > div ul li {width: 65%}
     .section03 article.trainer > div ul li {width: 65%}
     .section03_nav ul.list3 li{padding: 0 !important}
-    .section03_nav li a {font-size: 18px}
-    
+    .section03_nav li a {font-size: 18px}    
     #mall_buy .price_info > div.cartInfo > div.tot_price{width: 82%;left: 18%}
 }
 @media all and (max-width: 480px){
@@ -1681,16 +1684,12 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
     #mall_buy .price_info > div.cartInfo > div > h2 > span.text-r{float: none;font-size: 14px}
     #mall_buy .price_info > div.cartInfo > div.price > h2{font-size: 14px}
     #mall_buy .price_info > div.cartInfo > div.delivery > h2{font-size: 14px}
-    #mall_buy .input01{width:100% !important;float:left;display:inline-block;}
-    #mall_buy .input03{width:100%;display:inline-block;}
-    #mall_buy select#reg_mb_email2{margin: 9px 10px}
     .section03 article.product > div ul li{width: 75%}
     #view_header ul.mypageSubList > li  a{border-bottom: 0}
     #mypage_header .mypageSubList1{padding: 15px;top: 145px;}
     #mypage_header ul.mypageSubList > li:hover > ul.subMenu li{margin: 28px -8px;top: 55px;left: 10px}
     #mypage_header ul.mypageSubList1 > li > ul{top: 10px;left: -8%}
     #mypage_header ul.mypageSubList1 > li:hover > ul.subMenu li{padding: 5px 8px;margin: 30px -2px}
-    textarea.fregister_term{width: 65%; height: 80px}
     .input03{width: 42%;height: 38px;padding: 5px; line-height: 20px}
     #mypage_header ul li{font-size: 15px;}
     #mypage_header ul.mypageSubList li.cont:after{margin-left:5px;margin-right:5px;}
