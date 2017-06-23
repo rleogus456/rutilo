@@ -413,6 +413,7 @@ div.desc, div.url { display:none; }
 #view_header ul.mypageSubList li.conten:hover+li.conten1{border: none !important}
 #view_header ul.mypageSubList li.conten1:hover+li.conten2{border-left: none !important}
 #view_header ul.mypageSubList li.conten2{position: relative;left: -8px}
+#view_header ul.mypageSubList li{cursor: pointer}
 #view_header ul li.last a{color:#959595}
 /*#footer ul li.last:after{content:"";}*/
 #view_header ul li a:hover{color:#898989;}
@@ -493,6 +494,13 @@ div.desc, div.url { display:none; }
 #mall_view .join_box .btn01{padding-left:10px;padding-right:10px;width:auto;position:absolute;right:30px;top:50%;margin-top:-20px;}
 
 /* 회원가입 페이지 */
+#bo_list .tbl_head01 td.td_subject{cursor: pointer}
+#bo_list tr.answer{display: none;border: 3px solid #ccc;background: #f8f8f8;border-radius: 10px;}
+#bo_list td.answer{padding: 30px 45px}
+#bo_list td.answer >div.question span{font-size: 30px ; margin-right: 20px;font-weight: bold;}
+#bo_list td.answer >div.question{padding-bottom: 30px;font-size: 17px;border-bottom: 1px solid #ddd}
+#bo_list td.answer >div.answer span{font-size: 30px ; margin-right: 20px;font-weight: bold}
+#bo_list td.answer >div.answer{font-size: 17px;margin-top: 30px}
 #mypage_header .mypageBoderT div.mypage-info div h2{font-size:25px;padding:20px 0;color: #000}
 #mypage_header .mypageBoderT div.mypage-info div p {text-align: left; color: #888 ; font-size: 18px;margin-bottom: 7px !important;}
 #mypage_header .mypageBoderT div.mypage-info div ul{padding-top: 11px;clear: both;}

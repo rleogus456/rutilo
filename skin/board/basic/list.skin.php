@@ -20,12 +20,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
 ?>
 
 <style>
-    tr.answer{display: none;border: 3px solid #ccc;background: #eee;border-radius: 10px;}
-    td.answer{padding: 30px}
-    td.answer >div.question span{font-size: 30px ; margin-right: 20px;font-weight: bold;}
-    td.answer >div.question{margin-bottom: 30px;font-size: 17px}
-    td.answer >div.answer span{font-size: 30px ; margin-right: 20px;font-weight: bold}
-    td.answer >div.answer{font-size: 17px}
+
 </style>
 <div class="width-fixed">
 	<section class="section03" style="margin-bottom:0px">
