@@ -67,7 +67,7 @@ span.bold{font-weight: bold; font-size: 15px;}
 .backRed2{background: #f2f2f2;margin: 0 auto;height: 312px;}
 #header{width:100%;height:128px;z-index:1000;position:absolute;top: 0px}
 #top_header{width:100%;height:33px;text-align:right;font-size:14px;margin-top: 33px}
-#top_header select{width: 100px;background: #fff; color: #fe1e1e;font-size: 14px;}
+#top_header select{width: 110px;background: #fff; color: #fe1e1e;font-size: 14px;}
 #top_header p,#top_header ul,#top_header li{display: inline-block;padding-top: 10px;padding-right: 12px}
 #top_header p{position:relative;padding-left:23px;padding-right:13px;color:#222;}
 #top_header p span{width:16px;height:16px;display:inline-block;background-image:url("../img/top_head_icon.png");background-repeat:no-repeat;background-position:top left;position:absolute;left:0;top:50%;margin-top:-8px;}
@@ -77,13 +77,14 @@ span.bold{font-weight: bold; font-size: 15px;}
 #top_header li.last a{padding-right:0;}
 #top_header li.last a:after{content:"";margin-left:0;}
 #top_header ul li > ul.mypage {display: none}
+#top_header ul li:hover > ul.mypage li.mypage{margin-top: 7px}
 #top_header ul li:hover > ul.mypage {display: block;position: absolute;background: url(../img/menuBack.png);background-repeat: no-repeat;z-index: 9999; width: 190px;height: 100px;right: 11%;text-align: left}
 #top_header ul li:hover > ul.mypage li a{color: #000;font-weight: bold;position: relative;top: -5px}
 #top_header ul li:hover > ul.mypage li{letter-spacing: 0.08em;}
 #top_header ul li:hover > ul.mypage li.mypage:after{content:">>";position: relative;top: -6px}
 #top_header ul li:hover > ul.mypage li.mypage:before{content:url(../img/menuMypage.png);margin:0 10px}
 #top_header ul li:hover > ul.mypage li.point:before{content:url(../img/mypagePoint.png);margin:0 7px}
-#top_header ul li:hover > ul.mypage li.logout{float: right;position: absolute;right: -9px ;top: 16px;margin-left: 5px}
+#top_header ul li:hover > ul.mypage li.logout{float: right;position: absolute;right: -9px ;top: 23px;margin-left: 5px}
 #main_header{position:relative;}
 #main_header h1{position:absolute;left:19px;top:18px;width:238px;height:93px;background-image:url("../img/mobile_logo.png");background-size: contain;background-repeat:no-repeat;background-position:top left;}
 #main_header h1 a{display:block;width:100%;height:100%;}
@@ -1367,7 +1368,6 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
     #mypage_header .mypage1 > ul.mypageSub > li > ul{top:35px;right: 0;}
     #mypage_header .mypage1 > .mypageSub{top:0;clear: both;border-bottom: 3px solid #ddd;padding-bottom: 15px}
     #mypage_header .mypageUser{width: 100%}
-    /*#mypage_header .mypage{display: none}*/
     #mypage_header .mypage1{display: block; width: 100%}
     #mypage_header ul.mypageSub > li > ul.subMenu li{border-top: 1px solid #fff;width: 22%;}
     #mypage_header .mypage{width: 100% }
@@ -1617,7 +1617,7 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
     .section03 > header h4{font-size: 35px;margin-bottom: 10px;}
     .section03 > header h4:after{margin-bottom: 0}
     #mypage_header .mypageBoderT div.mypage-info div p{font-size: 15px}
-    .section03 > article h4.intro{font-size: 25px; text-align: center}
+    .section03 > article h4.intro{font-size: 25px; }
     .section03 > article p{font-size: 15px;text-align: left;padding: 0px}
     .section03 > header div.videoTxt > h1{font-size: 30px}
     .section03 > header div.videoTxt > p {font-size: 16px;margin-top: 3px;margin-bottom: 2px !important}
@@ -1660,6 +1660,7 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
     #mall_buy .price_info > div.cartInfo > div.tot_price{width: 82%;left: 18%}
 }
 @media all and (max-width: 480px){
+    .section03 > article h4.intro{font-size: 22px;text-align: center}
     #mypage_header .mypageBoderT div.mypage-info div p{font-size: 13px}
     #mypage_header .mypageBoderT div.mypage-info div h2{font-size: 23px}
     #mypage_header .mypage{height: 49px}

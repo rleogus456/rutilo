@@ -56,8 +56,8 @@ if($config['cf_add_meta'])
 <meta property="og:title" content="루틸로">  
 <meta property="og:type" content="website">
 <meta property="og:image" content="<?php echo G5_IMG_URL."/mobile_logo.png"; ?>">
-<meta property="og:description" content="강아지, 고양이 사료 및 간식 삼시세끼">
-<meta name="description" content="강아지, 고양이 사료 및 간식 삼시세끼">
+<meta property="og:description" content="365일 새차처럼! 고품질 자동차 코팅관리제 루틸로">
+<meta name="description" content="365일 새차처럼! 고품질 자동차 코팅관리제 루틸로">
 
 <title><?php echo $g5_head_title; ?></title>
 <?php
