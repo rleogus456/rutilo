@@ -83,6 +83,7 @@ if (defined('G5_IS_ADMIN')) {
 	<script type="text/javascript" src="<?php echo G5_JS_URL ?>/selectivizr.js"></script>
 <![endif]-->
 <script>
+
 // 자바스크립트에서 사용하는 전역변수 선언
 var g5_url       = "<?php echo G5_URL ?>";
 var g5_bbs_url   = "<?php echo G5_BBS_URL ?>";
