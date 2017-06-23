@@ -100,6 +100,7 @@ if ($is_admin) {
 }
 ?>
 </script>
+
 <script src="<?php echo G5_JS_URL ?>/jquery-1.8.3.min.js"></script>
 <script src="<?php echo G5_JS_URL ?>/jquery.menu.js"></script>
 <script src="<?php echo G5_JS_URL ?>/common.js"></script>
