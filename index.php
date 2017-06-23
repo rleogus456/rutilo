@@ -69,8 +69,7 @@ while($cont_data=sql_fetch_array($con_query)){
 </div>
 <div id="main_product">
 	<div class="width-fixed wrap">
-		<div>
-		
+		<div>		
 			<div class="list">
 				<h2>Rutilo</h2>
 				<p>새차처럼 보호와 코팅을 한번에!!</p>
@@ -96,21 +95,6 @@ while($cont_data=sql_fetch_array($con_query)){
 		</div>
 	</div>
 </div>
-	<?php
-		$partner_sql="SELECT * FROM  `best_event` WHERE  `show` =  '1'";
-		$partner_query=sql_query($partner_sql);
-		while($partner_data=sql_fetch_array($partner_query)){
-			$partner_list[]=$partner_data;
-		}
-		if(count($partner_list)>0){
-	?>
-	<div id="main_partner" class="owl-carousel">
-	<?php for($i=0;$i<count($partner_list);$i++){ ?>
-		<div class="item"><a href="<?=$partner_list[$i]["link"]?>" target="_new"><img src="<?php echo G5_DATA_URL."/partner/".$partner_list[$i]['banner']; ?>" alt="<?php echo $partner_list[$i]['name']; ?>" /></a></div>
-	<?php } ?>
-	</div>
-	<?php } ?>	
-
 <script type="text/javascript">
 	$(function () {
 		$(".tab_content").hide();
@@ -122,8 +106,7 @@ while($cont_data=sql_fetch_array($con_query)){
 			var activeTab = $(this).attr("rel");
 			$("#" + activeTab).fadeIn()
 		});
-	});
-	
+	});	
 </script>
 <?php
 include_once('./_tail.php');

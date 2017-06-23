@@ -1402,7 +1402,7 @@ textarea.fregister_term{resize: none;width: 80%; height: 150px;padding: 15px;mar
     #mall_buy .price_info table tr td.price{padding: 0px}
     #mall_buy .price_info table tr td .title h3{font-size:15px; margin-top: 15px;}   
     #mall_buy .input01{width:100% !important;float:left;display:inline-block;}
-    #mall_buy .input03{width:100%;display:inline-block;}
+    #mall_buy .input03{width:99%;display:inline-block;}
     #mall_buy select#reg_mb_email2{margin: 9px 10px}
     textarea.fregister_term{width: 87%; height: 80px; margin: 9px 10px}
 	#mobile_header h1{width:123px;height:52px;margin:0 auto;}
