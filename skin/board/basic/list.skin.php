@@ -113,32 +113,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
              ?>
             </td>
             <td class="td_name sv_use"><?php echo $list[$i]['ca_name']; ?></td> 
-            <td class="td_subject"><?php echo $list[$i]["wr_subject"]; ?>
-              <!--<div id="faq" >
-                    <ul>                      
-                        <li <?php /*if($i==0) { */?> class="active" <?php /*}*/?>>
-                            <h4 style="cursor:pointer">
-                                <span></span><?php /*echo $list[$i]["wr_subject"]; */?>
-                            </h4>
-                            <?php
-/*                              $reply_href=$list[$i]['href'];
-                                $c_id=$list[$i]["wr_id"];                                
-                                $sql = "select wr_id, wr_content from $write_table where wr_parent = '$c_id' and wr_is_comment = '1' ";
-                                $cmt = sql_fetch($sql);
-                                $c_wr_content = $cmt['wr_content'];
-                            */?>
-                            <div>
-                                <span></span>
-                                <?php /*if($c_wr_content){ */?>
-                                    Re: <?php /*echo $c_wr_content; */?>
-                                <?php /*}else {
-                                    echo $list[$i]['wr_content'];
-                                } */?>
-                            </div>
-                        </li>
-                    </ul>
-                </div>-->
-            </td>
+            <td class="td_subject"><?php echo $list[$i]["wr_subject"]; ?></td>
         <?php 
             $reply_href=$list[$i]['href'];
             $c_id=$list[$i]["wr_id"];                                
