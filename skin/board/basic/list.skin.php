@@ -92,7 +92,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
                 <th scope="col">제목</th>            
                 <th scope="col">글쓴이</th> 
                 <th scope="col" class="mobile"><?php echo subject_sort_link('wr_datetime', $qstr2, 1) ?>등록일</a></th>
-                <th scope="col">상태</a></th>
+                <th scope="col">상태</th>
                 <th scope="col" class="mobile"><?php echo subject_sort_link('wr_hit', $qstr2, 1) ?>조회</a></th>
                 <?php if ($is_good) { ?><th scope="col"><?php echo subject_sort_link('wr_good', $qstr2, 1) ?>추천</a></th><?php } ?>
                 <?php if ($is_nogood) { ?><th scope="col"><?php echo subject_sort_link('wr_nogood', $qstr2, 1) ?>비추천</a></th><?php } ?> 
@@ -155,7 +155,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
                     <?php }else{ ?>
                         <a href="<?php echo $reply_href ?>" style="color:#fe1e1e;font-weight:bold" >답변완료</a>
                     <?php } ?>
-                <?php }elseif($is_member){ ?>
+                <?php }else{ ?>
                     <?php if($c_wr_content){ ?>
                         <a href="<?php echo $reply_href ?>" style="color:#fe1e1e;font-weight:bold" >답변완료</a>
                     <?php }else{?>
