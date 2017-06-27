@@ -8,14 +8,12 @@ while($product_data=sql_fetch_array($product_query)){
 }
 
 ?>
-
 <div class="width-fixed">
 	<section class="section03">	
 		<header>
 			<h4>Rutilo</h4>
             <p>새차처럼 보호와 코팅을 한번에!!</p>
-		</header>
-		
+		</header>		
 		<article class="product">
         	<div>
                 <ul>
@@ -36,8 +34,6 @@ while($product_data=sql_fetch_array($product_query)){
 		</article>
 	</section>	
 </div>
-
-
 <?php
 include_once(G5_PATH.'/tail.php');
 ?>
