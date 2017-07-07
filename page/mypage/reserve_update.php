@@ -39,5 +39,6 @@
 //    if($member['regid'] && !$member['off_gcm']){
 //        send_GCM($member['regid'],"삼시세끼","$mb_name 님의 주문이 요청이 완료 되었습니다.!");   
 //    }
-     alert('주문 완료되었습니다.',G5_URL."/page/mypage/reserve_result.php?tab=form&id=".$reserveid['id']);
+//     alert('주문 완료되었습니다.',G5_URL."/page/mypage/reserve_result.php?tab=form&id=".$reserveid['id']);
+       alert('결제창으로 이동합니다',G5_URL."/page/mypage/LGU+_XPay_Crossplatform_PHP/sample_crossplatform.html?tab=form&id=".$reserveid['id']);
 //    alert('주문 처리되었습니다.. \n결제창으로 이동합니다.',G5_URL."/page/payapp/payapp_request.php?ids=".$ids."&reserveId=".$reserveid["id"]);

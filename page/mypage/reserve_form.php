@@ -125,13 +125,13 @@ while($data=sql_fetch_array($query)){
                     	     
 					<div class="form_list01">
 					    <h2>주문고객정보</h2>
-					    <?php if($is_member){ ?>
+					    
 <!--
 					    <p class="mypageP"><span>> </span><?php echo $member['mb_name'];?>님의 회원가입 정보입니다.<br>
 					    <span>> </span>등록된 회원정보를 확인하시고 변경된 정보가 있으시면 수정해 주시기 바랍니다.</p>					    
 -->
 						<ul class="borderFirst">
-						<?php }?>						
+											
 						<ul style="border-top:none">
 							<li>
 								<div>
@@ -195,13 +195,13 @@ while($data=sql_fetch_array($query)){
 					        <input type="radio" name="delivery_chk" id="delivery_chk" class="input01">주문자정보와 동일
                             <input type="radio" name="delivery_chk" id="delivery_chk2"class="input01">새로운 주소지
 					    </div>
-					    <?php if($is_member){ ?>
+					    
 <!--
 					    <p class="mypageP"><span>> </span><?php echo $member['mb_name'];?>님의 회원가입 정보입니다.<br>
 					    <span>> </span>등록된 회원정보를 확인하시고 변경된 정보가 있으시면 수정해 주시기 바랍니다.</p>					    
 -->
 						<ul class="borderFirst">
-						<?php }?>						
+										
 						<ul style="border-top:none">
 							<li>
 								<div>
@@ -225,7 +225,7 @@ while($data=sql_fetch_array($query)){
 							</li>
                            <li>
 								<div>
-									<label for="reg_mb_addr2">주소</label>
+									<label for="reg_mb_addr2">주소</label>							
 									<div>
 										<input type="text" name="mb_addr4"  id="reg_mb_addr4" <?php echo $required ?> <?php echo $readonly ?> class="postcodify_postcode5 input01" minlength="3" maxlength="20">
 										<input type="button" class="btn_submit" id="postcodify_search_button" value="우편번호 찾기" style="background:#898989"><br>
@@ -251,13 +251,13 @@ while($data=sql_fetch_array($query)){
                     </ul>
                      <div class="form_list01">
 					    <h2>할인정보</h2>
-					    <?php if($is_member){ ?>
+					    
 <!--
 					    <p class="mypageP"><span>> </span><?php echo $member['mb_name'];?>님의 회원가입 정보입니다.<br>
 					    <span>> </span>등록된 회원정보를 확인하시고 변경된 정보가 있으시면 수정해 주시기 바랍니다.</p>					    
 -->
 						<ul class="borderFirst">
-						<?php }?>						
+											
 						<ul style="border-top:none">
 							<li>
 								<div>
@@ -274,13 +274,12 @@ while($data=sql_fetch_array($query)){
                         </div>
                         <div class="form_list01">
 					    <h2>결제수단</h2>
-					    <?php if($is_member){ ?>
+					    
 <!--
 					    <p class="mypageP"><span>> </span><?php echo $member['mb_name'];?>님의 회원가입 정보입니다.<br>
 					    <span>> </span>등록된 회원정보를 확인하시고 변경된 정보가 있으시면 수정해 주시기 바랍니다.</p>					    
 -->
-						<ul class="borderFirst">
-						<?php }?>						
+						<ul class="borderFirst">											
 						<ul style="border-top:none">
 							<li>
 								<div>									
@@ -410,6 +409,7 @@ while($data=sql_fetch_array($query)){
 	};
 	function form_check(act) {
 		var f = document.cart_list;
+        
 		if($("input[name^=ct_id]:checked").size() < 1) {
             if(act == "buy"){
                 alert("하나이상을 선택하세요");

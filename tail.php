@@ -59,7 +59,7 @@ $best_tel=sql_fetch("select * from `best_tel`");
         <div class="width-fixed footerArea">
             <h1></h1>
             <p>
-                상호 : 루틸로&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;대표 : 임상호&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;충청북도 청주시 2순환로 1480번길 24&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 고객상담센터 TEL : 070-7763-4989 / 070-7795-7989 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; FAX : 043-211-4987<br>
+                상호 : 골드라이너&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;대표 : 임상호&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;충청북도 청주시 청원구 안덕벌로104번길 28, 401호(내덕동, 청주대학교 미래창조관동)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;반송지 :  충청북도 청주시 2순환로 1480번길 24&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 고객상담센터 TEL : 070-7763-4989 / 070-7795-7989 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; FAX : 043-211-4987
                 E-Mail : goldleine@naver.com &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;사업자등록번호 : 202-01-92253 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;통신판매업 신고번호 : 2015-충북청주-0727 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;개인정보관리 책임자 : goldleine@naver.com <br>
                 Copyrightⓒ RUTILO.2017 All rights reserved.
             </p>

@@ -13,9 +13,10 @@ if (!isset($config['cf_include_index'])) {
     sql_query(" ALTER TABLE `{$g5['config_table']}`
                     ADD `cf_include_index` VARCHAR(255) NOT NULL AFTER `cf_admin`,
                     ADD `cf_include_head` VARCHAR(255) NOT NULL AFTER `cf_include_index`,
-                    ADD `cf_include_tail` VARCHAR(255) NOT NULL AFTER `cf_include_head`,
-                    ADD `cf_add_script` TEXT NOT NULL AFTER `cf_include_tail` ", true);
-}
+                    ADD `cf_include_tail` VARCHAR(255) NOT NULL AFTER `cf_include_head` ", true);
+                    //ADD `cf_add_script` TEXT NOT NULL AFTER `cf_include_tail`
+} 
+
 
 if (!isset($config['cf_mobile_new_skin'])) {
     sql_query(" ALTER TABLE `{$g5['config_table']}`

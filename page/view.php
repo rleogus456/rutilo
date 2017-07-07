@@ -9,7 +9,7 @@ include_once(G5_PATH.'/head.php');
 	if($is_member){
 		$link="javascript:location.href='".G5_URL."/page/mypage/add_cart.php?id=".$id."&type=".$type."&number=1';";
 	}else{
-		$link="javascript:location.href='".G5_BBS_URL."/login.php?id=".$id."&type=".$type."';";
+		$link="javascript:location.href='".G5_URL."/page/mypage/add_cart.php?id=".$id."&type=".$type."&number=1';";
 	}
 $list=sql_fetch("select * from `rutilo_product` where id='".$id."'");
 $point = $list['price'] / 100 ;
